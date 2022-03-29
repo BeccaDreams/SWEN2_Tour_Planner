@@ -5,11 +5,120 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tour_Planner"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="500">
     <!--<Window.DataContext>
         <local:
     </Window.DataContext> -->
-    <Grid>
 
+    <Grid ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="2*"/>
+            
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <DockPanel Background="LightGray" Grid.Row="0" Grid.ColumnSpan="4">
+            <Label  DockPanel.Dock="Top" Content="Tour Planner" HorizontalAlignment="Center"></Label>
+            <Border BorderBrush="Black" BorderThickness="0.5"></Border>
+        </DockPanel>
+
+        <DockPanel Background="Beige" Grid.Row="1">
+            <Menu>
+                <MenuItem Header="_File">
+                    <MenuItem Header="_New"></MenuItem>
+                    <MenuItem Header="_New"></MenuItem>
+                    <MenuItem Header="_New"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Edit">
+                    <MenuItem Header="_New"></MenuItem>
+                    <MenuItem Header="_New"></MenuItem>
+                    <MenuItem Header="_New"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Options">
+                    <MenuItem Header="_New"></MenuItem>
+                    <MenuItem Header="_New"></MenuItem>
+                    <MenuItem Header="_New"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Help" >
+                    <MenuItem Header="_New"></MenuItem>
+                    <MenuItem Header="_New"></MenuItem>
+                    <MenuItem Header="_New"></MenuItem>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        
+        <!-- add search bar here -->
+        <DockPanel Grid.Row="2" Grid.RowSpan="4">
+            <StackPanel>
+                <StackPanel Background="LightGray" Orientation="Horizontal">
+                    <Label>Tours:</Label>
+                    <Button Content="+"></Button>
+                    <Button Content="-"></Button>
+                    <Button Content="[]"></Button>
+                </StackPanel>
+                <ListBox DockPanel.Dock="Left">
+                    <ListBoxItem>Tour</ListBoxItem>
+                    <ListBoxItem>Tour</ListBoxItem>
+                    <ListBoxItem>Tour</ListBoxItem>
+                    <ListBoxItem>Tour</ListBoxItem>
+                </ListBox>
+            </StackPanel>
+        </DockPanel>
+
+        <GridSplitter Grid.Column="1" Grid.Row="2" VerticalAlignment="Stretch"/>
+
+        <DockPanel Grid.Column="2" Grid.Row="2">
+            <StackPanel Grid.Column="1" Grid.Row="3" >
+                <Label Background="LightGray">Title:</Label>
+                <TabPanel>
+                    <TabItem Header="Route"></TabItem>
+                    <TabItem Header="Description"></TabItem>
+                </TabPanel>
+                <Label>Placeholder</Label>
+            </StackPanel>
+        </DockPanel>
+
+        <DockPanel Grid.Row="4" Grid.Column="4">
+            <StackPanel Background="LightGray" Orientation="Horizontal">
+                <Label Width="100">Logs:</Label>
+                <Button Width="20" Content="+"></Button>
+                <Button Width="20" Content="-"></Button>
+                <Button Width="20" Content="[]"></Button>
+            </StackPanel>
+        </DockPanel>
+        <DockPanel Grid.Row="5" Grid.Column="4">
+            <StackPanel DockPanel.Dock="Bottom">
+                <StackPanel Orientation="Horizontal">
+                    <Label BorderThickness="1" BorderBrush="Black">Date</Label>
+                    <Label BorderThickness="1" BorderBrush="Black">Duration</Label>
+                    <Label BorderThickness="1" BorderBrush="Black">Distance</Label>
+                    <Label BorderThickness="1" BorderBrush="Black">...</Label>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox BorderBrush="Black" BorderThickness="0.5"></TextBox>
+                        <TextBox BorderBrush="Black" BorderThickness="0.5"></TextBox>
+                        <TextBox BorderBrush="Black" BorderThickness="0.5"></TextBox>
+                        <TextBox BorderBrush="Black" BorderThickness="0.5"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox BorderBrush="Black" BorderThickness="0.5"></TextBox>
+                        <TextBox BorderBrush="Black" BorderThickness="0.5"></TextBox>
+                        <TextBox BorderBrush="Black" BorderThickness="0.5"></TextBox>
+                        <TextBox BorderBrush="Black" BorderThickness="0.5"></TextBox>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </DockPanel>
+        
     </Grid>
+    
 </Window>

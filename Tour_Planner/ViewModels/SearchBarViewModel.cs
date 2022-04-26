@@ -21,10 +21,11 @@ namespace Tour_Planner
 
         public SearchBarViewModel()
         {
-            SearchCommand = new SearchCommand((_) =>
-            {
-                this.SearchTextChanged?.Invoke(this, SearchText);
-            });
+            //Button verknüpfen
+            //SearchCommand = new SearchCommand((_) =>
+            //{
+            //    this.SearchTextChanged?.Invoke(this, SearchText);
+            //});
         }
     }
 }

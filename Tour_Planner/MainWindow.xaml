@@ -3,15 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Tour_Planner"
+        xmlns:local="clr-namespace:Tour_Planner.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="500">
+        Title="MainWindow" Height="450" Width="400">
     <!--<Window.DataContext>
         <local:
     </Window.DataContext> -->
 
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="2*"/>
@@ -30,7 +31,7 @@
             <Border BorderBrush="Black" BorderThickness="0.5"></Border>
         </DockPanel>
 
-        <DockPanel Background="Beige" Grid.Row="1">
+        <DockPanel Background="Beige" Grid.ColumnSpan="5" Grid.Row="1">
             <Menu>
                 <MenuItem Header="_File">
                     <MenuItem Header="_New"></MenuItem>
@@ -54,70 +55,22 @@
                 </MenuItem>
             </Menu>
         </DockPanel>
+
         
-        <!-- add search bar here -->
-        <DockPanel Grid.Row="2" Grid.RowSpan="4">
-            <StackPanel>
-                <StackPanel Background="LightGray" Orientation="Horizontal">
-                    <Label>Tours:</Label>
-                    <Button Content="+"></Button>
-                    <Button Content="-"></Button>
-                    <Button Content="[]"></Button>
-                </StackPanel>
-                <ListBox DockPanel.Dock="Left">
-                    <ListBoxItem>Tour</ListBoxItem>
-                    <ListBoxItem>Tour</ListBoxItem>
-                    <ListBoxItem>Tour</ListBoxItem>
-                    <ListBoxItem>Tour</ListBoxItem>
-                </ListBox>
-            </StackPanel>
-        </DockPanel>
+        <!-- SearchBar -->
+        <local:SearchBar x:Name="SearchBar" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"/>
+      
+        <!-- TourList -->
+        <local:TourList x:Name="TourList" Grid.Row="3" Grid.RowSpan="5" Grid.Column="0"/>
 
         <GridSplitter Grid.Column="1" Grid.Row="2" VerticalAlignment="Stretch"/>
 
-        <DockPanel Grid.Column="2" Grid.Row="2">
-            <StackPanel Grid.Column="1" Grid.Row="3" >
-                <Label Background="LightGray">Title:</Label>
-                <TabPanel>
-                    <TabItem Header="Route"></TabItem>
-                    <TabItem Header="Description"></TabItem>
-                </TabPanel>
-                <Label>Placeholder</Label>
-            </StackPanel>
-        </DockPanel>
-
-        <DockPanel Grid.Row="4" Grid.Column="4">
-            <StackPanel Background="LightGray" Orientation="Horizontal">
-                <Label Width="100">Logs:</Label>
-                <Button Width="20" Content="+"></Button>
-                <Button Width="20" Content="-"></Button>
-                <Button Width="20" Content="[]"></Button>
-            </StackPanel>
-        </DockPanel>
-        <DockPanel Grid.Row="5" Grid.Column="4">
-            <StackPanel DockPanel.Dock="Bottom">
-                <StackPanel Orientation="Horizontal">
-                    <Label BorderThickness="1" BorderBrush="Black">Date</Label>
-                    <Label BorderThickness="1" BorderBrush="Black">Duration</Label>
-                    <Label BorderThickness="1" BorderBrush="Black">Distance</Label>
-                    <Label BorderThickness="1" BorderBrush="Black">...</Label>
-                </StackPanel>
-                <StackPanel Orientation="Vertical">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBox BorderBrush="Black" BorderThickness="0.5"></TextBox>
-                        <TextBox BorderBrush="Black" BorderThickness="0.5"></TextBox>
-                        <TextBox BorderBrush="Black" BorderThickness="0.5"></TextBox>
-                        <TextBox BorderBrush="Black" BorderThickness="0.5"></TextBox>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBox BorderBrush="Black" BorderThickness="0.5"></TextBox>
-                        <TextBox BorderBrush="Black" BorderThickness="0.5"></TextBox>
-                        <TextBox BorderBrush="Black" BorderThickness="0.5"></TextBox>
-                        <TextBox BorderBrush="Black" BorderThickness="0.5"></TextBox>
-                    </StackPanel>
-                </StackPanel>
-            </StackPanel>
-        </DockPanel>
+        <!-- TourDetails -->
+        <local:TourDetails x:Name="TourDetails" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"/>
+        
+        <!-- TourLogs -->
+        <local:TourLogs x:Name="TourLogs" Grid.Row="4" Grid.Column="2"/>
+       
         
     </Grid>
     

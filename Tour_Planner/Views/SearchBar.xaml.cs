@@ -13,21 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Tour_Planner
+namespace Tour_Planner.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaktionslogik für test.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SearchBar : UserControl
     {
-        public MainWindow()
+        public SearchBar()
         {
             InitializeComponent();
-        }
-
-        private void StackPanel_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
-        {
-
         }
     }
 }

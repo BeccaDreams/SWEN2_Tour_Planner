@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="Tour_Planner.Views.TourLogs"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Tour_Planner.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <!-- https://stackoverflow.com/questions/56381187/create-a-textblock-for-every-item-in-a-listobject-->
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Background="LightGray" Orientation="Horizontal">
+            <Label Width="100">Logs:</Label>
+            <Button Width="20" Content="+"></Button>
+            <Button Width="20" Content="-"></Button>
+            <Button Width="20" Content="[]"></Button>
+        </StackPanel>
+
+        <Label Grid.Row="1" Grid.Column="0" BorderThickness="1" Width="65" BorderBrush="Black">Date</Label>
+        <Label Grid.Row="1" Grid.Column="1" BorderThickness="1" Width="65" BorderBrush="Black">Duration</Label>
+        <Label Grid.Row="1" Grid.Column="2" BorderThickness="1" Width="65" BorderBrush="Black">Distance</Label>
+        <Label Grid.Row="1" Grid.Column="3" BorderThickness="1" Width="65" BorderBrush="Black">...</Label>
+        
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
+                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
+                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
+                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
+                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
+                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
+                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
+                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
+                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
+                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
+                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
+                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
+                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
+                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
+                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
+                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
+                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
+                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
+                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
+            </StackPanel>
+        </StackPanel>
+
+
+    </Grid>
+</UserControl>

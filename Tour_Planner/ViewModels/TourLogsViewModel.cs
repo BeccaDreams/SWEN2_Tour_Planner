@@ -9,6 +9,8 @@ namespace Tour_Planner
 {
     public class TourLogsViewModel : BaseViewModel 
     {
-
+        private string _date;
+        private string _duration;
+        private string _distance;
     }
 }

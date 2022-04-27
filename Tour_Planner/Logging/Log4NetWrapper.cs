@@ -19,7 +19,7 @@ namespace Tour_Planner.Logging
         public static Log4NetWrapper CreateLogger(string filename, string creator)
         {
             if (!File.Exists(filename))
-                throw new ArgumentException("Logger Config-File does not exist", nameof(filename);
+                throw new ArgumentException("Logger Config-File does not exist", nameof(filename));
 
             log4net.Config.XmlConfigurator.Configure(new FileInfo(filename));
             var logger = log4net.LogManager.GetLogger(creator.ToString());

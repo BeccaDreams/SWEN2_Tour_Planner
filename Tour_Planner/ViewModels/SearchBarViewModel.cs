@@ -25,7 +25,13 @@ namespace Tour_Planner
             //SearchCommand = new SearchCommand((_) =>
             //{
             //    this.SearchTextChanged?.Invoke(this, SearchText);
+            //
             //});
+        }
+
+        public void ButtonClick_Clicked(object sender, EventArgs e)
+        {
+            //nach tour suchen, Liste filtern?
         }
     }
 }

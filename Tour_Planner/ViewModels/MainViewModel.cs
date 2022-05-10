@@ -6,10 +6,12 @@ using Tour_Planner.Views;
 using log4net;
 using System.Collections.ObjectModel;
 using Tour_Planner.Models;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Tour_Planner.ViewModels
 {
-    public class MainViewModel : BaseViewModel
+    public class MainViewModel : INotifyPropertyChanged
     {
         //private static ILoggerWrapper logger = log4net.LogManager.GetLogger("MainViewModel");
         //private static ILoggerWrapper logger;
@@ -19,8 +21,9 @@ namespace Tour_Planner.ViewModels
         public TourListViewModel tourListView;
         public TourLogsViewModel tourLogsView;
 
-        public ObservableCollection<Tour> Data { get; }
-            = new ObservableCollection<Tour>();
+        public ObservableCollection<TourList> Data { get; }
+            = new ObservableCollection<TourList>();
+        public string TourName { get; set; }
         public MainViewModel()
         {
             //log4net.Config.XmlConfigurator.Configure(new FileInfo("./log4net.config"));
@@ -36,9 +39,14 @@ namespace Tour_Planner.ViewModels
         }
 
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
 
 
-        
     }
 }

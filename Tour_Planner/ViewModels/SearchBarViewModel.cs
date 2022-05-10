@@ -4,7 +4,7 @@ using Tour_Planner.Views;
 
 namespace Tour_Planner.ViewModels
 {
-    public class SearchBarViewModel : BaseViewModel
+    public class SearchBarViewModel : MainViewModel
     {
         private string _searchText;
         public ICommand SearchCommand { get; }

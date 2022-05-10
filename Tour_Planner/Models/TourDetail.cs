@@ -8,16 +8,21 @@ using System.Threading.Tasks;
 
 namespace Tour_Planner.Models
 {
-    public class TourList : INotifyPropertyChanged
+    public class TourDetail : INotifyPropertyChanged
     {
-        //private Dictionary<string, Tour> tourDictionary { get; set; }
-        private List<Tour> _list;
-        
-        public TourList()
+        private string Title
         {
-            _list = new List<Tour>();
-            _list.Add(new Tour("Tourname"));
-            _list.Add(new Tour("Tourname2"));
+            get => this.Title;
+            set
+            {
+                this.Title = value;
+                OnPropertyChanged(nameof(Title));
+            }
+        }
+
+        public TourDetail(string title)
+        {
+            Title = title;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

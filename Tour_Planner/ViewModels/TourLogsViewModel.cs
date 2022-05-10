@@ -8,7 +8,7 @@ using Tour_Planner.Models;
 
 namespace Tour_Planner.ViewModels
 {
-    public class TourLogsViewModel : BaseViewModel 
+    public class TourLogsViewModel : MainViewModel 
     {
         private List<TourLog> _logs;
         public TourLogsViewModel()

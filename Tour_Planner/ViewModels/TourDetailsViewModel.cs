@@ -7,7 +7,7 @@ using Tour_Planner.Views;
 
 namespace Tour_Planner.ViewModels
 {
-    public class TourDetailsViewModel : BaseViewModel
+    public class TourDetailsViewModel : MainViewModel
     {
         public String Title { get; set; }
 

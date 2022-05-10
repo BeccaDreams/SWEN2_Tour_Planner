@@ -2,7 +2,7 @@
 using System.Windows.Input;
 using Tour_Planner.Views;
 
-namespace Tour_Planner
+namespace Tour_Planner.ViewModels
 {
     public class SearchBarViewModel : BaseViewModel
     {

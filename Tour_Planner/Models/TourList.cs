@@ -3,22 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tour_Planner.Views;
-using Tour_Planner.Models;
 
-namespace Tour_Planner.ViewModels
+namespace Tour_Planner.Models
 {
-    public class TourListViewModel : BaseViewModel
+    public class TourList 
     {
+        //private Dictionary<string, Tour> tourDictionary { get; set; }
         private List<Tour> _list;
-
-           
-        public TourListViewModel()
+        
+        public TourList()
         {
             _list = new List<Tour>();
             _list.Add(new Tour("Tourname"));
             _list.Add(new Tour("Tourname2"));
-            
         }
     }
 }

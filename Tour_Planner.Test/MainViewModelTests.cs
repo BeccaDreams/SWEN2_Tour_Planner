@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using Moq;
+using Tour_Planner.ViewModels;
 
 namespace Tour_Planner.Test
 {

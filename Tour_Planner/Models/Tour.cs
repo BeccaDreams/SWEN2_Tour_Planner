@@ -8,28 +8,18 @@ using System.Threading.Tasks;
 
 namespace Tour_Planner.Models 
 {
-    public class Tour : INotifyPropertyChanged
+    public class Tour : BaseModel
     {
-    
-        //private int Id { get; set; }
-        private string Name {
-            get => this.Name;
+        private string name;
+        public string Name
+        {
+            get { return name; }
             set
             {
-                this.Name = value;
-                this.OnPropertyChanged(nameof(Name));
+                name = value;
+                OnPropertyChanged("Name");
             }
-         }
-
-        public Tour(string name)
-        {
-            Name = name;
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

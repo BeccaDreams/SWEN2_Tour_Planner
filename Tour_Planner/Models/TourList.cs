@@ -15,9 +15,7 @@ namespace Tour_Planner.Models
         
         public TourList()
         {
-            _list = new List<Tour>();
-            _list.Add(new Tour("Tourname"));
-            _list.Add(new Tour("Tourname2"));
+            
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

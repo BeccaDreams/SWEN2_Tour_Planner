@@ -16,28 +16,41 @@ namespace Tour_Planner.ViewModels
         //private static ILoggerWrapper logger = log4net.LogManager.GetLogger("MainViewModel");
         //private static ILoggerWrapper logger;
 
-        public SearchBarViewModel searchBar;
-        public TourDetailsViewModel tourDetailsView;
-        public TourListViewModel tourListView;
-        public TourLogsViewModel tourLogsView;
+        //private SearchBarViewModel searchBar;
+        //private TourDetailsViewModel tourDetailsView;
+        private TourListViewModel tourListView;
+       // private TourLogsViewModel tourLogsView;
+       // private Tour currentTour;
 
-        public ObservableCollection<TourList> Data { get; }
-            = new ObservableCollection<TourList>();
-        public string TourName { get; set; }
+        private ObservableCollection<Tour> TourItems { get; set; }
+
+        //public ObservableCollection<TourList> Data { get; }
+        //  = new ObservableCollection<TourList>();
+        //public string TourName { get; set; }
         public MainViewModel()
         {
+            //TourItems = new ObservableCollection<Tour>();
+            //FillTourList();
             //log4net.Config.XmlConfigurator.Configure(new FileInfo("./log4net.config"));
             //logger.Debug("created()");
             //logger.Debug($"OnPropertyChanged() propertyName={propertyName}");
             //h ttps://logging.apache.org/log4net/release/manual/configuration.html
 
             
-            this.searchBar = new SearchBarViewModel();
-            this.tourDetailsView = new TourDetailsViewModel();
+            //this.searchBar = new SearchBarViewModel();
+            //this.tourDetailsView = new TourDetailsViewModel();
             this.tourListView = new TourListViewModel();
-            this.tourDetailsView = new TourDetailsViewModel();
+            //this.tourDetailsView = new TourDetailsViewModel();
         }
 
+        private void FillTourList()
+        {
+            //foreach(Tour tour in TourItems)
+            //{
+            //mit DB Liste füllen
+            //
+           
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

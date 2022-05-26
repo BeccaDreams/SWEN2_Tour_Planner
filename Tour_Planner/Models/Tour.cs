@@ -10,15 +10,28 @@ namespace Tour_Planner.Models
 {
     public class Tour : BaseModel
     {
-        private string name;
+        private string _name;
         public string Name
         {
-            get { return name; }
+            get { return _name; }
             set
             {
-                name = value;
-                OnPropertyChanged("Name");
+                try
+                {
+                    _name = value;
+                    OnPropertyChanged("Name");
+                }
+                catch (StackOverflowException e)
+                {
+                    Console.WriteLine(e);
+                }
+                
             }
+        }
+
+        public Tour(string name)
+        {
+            Name=name;
         }
 
     }

@@ -18,17 +18,25 @@ namespace Tour_Planner.ViewModels
 
         //private SearchBarViewModel searchBar;
         //private TourDetailsViewModel tourDetailsView;
-        private TourListViewModel tourListView;
-       // private TourLogsViewModel tourLogsView;
-       // private Tour currentTour;
-
-        private ObservableCollection<Tour> TourItems { get; set; }
+        //  private TourListViewModel tourListView;
+        // private TourLogsViewModel tourLogsView;
+        // private Tour currentTour;
+        private SearchBarViewModel searchBar;
+        public ObservableCollection<Tour> TourItems { get; set; }
+            = new ObservableCollection<Tour>();
 
         //public ObservableCollection<TourList> Data { get; }
         //  = new ObservableCollection<TourList>();
         //public string TourName { get; set; }
         public MainViewModel()
         {
+            TourItems.Add(new Tour("hey"));
+            TourItems.Add(new Tour("test"));
+            searchBar = new SearchBarViewModel();
+            //searchBar.SearchTextChanged += (_, searchText) =>
+            //{
+            //    //SearchTours(searchText);
+            //};
             //TourItems = new ObservableCollection<Tour>();
             //FillTourList();
             //log4net.Config.XmlConfigurator.Configure(new FileInfo("./log4net.config"));
@@ -36,10 +44,10 @@ namespace Tour_Planner.ViewModels
             //logger.Debug($"OnPropertyChanged() propertyName={propertyName}");
             //h ttps://logging.apache.org/log4net/release/manual/configuration.html
 
-            
+
             //this.searchBar = new SearchBarViewModel();
             //this.tourDetailsView = new TourDetailsViewModel();
-            this.tourListView = new TourListViewModel();
+            //this.tourListView = new TourListViewModel();
             //this.tourDetailsView = new TourDetailsViewModel();
         }
 

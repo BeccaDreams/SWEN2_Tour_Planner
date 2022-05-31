@@ -28,7 +28,7 @@ namespace Tour_Planner.ViewModels
         //public ObservableCollection<TourList> Data { get; }
         //  = new ObservableCollection<TourList>();
         //public string TourName { get; set; }
-        public MainViewModel()
+        public MainViewModel(TourListViewModel tourList, TourLogsViewModel tourLogs, TourDetailsViewModel tourDetails, SearchBarViewModel searchBar)
         {
             TourItems.Add(new Tour("hey"));
             TourItems.Add(new Tour("test"));

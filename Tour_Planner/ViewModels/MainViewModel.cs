@@ -16,11 +16,6 @@ namespace Tour_Planner.ViewModels
         //private static ILoggerWrapper logger = log4net.LogManager.GetLogger("MainViewModel");
         //private static ILoggerWrapper logger;
 
-        //private SearchBarViewModel searchBar;
-        //private TourDetailsViewModel tourDetailsView;
-        //  private TourListViewModel tourListView;
-        // private TourLogsViewModel tourLogsView;
-        // private Tour currentTour;
         public TourListViewModel TourList;
         public TourLogsViewModel TourLogs;
         public TourDetailsViewModel TourDetails;
@@ -28,19 +23,25 @@ namespace Tour_Planner.ViewModels
         public ObservableCollection<Tour> TourItems { get; set; }
             = new ObservableCollection<Tour>();
 
-        //public ObservableCollection<TourList> Data { get; }
-        //  = new ObservableCollection<TourList>();
+        public ObservableCollection<TourLog> Logs { get; set; }
+            = new ObservableCollection<TourLog>();
+
+
         //public string TourName { get; set; }
         public MainViewModel(TourListViewModel tourList, TourLogsViewModel tourLogs, TourDetailsViewModel tourDetails, SearchBarViewModel searchBar)
         {
-            TourItems.Add(new Tour("hey"));
-            TourItems.Add(new Tour("test"));
+           
             //searchBar = new SearchBarViewModel();
 
             TourList = tourList;
-            TourLogs = TourLogs;
+            TourLogs = tourLogs;
             TourDetails = tourDetails;
             SearchBar = searchBar;
+
+            TourItems = TourList.TourNames;
+            Logs = TourLogs.DataLogs;
+
+           
 
             //searchBar.SearchTextChanged += (_, searchText) =>
             //{
@@ -51,13 +52,9 @@ namespace Tour_Planner.ViewModels
             //log4net.Config.XmlConfigurator.Configure(new FileInfo("./log4net.config"));
             //logger.Debug("created()");
             //logger.Debug($"OnPropertyChanged() propertyName={propertyName}");
-            //h ttps://logging.apache.org/log4net/release/manual/configuration.html
+            //h ttps://logging.apache.org/log4net/release/manual/configuration.html 
 
 
-            //this.searchBar = new SearchBarViewModel();
-            //this.tourDetailsView = new TourDetailsViewModel();
-            //this.tourListView = new TourListViewModel();
-            //this.tourDetailsView = new TourDetailsViewModel();
         }
 
         public MainViewModel()
@@ -66,6 +63,11 @@ namespace Tour_Planner.ViewModels
             TourLogs = new TourLogsViewModel();
             TourDetails = new TourDetailsViewModel();
             SearchBar = new SearchBarViewModel();
+
+            TourItems = TourList.TourNames;
+            Logs = TourLogs.DataLogs;
+
+            TourItems.Add(new Tour("Ttest"));
         }
 
         private void FillTourList()

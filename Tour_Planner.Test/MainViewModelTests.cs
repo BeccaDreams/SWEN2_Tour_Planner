@@ -1,6 +1,8 @@
 using NUnit.Framework;
 using Moq;
 using Tour_Planner.ViewModels;
+using Tour_Planner;
+
 
 namespace Tour_Planner.Test
 {
@@ -20,8 +22,12 @@ namespace Tour_Planner.Test
             //var mockedCommunicationHandler = new Mock<ICommunicationHandler>();
             //var mockedContentInterpreter = new Mock<IContentInterpreter>();
             //var mockedFilterHandler = new Mock<FilterHanlder>();
-            MainViewModel mvm = new MainViewModel();
-            Assert.Pass();
+            //var mockedTourLogs = new Mock<TourDetailsViewModel>();
+            //var mockedTourDetails = new Mock<TourDetailsViewModel>();
+            //var mockedTourList = new Mock<TourListViewModel>();
+            //var mockedSearchbar = new Mock<SearchBarViewModel>();
+            //MainViewModel mvm = new MainViewModel();
+            //Assert.Pass();
         }
     }
 }

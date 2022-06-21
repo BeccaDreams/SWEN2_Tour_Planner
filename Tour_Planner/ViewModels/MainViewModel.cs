@@ -21,7 +21,10 @@ namespace Tour_Planner.ViewModels
         //  private TourListViewModel tourListView;
         // private TourLogsViewModel tourLogsView;
         // private Tour currentTour;
-        private SearchBarViewModel searchBar;
+        public TourListViewModel TourList;
+        public TourLogsViewModel TourLogs;
+        public TourDetailsViewModel TourDetails;
+        public SearchBarViewModel SearchBar;
         public ObservableCollection<Tour> TourItems { get; set; }
             = new ObservableCollection<Tour>();
 
@@ -32,7 +35,13 @@ namespace Tour_Planner.ViewModels
         {
             TourItems.Add(new Tour("hey"));
             TourItems.Add(new Tour("test"));
-            searchBar = new SearchBarViewModel();
+            //searchBar = new SearchBarViewModel();
+
+            TourList = tourList;
+            TourLogs = TourLogs;
+            TourDetails = tourDetails;
+            SearchBar = searchBar;
+
             //searchBar.SearchTextChanged += (_, searchText) =>
             //{
             //    //SearchTours(searchText);
@@ -49,6 +58,14 @@ namespace Tour_Planner.ViewModels
             //this.tourDetailsView = new TourDetailsViewModel();
             //this.tourListView = new TourListViewModel();
             //this.tourDetailsView = new TourDetailsViewModel();
+        }
+
+        public MainViewModel()
+        {
+            TourList = new TourListViewModel();
+            TourLogs = new TourLogsViewModel();
+            TourDetails = new TourDetailsViewModel();
+            SearchBar = new SearchBarViewModel();
         }
 
         private void FillTourList()

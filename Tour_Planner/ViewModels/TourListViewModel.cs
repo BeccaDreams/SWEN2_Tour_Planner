@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Tour_Planner.Views;
 using Tour_Planner.Models;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace Tour_Planner.ViewModels
 {
@@ -14,12 +15,25 @@ namespace Tour_Planner.ViewModels
 
         public ObservableCollection<Tour> TourNames { get; }
           = new ObservableCollection<Tour>();
-
+        private void AddTourWin(object sender, RoutedEventArgs e)
+        {
+            AddTourWindow win2 = new AddTourWindow();
+            win2.Show();
+        }
+        public RelayCommand AddTourCommand;
+        public string NewTourName = "bla";
 
         public TourListViewModel()
         {
             
             LoadData();
+
+            AddTourCommand = new RelayCommand((_) =>
+            {
+                TourNames.Add(new Tour(this.NewTourName));
+                NewTourName = string.Empty;
+                OnPropertyChanged(nameof(NewTourName));
+            });
             
         }
 

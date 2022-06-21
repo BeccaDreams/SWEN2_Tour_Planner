@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using Tour_Planner.Models;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows;
 
 namespace Tour_Planner.ViewModels
 {
@@ -16,10 +17,13 @@ namespace Tour_Planner.ViewModels
         //private static ILoggerWrapper logger = log4net.LogManager.GetLogger("MainViewModel");
         //private static ILoggerWrapper logger;
 
+
+
         public TourListViewModel TourList;
         public TourLogsViewModel TourLogs;
         public TourDetailsViewModel TourDetails;
         public SearchBarViewModel SearchBar;
+        public RelayCommand AddTourWin;
         public ObservableCollection<Tour> TourItems { get; set; }
             = new ObservableCollection<Tour>();
 
@@ -41,14 +45,12 @@ namespace Tour_Planner.ViewModels
             TourItems = TourList.TourNames;
             Logs = TourLogs.DataLogs;
 
-           
 
             //searchBar.SearchTextChanged += (_, searchText) =>
             //{
             //    //SearchTours(searchText);
             //};
-            //TourItems = new ObservableCollection<Tour>();
-            //FillTourList();
+
             //log4net.Config.XmlConfigurator.Configure(new FileInfo("./log4net.config"));
             //logger.Debug("created()");
             //logger.Debug($"OnPropertyChanged() propertyName={propertyName}");
@@ -67,8 +69,17 @@ namespace Tour_Planner.ViewModels
             TourItems = TourList.TourNames;
             Logs = TourLogs.DataLogs;
 
-            TourItems.Add(new Tour("Ttest"));
+            //TourItems.Add(new Tour("Ttest"));
+
+            //TourList.AddTourCommand = new RelayCommand((_) =>
+            //{
+            //    TourItems.Add(new Tour("addTest"));
+            //    //NewTourName = string.Empty;
+            //    OnPropertyChanged(nameof(TourItems));
+            //});
         }
+
+      
 
         private void FillTourList()
         {

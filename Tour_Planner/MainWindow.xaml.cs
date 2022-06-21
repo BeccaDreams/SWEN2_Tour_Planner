@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tour_Planner.Views;
 
 namespace Tour_Planner
 {
@@ -28,6 +29,12 @@ namespace Tour_Planner
         private void StackPanel_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
         {
 
+        }
+
+        private void AddTourWin(object sender, RoutedEventArgs e)
+        {
+            AddTourWindow win2 = new AddTourWindow();
+            win2.Show();
         }
     }
 }

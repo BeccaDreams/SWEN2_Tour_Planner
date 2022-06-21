@@ -27,7 +27,10 @@ namespace Tour_Planner.Models
                 }
             }
         }
-        private string _duration = "";
+
+
+
+        private string _duration ;
         public string Duration
         {
             get { return _duration; }

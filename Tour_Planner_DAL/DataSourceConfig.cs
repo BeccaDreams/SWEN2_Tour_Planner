@@ -15,7 +15,7 @@ namespace Tour_Planner_DAL
             get
             {
                 IConfiguration config = new ConfigurationBuilder().AddJsonFile("appsettings.json", false, true).Build();
-                return config["DataSourceAddress"];
+                return config["tour_planner"];
             }
         }
 

@@ -15,4 +15,10 @@
     <ProjectReference Include="..\Tour_Planner\Tour_Planner.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

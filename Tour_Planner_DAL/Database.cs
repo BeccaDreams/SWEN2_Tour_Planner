@@ -11,11 +11,18 @@ namespace Tour_Planner_DAL
     public class Database
     {
         private string connectionString;
+        private DbConnection connection;
         public Database(string connectionString)
         {
             this.connectionString = connectionString;
             //var dataSourceConfig = config.Get<DataSourceConfig>();
             //return dataSourceConfig.DataSourceAddress;
+            var connection = Connect();
+
+        }
+
+        public Database()
+        {
 
         }
 
@@ -27,5 +34,15 @@ namespace Tour_Planner_DAL
             return connection;
         }
 
+
+
+        private DbConnection Connect()
+        {
+            var testcon = new DataSourceConfig();
+            DbConnection conn = new NpgsqlConnection(testcon.DataSourceAddress);
+            conn.Open();
+
+            return conn;
+        }
     }
 }

@@ -11,38 +11,26 @@ namespace Tour_Planner.ViewModels
 {
     public class TourListViewModel : BaseModel
     {
-        //public Tour Tour
-        //{
-        //    get { return Tour; }
-        //    set
-        //    {
-        //        if(value != Tour)
-        //        {
-        //            this.Tour = value;
-        //            this.OnPropertyChanged("Tour");
-        //        }
-        //    }
-        //}
-      
-        //public ObservableCollection<Tour> TourCollection
-        //{
-        //    get { return TourCollection; }
-        //    set
-        //    {
-        //        if (value != this.TourCollection)
-        //            TourCollection = value;
-        //        this.OnPropertyChanged("TourCollection");
-        //    }
-        //}
+
+        public ObservableCollection<Tour> TourNames { get; }
+          = new ObservableCollection<Tour>();
 
 
         public TourListViewModel()
         {
-           
-            //this.TourItems.Add(new Tour("hellop"));
+            
+            LoadData();
+            
         }
 
-        
+        private void LoadData()
+        {
+            TourNames.Clear();
+            TourNames.Add(new Tour("Testtour"));
+            TourNames.Add(new Tour("Testtour2"));
+            TourNames.Add(new Tour("Testtour3"));
+            TourNames.Add(new Tour("Testtour4"));
+        }
 
 
     }

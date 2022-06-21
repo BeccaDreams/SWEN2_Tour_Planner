@@ -10,7 +10,7 @@ namespace Tour_Planner.Models
 {
     public class Tour : BaseModel
     {
-        private string _name;
+        private string _name = "";
         public string Name
         {
             get { return _name; }
@@ -33,6 +33,8 @@ namespace Tour_Planner.Models
         {
             Name=name;
         }
+
+     
 
     }
 }

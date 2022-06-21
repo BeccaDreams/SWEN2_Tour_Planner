@@ -1,20 +1,26 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Tour_Planner.Views;
+using Tour_Planner.Models;
 
-namespace Tour_Planner
+namespace Tour_Planner.ViewModels
 {
-    public class SearchBarViewModel : BaseViewModel
+    public class SearchBarViewModel : BaseModel
     {
-        private string _searchText;
+
+        public event EventHandler<string> SearchTextChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
+
         public ICommand SearchCommand { get; }
 
         public string SearchText
         {
-            get => _searchText;
+            get => SearchText;
             set
             {
-                _searchText = value;
+                SearchText = value;
                 OnPropertyChanged();
             }
         }
@@ -22,16 +28,18 @@ namespace Tour_Planner
         public SearchBarViewModel()
         {
             //Button verknüpfen
-            //SearchCommand = new SearchCommand((_) =>
-            //{
-            //    this.SearchTextChanged?.Invoke(this, SearchText);
-            //
-            //});
+            SearchCommand = new SearchCommand((_) =>
+            {
+                this.SearchTextChanged?.Invoke(this, SearchText);
+            
+            });
         }
 
         public void ButtonClick_Clicked(object sender, EventArgs e)
         {
             //nach tour suchen, Liste filtern?
         }
+
+        
     }
 }

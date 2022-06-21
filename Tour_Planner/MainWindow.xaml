@@ -4,11 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tour_Planner.Views"
+        xmlns:mvvm="clr-namespace:Tour_Planner.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="400">
-    <!--<Window.DataContext>
-        <local:
-    </Window.DataContext> -->
+    <Window.DataContext>
+        <mvvm:MainViewModel/>
+    </Window.DataContext> 
 
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
@@ -23,8 +24,8 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <DockPanel Background="LightGray" Grid.Row="0" Grid.ColumnSpan="4">
             <Label  DockPanel.Dock="Top" Content="Tour Planner" HorizontalAlignment="Center"></Label>
@@ -58,18 +59,24 @@
 
         
         <!-- SearchBar -->
-        <local:SearchBar x:Name="SearchBar" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"/>
+        <DockPanel Grid.Row="2" Grid.ColumnSpan="3">
+            <local:SearchBarView x:Name="SearchBar" DockPanel.Dock="Right"/>
+            
+        </DockPanel>
       
         <!-- TourList -->
-        <local:TourList x:Name="TourList" Grid.Row="3" Grid.RowSpan="5" Grid.Column="0"/>
+        <local:TourListView x:Name="TourList" Grid.Row="3" Grid.RowSpan="5" Grid.Column="0"/>
 
         <GridSplitter Grid.Column="1" Grid.Row="2" VerticalAlignment="Stretch"/>
 
         <!-- TourDetails -->
-        <local:TourDetails x:Name="TourDetails" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"/>
+        <local:TourDetailsView x:Name="TourDetails" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"/>
         
         <!-- TourLogs -->
-        <local:TourLogs x:Name="TourLogs" Grid.Row="4" Grid.Column="2"/>
+        <DockPanel Grid.Row="4" Grid.Column="2">
+            <local:TourLogsView DockPanel.Dock="Right" x:Name="TourLogs" />
+            
+        </DockPanel>
        
         
     </Grid>

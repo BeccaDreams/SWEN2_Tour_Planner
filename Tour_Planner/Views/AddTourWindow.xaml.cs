@@ -23,5 +23,10 @@ namespace Tour_Planner.Views
         {
             InitializeComponent();
         }
+
+        private void AddTour_NewTourName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

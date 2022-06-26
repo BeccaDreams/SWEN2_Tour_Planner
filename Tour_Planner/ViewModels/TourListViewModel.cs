@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tour_Planner.Views;
-using Tour_Planner.Models;
+using Shared.Models;
 using System.Collections.ObjectModel;
 using System.Windows;
 

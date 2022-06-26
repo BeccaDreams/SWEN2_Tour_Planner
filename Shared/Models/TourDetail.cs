@@ -6,16 +6,23 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tour_Planner.Models
+namespace Shared.Models
 {
-    public class TourList : INotifyPropertyChanged
+    public class TourDetail : INotifyPropertyChanged
     {
-        //private Dictionary<string, Tour> tourDictionary { get; set; }
-        private List<Tour> _list;
-        
-        public TourList()
+        private string Title
         {
-            
+            get => this.Title;
+            set
+            {
+                this.Title = value;
+                OnPropertyChanged(nameof(Title));
+            }
+        }
+
+        public TourDetail(string title)
+        {
+            Title = title;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tour_Planner.Views;
-using Tour_Planner.Models;
 using System.Collections.ObjectModel;
+using Shared.Models;
 
 namespace Tour_Planner.ViewModels
 {

@@ -16,7 +16,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="appsettings.json">
+    <ProjectReference Include="..\Shared\Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings_.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="log4net.config">

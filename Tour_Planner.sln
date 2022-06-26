@@ -10,9 +10,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tour_Planner.Test", "Tour_P
 		{90D658C4-9A80-4616-B835-BB23F6F2DB75} = {90D658C4-9A80-4616-B835-BB23F6F2DB75}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tour_Planner_DAL", "Tour_Planner_DAL\Tour_Planner_DAL.csproj", "{8A646DB3-7195-4580-86D7-C7EF89088792}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tour_Planner_DAL", "Tour_Planner_DAL\Tour_Planner_DAL.csproj", "{8A646DB3-7195-4580-86D7-C7EF89088792}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tour_Planner_BL", "Tour_Planner_BL\Tour_Planner_BL.csproj", "{B6572B9E-B482-48FD-9EF3-18FD1AB50611}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tour_Planner_BL", "Tour_Planner_BL\Tour_Planner_BL.csproj", "{B6572B9E-B482-48FD-9EF3-18FD1AB50611}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{7FA52AA3-3DB9-4C98-96FE-6BAA8CF3F1C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +38,10 @@ Global
 		{B6572B9E-B482-48FD-9EF3-18FD1AB50611}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6572B9E-B482-48FD-9EF3-18FD1AB50611}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6572B9E-B482-48FD-9EF3-18FD1AB50611}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FA52AA3-3DB9-4C98-96FE-6BAA8CF3F1C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FA52AA3-3DB9-4C98-96FE-6BAA8CF3F1C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FA52AA3-3DB9-4C98-96FE-6BAA8CF3F1C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FA52AA3-3DB9-4C98-96FE-6BAA8CF3F1C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

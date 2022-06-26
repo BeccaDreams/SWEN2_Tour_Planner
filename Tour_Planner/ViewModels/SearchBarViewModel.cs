@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Tour_Planner.Views;
-using Tour_Planner.Models;
+using Shared.Models;
 
 namespace Tour_Planner.ViewModels
 {

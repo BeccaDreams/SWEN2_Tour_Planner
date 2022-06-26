@@ -1,4 +1,5 @@
 ﻿using Npgsql;
+using Shared.Logging;
 using Shared.Models;
 
 namespace Tour_Planner_DAL
@@ -6,12 +7,15 @@ namespace Tour_Planner_DAL
     public class TourSqlCommands
     {
         private NpgsqlConnection _connection;
+        private ILoggerWrapper _logger;
 
         public TourSqlCommands(NpgsqlConnection connection)
         {
             _connection = connection;
-        }
+            _logger = LoggerFactory.GetLogger("Data Access Layer");
 
+            _logger.Debug("TourCommands initialized.");
+        }
 
         public NpgsqlCommand getTours()
         {

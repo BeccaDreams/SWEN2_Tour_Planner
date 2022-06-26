@@ -1,4 +1,5 @@
 ﻿using Npgsql;
+using Shared.Logging;
 using Shared.Models;
 
 namespace Tour_Planner_DAL
@@ -7,12 +8,17 @@ namespace Tour_Planner_DAL
     {
         private Database _db;
         private TourLogSqlCommands _sqlCommands;
+        private ILoggerWrapper _logger;
+
 
         public TourLogDataHandler() 
         {
             _db = Database.Instance();
             var connection = _db.Connection;
             _sqlCommands = new TourLogSqlCommands(connection);
+            _logger = LoggerFactory.GetLogger("Data Access Layer");
+
+            _logger.Debug("TourLogDataHandler initialized.");
         }
 
         public List<TourLog> getTourLogsByTourId(int tourId) 
@@ -70,8 +76,7 @@ namespace Tour_Planner_DAL
             }
             catch (Exception ex)
             {
-                //TODO: Log ex
-                Console.WriteLine("Error getting cards");
+                _logger.Error("Exception reading data: " + ex.Message);
             }
             return tourLogs;
         }

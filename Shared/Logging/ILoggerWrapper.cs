@@ -1,4 +1,4 @@
-﻿namespace Tour_Planner.Logging
+﻿namespace Shared.Logging
 {
     public interface ILoggerWrapper
     {

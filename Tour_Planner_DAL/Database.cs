@@ -1,4 +1,5 @@
 ﻿using Npgsql;
+using Shared.Logging;
 
 namespace Tour_Planner_DAL
 {
@@ -6,12 +7,16 @@ namespace Tour_Planner_DAL
     {
         static Database instance;
         private NpgsqlConnection _connection;
+        private ILoggerWrapper _logger;
 
         protected Database()
         {
             var config = new DataSourceConfig();
             _connection = new NpgsqlConnection(config.DataSourceAddress);
             _connection.Open();
+            _logger = LoggerFactory.GetLogger("Data Access Layer");
+
+            _logger.Debug("Database initialized.");
         }
 
         public static Database Instance() {
@@ -33,15 +38,16 @@ namespace Tour_Planner_DAL
             {
                 command.ExecuteNonQuery();
             }
-            catch (Exception ex) { 
-                //log ex
+            catch (Exception ex) {
+
+                _logger.Error("Exception executing Query: " + ex.Message);
                 return false;
             }
 
             return true;
         }
 
-        public NpgsqlDataReader executeReader(NpgsqlCommand command) { 
+        public NpgsqlDataReader executeReader(NpgsqlCommand command) {
             return command.ExecuteReader();
         }
 

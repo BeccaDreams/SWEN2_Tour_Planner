@@ -11,8 +11,4 @@
     <PackageReference Include="Npgsql" Version="6.0.5" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Tour_Planner\Tour_Planner.csproj" />
-  </ItemGroup>
-
 </Project>

@@ -28,5 +28,12 @@ namespace Tour_Planner.Views
         {
 
         }
+
+        
+        private void CloseTourWin(object sender, RoutedEventArgs e)
+        {
+            AddTourWindow win2 = this;
+            win2.Close();
+        }
     }
 }

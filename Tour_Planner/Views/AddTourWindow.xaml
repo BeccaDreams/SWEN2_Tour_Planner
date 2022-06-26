@@ -4,8 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tour_Planner.Views"
+        xmlns:mvvm="clr-namespace:Tour_Planner.ViewModels"
+        d:DataContext="{d:DesignInstance Type=mvvm:MainViewModel}"
         mc:Ignorable="d"
-        Title="AddTourWindow" Height="350" Width="400">
+        Title="AddTourWindow" Height="350" Width="420"
+        x:Name="AddTour_Window"
+        xmlns:b="clr-namespace:Tour_Planner">
+
+    <Window.DataContext>
+        <mvvm:MainViewModel/>
+    </Window.DataContext>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -23,28 +32,30 @@
         <Label Grid.Row="0" Grid.ColumnSpan="5" FontSize="45" HorizontalAlignment="Center" Content="Add Tour"></Label>
 
 
-        <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" FontSize="20" Content="Tour Name:"  VerticalAlignment="Center" Margin="10,0,0,0"></Label>
-        
-        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalAlignment="Left" x:Name="AddTour_NewTourName" FontSize="20" Width="250" Height="30" TextAlignment="Center" ></TextBox>
-        
+        <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" FontSize="20" Content="Tour Name:"  
+               VerticalAlignment="Center" Margin="10,0,0,0"></Label>
 
-
+        <TextBox Grid.Row="1" Text="{Binding AddNewTourName, Mode=OneWay}" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalAlignment="Left" 
+                 x:Name="AddTour_NewTourName" FontSize="20" Width="250" Height="30" TextAlignment="Left" ></TextBox>
+        
 
 
         <Label Grid.Row="2" Grid.Column="0" FontSize="20" Content="From:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"></Label>
 
-        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalAlignment="Left" x:Name="AddTour_Start" FontSize="20" Width="250" Height="30" TextAlignment="Center"></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalAlignment="Left" x:Name="AddTour_Start" FontSize="20" Width="250" Height="30" 
+                 TextAlignment="Left" Text="{Binding AddNewFrom}"></TextBox>
 
 
 
         <Label Grid.Row="3" Grid.Column="0" FontSize="20" Content="To:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"></Label>
 
-        <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Left" x:Name="AddTour_Destination" FontSize="20" Width="250" Height="30" TextAlignment="Center" ></TextBox>
-        
+        <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Left" x:Name="AddTour_Destination" FontSize="20" 
+                 Width="250" Height="30" TextAlignment="Left" Text="{Binding AddNewTo}"></TextBox>
 
-        <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Content="Save" HorizontalAlignment="Center" Width="100" Height="30"></Button>
-        
-        <Button Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Content="Cancel" HorizontalAlignment="Center" Width="100" Height="30"></Button>
+
+        <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Content="Submit" HorizontalAlignment="Center" Width="100" Height="30" 
+                Command="{Binding AddNewTourCommand}"  b:CloseOnClickBehaviour.IsEnabled="True">
+        </Button>
 
     </Grid>
 </Window>

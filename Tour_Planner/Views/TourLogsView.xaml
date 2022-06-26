@@ -16,14 +16,9 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <!-- https://stackoverflow.com/questions/56381187/create-a-textblock-for-every-item-in-a-listobject-->
-        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Background="LightGray" Orientation="Horizontal">
+        <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" Background="LightGray" Orientation="Horizontal">
             <Label Width="100">Logs:</Label>
             <Button Width="20" Content="+"></Button>
             <Button Width="20" Content="-"></Button>
@@ -35,7 +30,7 @@
         <Label Grid.Row="1" Grid.Column="2" BorderThickness="1" Width="65" BorderBrush="Black">Distance</Label>
         <Label Grid.Row="1" Grid.Column="3" BorderThickness="1" Width="65" BorderBrush="Black">...</Label> -->
 
-        <DataGrid Grid.Row="2" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="4" ItemsSource="{Binding Logs}" AutoGenerateColumns="False" AlternatingRowBackground="LightGray" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+        <DataGrid Grid.Row="2" Grid.RowSpan="3" HorizontalAlignment="Stretch" Width="Auto" ItemsSource="{Binding Logs}" AutoGenerateColumns="False" AlternatingRowBackground="LightGray" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Date}" Header="Date" Width="65"/>
                 <DataGridTextColumn Binding="{Binding Duration}" Header="Duration" Width="65"/>

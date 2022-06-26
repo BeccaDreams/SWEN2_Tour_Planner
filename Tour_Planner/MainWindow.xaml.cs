@@ -31,10 +31,16 @@ namespace Tour_Planner
 
         }
 
-        private void AddTourWin(object sender, RoutedEventArgs e)
-        {
-            AddTourWindow win2 = new AddTourWindow();
-            win2.Show();
-        }
+        //private void AddTourWin(object sender, RoutedEventArgs e)
+        //{
+        //    AddTourWindow win2 = new AddTourWindow();
+        //    win2.Show();
+        //}
+
+        //private void CloseTourWin(object sender, RoutedEventArgs e)
+        //{
+        //    AddTourWindow win2 = new AddTourWindow();
+        //    win2.Close();
+        //}
     }
 }

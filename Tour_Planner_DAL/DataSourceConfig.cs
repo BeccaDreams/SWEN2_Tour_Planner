@@ -1,9 +1,4 @@
 ﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tour_Planner_DAL
 {
@@ -14,8 +9,9 @@ namespace Tour_Planner_DAL
         {
             get
             {
-                IConfiguration config = new ConfigurationBuilder().AddJsonFile("appsettings.json", false, true).Build();
-                return config["tour_planner"];
+                var configRoot = new ConfigurationBuilder().AddJsonFile("appsettings.json", false, true).Build();
+                var configSection = configRoot.GetSection("ConnectionStrings:local_tour_planner"); ;
+                return configSection.Value;
             }
         }
 

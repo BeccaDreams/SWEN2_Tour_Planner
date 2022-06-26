@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Tour_Planner.Logging;
+using Shared.Logging;
 using Tour_Planner.Views;
 using log4net;
 using System.Collections.ObjectModel;

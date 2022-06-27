@@ -45,9 +45,6 @@ namespace Tour_Planner.ViewModels
             TourNames.Add(new Tour("Testtour2"));
             TourNames.Add(new Tour("Testtour3"));
             TourNames.Add(new Tour("Testtour4"));
-
-            var client = new MapQuestClient();
-            client.GetDistance("Vienna, AT", "Salzburg, AT");
         }
 
 

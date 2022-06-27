@@ -1,48 +1,55 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
+﻿using Npgsql;
+using Shared.Logging;
 
 namespace Tour_Planner_DAL
 {
     public class Database
     {
-        private string connectionString;
-        private DbConnection connection;
-        public Database(string connectionString)
-        {
-            this.connectionString = connectionString;
-            //var dataSourceConfig = config.Get<DataSourceConfig>();
-            //return dataSourceConfig.DataSourceAddress;
-            var connection = Connect();
+        static Database instance;
+        private NpgsqlConnection _connection;
+        private ILoggerWrapper _logger;
 
+        protected Database()
+        {
+            var config = new DataSourceConfig();
+            _connection = new NpgsqlConnection(config.DataSourceAddress);
+            _connection.Open();
+            _logger = LoggerFactory.GetLogger("Data Access Layer");
+
+            _logger.Debug("Database initialized.");
         }
 
-        public Database()
-        {
-
+        public static Database Instance() {
+            if (instance == null)
+            {
+                instance = new Database();            
+            }
+            return instance;
         }
 
-        private DbConnection CreateOpenConnection()
+        public NpgsqlConnection Connection
         {
-            DbConnection connection = new NpgsqlConnection(this.connectionString);
-            connection.Open();
-
-            return connection;
+            get { return _connection; }
         }
 
+        public bool executeNonQuery(NpgsqlCommand command) {
 
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex) {
 
-        private DbConnection Connect()
-        {
-            var testcon = new DataSourceConfig();
-            DbConnection conn = new NpgsqlConnection(testcon.DataSourceAddress);
-            conn.Open();
+                _logger.Error("Exception executing Query: " + ex.Message);
+                return false;
+            }
 
-            return conn;
+            return true;
         }
+
+        public NpgsqlDataReader executeReader(NpgsqlCommand command) {
+            return command.ExecuteReader();
+        }
+
     }
 }

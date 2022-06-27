@@ -1,24 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tour_Planner.Models
+namespace Shared.Models
 {
-    public class TourList : INotifyPropertyChanged
+    abstract public class BaseModel : INotifyPropertyChanged
     {
-        //private Dictionary<string, Tour> tourDictionary { get; set; }
-        private List<Tour> _list;
-        
-        public TourList()
-        {
-            
-        }
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

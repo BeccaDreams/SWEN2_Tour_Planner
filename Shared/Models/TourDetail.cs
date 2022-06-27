@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tour_Planner.Models
+namespace Shared.Models
 {
     public class TourDetail : INotifyPropertyChanged
     {

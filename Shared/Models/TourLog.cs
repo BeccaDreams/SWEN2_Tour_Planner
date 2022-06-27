@@ -97,12 +97,14 @@ namespace Shared.Models
         { 
         }
 
-        public TourLog(string date, string duration, string distance, string type)
+        public TourLog(string date, string duration, int difficulty, string distance, /*string type,*/ int rating)
         {
             Date = date;
             Duration = duration;
+            Difficulty = difficulty;
             Distance = distance;
-            Type = type;
+           // Type = type;
+            Rating = rating;
         }
 
         public int Id

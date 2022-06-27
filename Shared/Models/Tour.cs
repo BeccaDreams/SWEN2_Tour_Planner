@@ -24,8 +24,10 @@ namespace Shared.Models
         {
         }
 
-        public Tour(string name) {
+        public Tour(string name, string from, string to) {
             Name = name;
+            From = from;
+            To = to;
         }
 
         public int Id

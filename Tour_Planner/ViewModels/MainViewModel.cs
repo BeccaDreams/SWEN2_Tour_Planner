@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Tour_Planner.Logging;
+using Shared.Logging;
 using Tour_Planner.Views;
 using log4net;
 using System.Collections.ObjectModel;
-using Tour_Planner.Models;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
+
 using Tour_Planner_BL;
 using System.Windows.Input;
+using Shared.Models;
+
 
 namespace Tour_Planner.ViewModels
 {

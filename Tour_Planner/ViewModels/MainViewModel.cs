@@ -31,9 +31,7 @@ namespace Tour_Planner.ViewModels
 
         public RelayCommand AddNewTourCommand { get; set; }
 
-        //public string AddNewTourName;
-
-        private string _addtourName = "";
+        private string _addtourName;
         public string AddNewTourName
         {
             get { return _addtourName; }
@@ -51,9 +49,41 @@ namespace Tour_Planner.ViewModels
             }
         }
 
+        private string _addfrom;
+        public string AddNewFrom
+        {
+            get { return _addfrom; }
+            set
+            {
+                try
+                {
+                    _addfrom = value;
+                    OnPropertyChanged("AddNewFrom");
+                }
+                catch (StackOverflowException e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+        }
 
-        public string AddNewFrom;
-        public string AddNewTo;
+        private string _addto;
+        public string AddNewTo
+        {
+            get { return _addto; }
+            set
+            {
+                try
+                {
+                    _addto = value;
+                    OnPropertyChanged("AddNewTo");
+                }
+                catch (StackOverflowException e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+        }
         public ObservableCollection<Tour> TourItems { get; set; }
             = new ObservableCollection<Tour>();
 
@@ -62,7 +92,6 @@ namespace Tour_Planner.ViewModels
 
         public RelayCommand OpenAddWindow { get; set; }
 
-        //public string TourName { get; set; }
 
         public MainViewModel()
         {
@@ -71,13 +100,14 @@ namespace Tour_Planner.ViewModels
             TourDetails = new TourDetailsViewModel();
             SearchBar = new SearchBarViewModel();
             AddTourToList = new AddTourToListViewModel();
+            tourController = new TourController();
 
-            AddNewTourName = AddTourToList.AddTourName;
-            AddNewFrom = AddTourToList.AddFrom;
-            AddNewTo = AddTourToList.AddTo;
-
+          
             TourItems = TourList.TourNames;
             Logs = TourLogs.DataLogs;
+
+            SetAllCommands();
+
 
             OpenAddWindow = new RelayCommand((_) =>
             {
@@ -87,26 +117,21 @@ namespace Tour_Planner.ViewModels
 
             AddNewTourCommand = new RelayCommand((_) =>
             {
-               
-                if (AddNewTourName != null)
-                {
-                    Tour newAddedTour = new Tour(AddNewTourName, AddNewFrom, AddNewTo);
-                   
-                    TourItems.Add(newAddedTour);
-                }
-                if (AddTourToList.AddTourName != null)
-                {
-                    Tour newTour = new Tour(AddTourToList.AddTourName, AddNewFrom, AddNewTo);
-                    
-                    TourItems.Add(newTour);
-                }
-                else
-                {
-                    
-                    TourItems.Add(new Tour("was anderes","from","to"));
+               TourItems.Add(new Tour("was anderes", "from", "to"));
+                Console.WriteLine(TourItems.Count);
+                //if (AddNewTourName != null)
+                //{
+                //    Tour newAddedTour = new Tour(AddNewTourName, AddNewFrom, AddNewTo);
 
-                }
-               // Close_AddWindow();
+                //    TourItems.Add(newAddedTour);
+                //}
+                //else
+                //{
+
+                //    TourItems.Add(new Tour("was anderes","from","to"));
+
+                //}
+                // Close_AddWindow();
 
 
             });
@@ -124,8 +149,39 @@ namespace Tour_Planner.ViewModels
             if(this.win2 != null)
             win2.Close();
         }
-   
-            
+
+        public void SetAllCommands()
+        {
+            OpenAddWindow = new RelayCommand((_) =>
+            {
+                Open_AddWindow();
+
+            });
+
+            AddNewTourCommand = new RelayCommand((_) =>
+            {
+                TourItems.Add(new Tour("was anderes", "from", "to"));
+                Console.WriteLine(TourItems.Count);
+                //if (AddNewTourName != null)
+                //{
+                //    Tour newAddedTour = new Tour(AddNewTourName, AddNewFrom, AddNewTo);
+
+                //    TourItems.Add(newAddedTour);
+                //}
+                //else
+                //{
+
+                //    TourItems.Add(new Tour("was anderes","from","to"));
+
+                //}
+                // Close_AddWindow();
+
+
+            });
+
+        }
+
+
         public MainViewModel(TourListViewModel tourList, TourLogsViewModel tourLogs, TourDetailsViewModel tourDetails, SearchBarViewModel searchBar)    
         {
            

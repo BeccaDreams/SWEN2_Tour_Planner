@@ -11,8 +11,8 @@ namespace Tour_Planner.ViewModels
 {
     public class AddTourToListViewModel : BaseModel
     {
-        private string _addtourName = "";
-        public string AddTourName
+        private string _addtourName;
+        public string AddNewTourName
         {
             get { return _addtourName; }
             set
@@ -29,8 +29,8 @@ namespace Tour_Planner.ViewModels
             }
         }
 
-        private string _addfrom = "";
-        public string AddFrom
+        private string _addfrom;
+        public string AddNewFrom
         {
             get { return _addfrom; }
             set
@@ -47,8 +47,8 @@ namespace Tour_Planner.ViewModels
             }
         }
 
-        private string _addto = "";
-        public string AddTo
+        private string _addto;
+        public string AddNewTo
         {
             get { return _addto; }
             set
@@ -65,14 +65,25 @@ namespace Tour_Planner.ViewModels
             }
         }
 
-       // public RelayCommand AddNewTourCommand { get; set; }
+        public RelayCommand AddNewTourCommand { get; set; }
 
 
         public AddTourToListViewModel()
         {
-            
 
-            
+            if (AddNewTourName != null)
+            {
+                Tour newAddedTour = new Tour(AddNewTourName, AddNewFrom, AddNewTo);
+
+                //TourItems.Add(newAddedTour);
+            }
+            else
+            {
+
+                //TourItems.Add(new Tour("was anderes", "from", "to"));
+
+            }
+
 
         }
 

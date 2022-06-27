@@ -28,7 +28,41 @@ namespace Tour_Planner.Models
             }
         }
 
+        private string _tourComment;
+        public string TourComment
+        {
+            get { return _tourComment; }
+            set
+            {
+                try
+                {
+                    _tourComment = value;
+                    OnPropertyChanged("TourComment");
+                }
+                catch (StackOverflowException e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+        }
 
+        private int _difficulty;
+        public int Difficulty
+        {
+            get { return _difficulty; }
+            set
+            {
+                try
+                {
+                    _difficulty = value;
+                    OnPropertyChanged("Difficulty");
+                }
+                catch (StackOverflowException e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+        }
 
         private string _duration ;
         public string Duration
@@ -47,16 +81,16 @@ namespace Tour_Planner.Models
                 }
             }
         }
-        private string _distance = "";
-        public string Distance
+        private int _rating;
+        public int Rating
         {
-            get { return _distance; }
+            get { return _rating; }
             set
             {
                 try
                 {
-                    _distance = value;
-                    OnPropertyChanged("Distance");
+                    _rating = value;
+                    OnPropertyChanged("Rating");
                 }
                 catch (StackOverflowException e)
                 {
@@ -67,31 +101,13 @@ namespace Tour_Planner.Models
 
 
 
-        private string _type = "";
-        public string Type
-        {
-            get { return _type; }
-            set
-            {
-                try
-                {
-                    _type = value;
-                    OnPropertyChanged("Type");
-                }
-                catch (StackOverflowException e)
-                {
-                    Console.WriteLine(e);
-                }
-            }
-        }
-
-
-        public TourLog(string date, string duration, string distance, string type)
+        public TourLog(string date, string comment, int difficulty, string duration, int rating)
         {
             Date = date;
-            Duration = duration;
-            Distance = distance;
-            Type = type;
+            TourComment = comment;
+            Difficulty = difficulty;
+            Duration = duration;            
+            Rating = rating;
         }
 
        

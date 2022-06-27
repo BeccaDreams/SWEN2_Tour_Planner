@@ -24,6 +24,10 @@ namespace Tour_Planner
         public MainWindow()
         {
             InitializeComponent();
+
+        #if DEBUG
+                    System.Diagnostics.PresentationTraceSources.DataBindingSource.Switch.Level = System.Diagnostics.SourceLevels.Critical;
+        #endif
         }
 
         private void StackPanel_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)

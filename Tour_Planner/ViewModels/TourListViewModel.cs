@@ -15,11 +15,7 @@ namespace Tour_Planner.ViewModels
         
         public ObservableCollection<Tour> TourNames { get; set; }
           = new ObservableCollection<Tour>();
-        //private void AddTourWin(object sender, RoutedEventArgs e)
-        //{
-        //    AddTourWindow win2 = new AddTourWindow();
-        //    win2.Show();
-        //}
+        
         public RelayCommand AddTourCommand;
         
 
@@ -44,6 +40,11 @@ namespace Tour_Planner.ViewModels
             TourNames.Add(new Tour("Testtour2", "testfrom", "testto"));
             TourNames.Add(new Tour("Testtour3", "testfrom", "testto"));
             TourNames.Add(new Tour("Testtour4", "testfrom", "testto"));
+        }
+
+        private void AddNewTour()
+        {
+
         }
 
 

@@ -7,7 +7,7 @@
              xmlns:test="clr-namespace:Tour_Planner.ViewModels" 
              d:DataContext="{d:DesignInstance Type=test:MainViewModel}"
              mc:Ignorable="d"  
-             d:DesignHeight="200" d:DesignWidth="260">
+             d:DesignHeight="200" d:DesignWidth="250">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -24,59 +24,18 @@
             <Button Width="20" Content="-"></Button>
             <Button Width="20" Content="[]"></Button>
         </StackPanel>
-<!--
-        <Label Grid.Row="1" Grid.Column="0" BorderThickness="1" Width="65" BorderBrush="Black">Date</Label>
-        <Label Grid.Row="1" Grid.Column="1" BorderThickness="1" Width="65" BorderBrush="Black">Duration</Label>
-        <Label Grid.Row="1" Grid.Column="2" BorderThickness="1" Width="65" BorderBrush="Black">Distance</Label>
-        <Label Grid.Row="1" Grid.Column="3" BorderThickness="1" Width="65" BorderBrush="Black">...</Label> -->
+
 
         <DataGrid Grid.Row="2" Grid.RowSpan="3" HorizontalAlignment="Stretch" Width="Auto" ItemsSource="{Binding Logs}" AutoGenerateColumns="False" AlternatingRowBackground="LightGray" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Date}" Header="Date" Width="65"/>
-                <DataGridTextColumn Binding="{Binding Duration}" Header="Duration" Width="65"/>
-                <DataGridTextColumn Binding="{Binding Distance}" Header="Distance" Width="65"/>
-                <DataGridTextColumn Binding="{Binding Type}" Header="Type" Width="65"/>
+                <DataGridTextColumn Binding="{Binding Date}" Header="Date" Width="50"/>
+                <DataGridTextColumn Binding="{Binding TourComment}" Header="Comment" Width="50"/>
+                <DataGridTextColumn Binding="{Binding Difficulty}" Header="Difficulty" Width="50"/>
+                <DataGridTextColumn Binding="{Binding Duration}" Header="Duration" Width="50"/>
+                <DataGridTextColumn Binding="{Binding Rating}" Header="Rating" Width="50"/>
             </DataGrid.Columns>
         </DataGrid>
-        <!--
-        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Vertical">
-            <StackPanel Orientation="Horizontal">
-                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
-                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
-                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
-                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
-                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
-                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
-                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
-                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
-                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
-                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
-                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
-                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
-                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
-                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
-                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
-                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
-                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
-                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
-                <TextBox BorderBrush="Black" Width="65" BorderThickness="0.5"></TextBox>
-            </StackPanel>
-        </StackPanel> -->
+      
 
 
     </Grid>

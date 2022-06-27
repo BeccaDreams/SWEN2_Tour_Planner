@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tour_Planner.Views"
         xmlns:mvvm="clr-namespace:Tour_Planner.ViewModels"
-        d:DataContext="{d:DesignInstance Type=mvvm:MainViewModel}"
+        d:DataContext="{d:DesignInstance Type=mvvm:AddTourToListViewModel}"
         mc:Ignorable="d"
         Title="AddTourWindow" Height="350" Width="420"
         x:Name="AddTour_Window"
         xmlns:b="clr-namespace:Tour_Planner">
 
     <Window.DataContext>
-        <mvvm:MainViewModel/>
+        <mvvm:AddTourToListViewModel/>
     </Window.DataContext>
 
     <Grid>
@@ -35,7 +35,7 @@
         <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" FontSize="20" Content="Tour Name:"  
                VerticalAlignment="Center" Margin="10,0,0,0"></Label>
 
-        <TextBox Grid.Row="1" Text="{Binding AddNewTourName, Mode=OneWay}" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalAlignment="Left" 
+        <TextBox Grid.Row="1" Text="{Binding AddNewTourName}" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalAlignment="Left" 
                  x:Name="AddTour_NewTourName" FontSize="20" Width="250" Height="30" TextAlignment="Left" ></TextBox>
         
 

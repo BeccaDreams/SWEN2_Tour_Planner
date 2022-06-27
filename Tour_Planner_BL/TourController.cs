@@ -3,34 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tour_Planner_DAL;
+using Shared.Models;
 
 namespace Tour_Planner_BL
 {
     public class TourController
     {
-        //DB einbinden
+        private TourDataHandler handler;
         public TourController()
         {
-
+            handler = new TourDataHandler();
         }
 
-        private void getTours()
+        private List<Tour> Controller_getTours()
         {
-            //var TourList = db.getTours();
-            //return TourList;
+            var TourList = handler.getTours();
+            return TourList;
         }
 
-        private void addTour(/* Tour newTour */)
+        private void Controller_addTour( Tour newTour )
         {
-            //db.addTour(newTour);
+            handler.addTour(newTour);
         }
 
-        private void editTour(/* Tour oldTour, Tour newTour */)
+        private void Controller_editTour(Tour tour)
         {
-            //db.changeFromTo(oldTour, newTour);
+            handler.updateTour(tour);
         }
 
-        private void deleteTour(/* Tour delTour */)
+        private void Controller_deleteTour(/* Tour delTour */)
         {
             //db.deleteTour(delTour);
         }

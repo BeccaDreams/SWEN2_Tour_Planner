@@ -13,16 +13,14 @@ namespace Tour_Planner.ViewModels
 {
     public class TourListViewModel : BaseModel
     {
-
-        public ObservableCollection<Tour> TourNames { get; }
+        
+        public ObservableCollection<Tour> TourNames { get; set; }
           = new ObservableCollection<Tour>();
-        private void AddTourWin(object sender, RoutedEventArgs e)
-        {
-            AddTourWindow win2 = new AddTourWindow();
-            win2.Show();
-        }
+        
         public RelayCommand AddTourCommand;
-        public string NewTourName = "bla";
+        
+
+      //  public event EventHandler<Tour> AddTourNameEvent;
 
         public TourListViewModel()
         {
@@ -31,9 +29,7 @@ namespace Tour_Planner.ViewModels
 
             AddTourCommand = new RelayCommand((_) =>
             {
-                TourNames.Add(new Tour(this.NewTourName));
-                NewTourName = string.Empty;
-                OnPropertyChanged(nameof(NewTourName));
+               
             });
             
         }
@@ -41,11 +37,19 @@ namespace Tour_Planner.ViewModels
         private void LoadData()
         {
             TourNames.Clear();
-            TourNames.Add(new Tour("Testtour"));
-            TourNames.Add(new Tour("Testtour2"));
-            TourNames.Add(new Tour("Testtour3"));
-            TourNames.Add(new Tour("Testtour4"));
+            TourNames.Add(new Tour("Testtour", "testfrom", "testto"));
+            TourNames.Add(new Tour("Testtour2", "testfrom", "testto"));
+            TourNames.Add(new Tour("Testtour3", "testfrom", "testto"));
+            TourNames.Add(new Tour("Testtour4", "testfrom", "testto"));
         }
+
+        private void AddNewTour()
+        {
+
+        }
+
+
+       
 
 
     }

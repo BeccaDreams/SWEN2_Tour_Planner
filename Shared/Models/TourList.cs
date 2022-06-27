@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Shared.Models
 {
-    public class TourList : INotifyPropertyChanged
+    public class TourList : BaseModel
     {
         //private Dictionary<string, Tour> tourDictionary { get; set; }
         private List<Tour> _list;
@@ -18,10 +18,6 @@ namespace Shared.Models
             
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+      
     }
 }

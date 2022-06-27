@@ -6,50 +6,49 @@
         xmlns:local="clr-namespace:Tour_Planner.Views"
         xmlns:mvvm="clr-namespace:Tour_Planner.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="400">
+        Title="MainWindow" Height="450" Width="600">
     <Window.DataContext>
         <mvvm:MainViewModel/>
-    </Window.DataContext> 
+    </Window.DataContext>
 
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="2*"/>
-            
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="1"/>
+            <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
-        <DockPanel Background="LightGray" Grid.Row="0" Grid.ColumnSpan="4">
-            <Label  DockPanel.Dock="Top" Content="Tour Planner" HorizontalAlignment="Center"></Label>
+        
+        <DockPanel Background="LightGray" Grid.Row="0" Grid.ColumnSpan="3">
+            <Label  DockPanel.Dock="Top" Content="Tour Planner" FontSize="23" HorizontalAlignment="Center"></Label>
             <Border BorderBrush="Black" BorderThickness="0.5"></Border>
         </DockPanel>
 
-        <DockPanel Background="Beige" Grid.ColumnSpan="5" Grid.Row="1">
+        <DockPanel Background="Beige" Grid.ColumnSpan="3" Grid.Row="1">
             <Menu>
-                <MenuItem Header="_File">
+                <MenuItem FontSize="15" Header="_File">
                     <MenuItem Header="_New"></MenuItem>
                     <MenuItem Header="_New"></MenuItem>
                     <MenuItem Header="_New"></MenuItem>
                 </MenuItem>
-                <MenuItem Header="Edit">
+                <MenuItem FontSize="15"  Header="Edit">
                     <MenuItem Header="_New"></MenuItem>
                     <MenuItem Header="_New"></MenuItem>
                     <MenuItem Header="_New"></MenuItem>
                 </MenuItem>
-                <MenuItem Header="Options">
+                <MenuItem FontSize="15"  Header="Options">
                     <MenuItem Header="_New"></MenuItem>
                     <MenuItem Header="_New"></MenuItem>
                     <MenuItem Header="_New"></MenuItem>
                 </MenuItem>
-                <MenuItem Header="Help" >
+                <MenuItem FontSize="15"  Header="Help" >
                     <MenuItem Header="_New"></MenuItem>
                     <MenuItem Header="_New"></MenuItem>
                     <MenuItem Header="_New"></MenuItem>
@@ -57,28 +56,28 @@
             </Menu>
         </DockPanel>
 
-        
-        <!-- SearchBar -->
-        <DockPanel Grid.Row="2" Grid.ColumnSpan="3">
-            <local:SearchBarView x:Name="SearchBar" DockPanel.Dock="Right"/>
-            
-        </DockPanel>
-      
-        <!-- TourList -->
-        <local:TourListView x:Name="TourList" Grid.Row="3" Grid.RowSpan="5" Grid.Column="0" />
 
-        <GridSplitter Grid.Column="1" Grid.Row="2" VerticalAlignment="Stretch"/>
+        <!-- SearchBar -->
+        <DockPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
+            <local:SearchBarView x:Name="SearchBar" DockPanel.Dock="Right"/>
+
+        </DockPanel>
+
+        <!-- TourList -->
+        <local:TourListView x:Name="TourList" Grid.Row="3" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="2" />
+
+        <GridSplitter Grid.Column="1" Grid.Row="3" ResizeDirection="Columns" ResizeBehavior="PreviousAndNext" Background="Black" Grid.RowSpan="3" Width="1"/>
 
         <!-- TourDetails -->
-        <local:TourDetailsView x:Name="TourDetails" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"/>
-        
+        <local:TourDetailsView x:Name="TourDetails" Grid.Row="4" Grid.Column="2" Margin="0,0,0,60"/>
+
         <!-- TourLogs -->
-        <DockPanel Grid.Row="4" Grid.Column="2">
+        <DockPanel Grid.Row="5" Grid.Column="2" >
             <local:TourLogsView DockPanel.Dock="Right" x:Name="TourLogs" />
-            
+
         </DockPanel>
-       
-        
+
+
     </Grid>
-    
+
 </Window>

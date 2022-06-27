@@ -24,6 +24,10 @@ namespace Tour_Planner
         public MainWindow()
         {
             InitializeComponent();
+
+        #if DEBUG
+                    System.Diagnostics.PresentationTraceSources.DataBindingSource.Switch.Level = System.Diagnostics.SourceLevels.Critical;
+        #endif
         }
 
         private void StackPanel_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
@@ -31,10 +35,16 @@ namespace Tour_Planner
 
         }
 
-        private void AddTourWin(object sender, RoutedEventArgs e)
-        {
-            AddTourWindow win2 = new AddTourWindow();
-            win2.Show();
-        }
+        //private void AddTourWin(object sender, RoutedEventArgs e)
+        //{
+        //    AddTourWindow win2 = new AddTourWindow();
+        //    win2.Show();
+        //}
+
+        //private void CloseTourWin(object sender, RoutedEventArgs e)
+        //{
+        //    AddTourWindow win2 = new AddTourWindow();
+        //    win2.Close();
+        //}
     }
 }

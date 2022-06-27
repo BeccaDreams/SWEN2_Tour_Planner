@@ -23,5 +23,17 @@ namespace Tour_Planner.Views
         {
             InitializeComponent();
         }
+
+        private void AddTour_NewTourName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        
+        private void CloseTourWin(object sender, RoutedEventArgs e)
+        {
+            AddTourWindow win2 = this;
+            win2.Close();
+        }
     }
 }

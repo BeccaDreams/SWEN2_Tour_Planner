@@ -1,0 +1,74 @@
+﻿<Window x:Class="Tour_Planner.Views.AddLogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tour_Planner.Views"
+        xmlns:mvvm="clr-namespace:Tour_Planner.ViewModels"
+        d:DataContext="{d:DesignInstance Type=mvvm:AddTourToListViewModel}"
+        mc:Ignorable="d"
+        Title="AddTourWindow" Height="400" Width="420"
+        x:Name="AddLog_Window"
+        xmlns:b="clr-namespace:Tour_Planner">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.ColumnSpan="5" FontSize="45" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Add Log"></Label>
+
+
+        <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" FontSize="20" Content="Date:"  
+               VerticalAlignment="Center" Margin="10,0,0,0"></Label>
+
+        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalAlignment="Left" 
+                 x:Name="AddLog_Date" FontSize="20" Width="250" Height="30" TextAlignment="Left" ></TextBox>
+        
+
+        <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" FontSize="20" Content="Comment:"  
+               VerticalAlignment="Center" Margin="10,0,0,0"></Label>
+
+        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalAlignment="Left" 
+                 x:Name="AddLog_Comment" FontSize="20" Width="250" Height="30" TextAlignment="Left" ></TextBox>
+        
+
+        <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" FontSize="20" Content="Difficulty:"  
+               VerticalAlignment="Center" Margin="10,0,0,0"></Label>
+
+        <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalAlignment="Left" 
+                 x:Name="AddLog_Difficulty" FontSize="20" Width="250" Height="30" TextAlignment="Left" ></TextBox>
+        
+
+
+        <Label Grid.Row="4" Grid.Column="0" FontSize="20" Content="Duration:" HorizontalAlignment="Left" VerticalAlignment="Center" 
+               Margin="10,0,0,0"></Label>
+
+        <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalAlignment="Left" 
+                 x:Name="AddLog_Duration" FontSize="20" Width="250" Height="30" TextAlignment="Left" Text="{Binding AddNewFrom}"></TextBox>
+
+
+
+        <Label Grid.Row="5" Grid.Column="0" FontSize="20" Content="Rating:" HorizontalAlignment="Left" VerticalAlignment="Center" 
+               Margin="10,0,0,0"></Label>
+
+        <TextBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Left" x:Name="AddLog_Rating" FontSize="20" 
+                 Width="250" Height="30" TextAlignment="Left" Text="{Binding AddNewTo}"></TextBox>
+
+
+        <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Content="Submit" HorizontalAlignment="Center" Width="100" Height="30" 
+                Command="{Binding AddNewTourCommand}"  b:CloseOnClickBehaviour.IsEnabled="True">
+        </Button>
+
+    </Grid>
+</Window>

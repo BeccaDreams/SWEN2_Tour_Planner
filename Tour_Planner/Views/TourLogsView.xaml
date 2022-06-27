@@ -20,7 +20,7 @@
         <!-- https://stackoverflow.com/questions/56381187/create-a-textblock-for-every-item-in-a-listobject-->
         <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" Background="LightGray" Orientation="Horizontal">
             <Label Width="100">Logs:</Label>
-            <Button Width="20" Content="+"></Button>
+            <Button Width="20" Content="+" Command="{Binding OpenAddLogWindow}"></Button>
             <Button Width="20" Content="-"></Button>
             <Button Width="20" Content="[]"></Button>
         </StackPanel>

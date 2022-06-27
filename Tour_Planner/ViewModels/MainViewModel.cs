@@ -29,7 +29,7 @@ namespace Tour_Planner.ViewModels
         public SearchBarViewModel SearchBar;
         public AddTourToListViewModel AddTourToList;
 
-        Window win2;
+        Window win1, win2;
 
         public RelayCommand AddNewTourCommand { get; set; }
 
@@ -92,7 +92,8 @@ namespace Tour_Planner.ViewModels
         public ObservableCollection<TourLog> Logs { get; set; }
             = new ObservableCollection<TourLog>();
 
-        public RelayCommand OpenAddWindow { get; set; }
+        public RelayCommand OpenAddTourWindow { get; set; }
+        public RelayCommand OpenAddLogWindow { get; set; }
 
 
         public MainViewModel()
@@ -111,11 +112,7 @@ namespace Tour_Planner.ViewModels
             SetAllCommands();
 
 
-            OpenAddWindow = new RelayCommand((_) =>
-            {
-                Open_AddWindow();
-                
-            });
+           
 
             AddNewTourCommand = new RelayCommand((_) =>
             {
@@ -140,23 +137,30 @@ namespace Tour_Planner.ViewModels
             
         }
 
-        public void Open_AddWindow()
+        public void Open_AddTourWindow()
         {
-            this.win2 = new AddTourWindow();
+            this.win1 = new AddTourWindow();
+            win1.Show();
+        }
+        public void Open_AddLogWindow()
+        {
+            this.win2 = new AddLogWindow();
             win2.Show();
         }
 
-        public void Close_AddWindow()
-        {
-            if(this.win2 != null)
-            win2.Close();
-        }
+       
 
         public void SetAllCommands()
         {
-            OpenAddWindow = new RelayCommand((_) =>
+            OpenAddTourWindow = new RelayCommand((_) =>
             {
-                Open_AddWindow();
+                Open_AddTourWindow();
+
+            });
+
+            OpenAddLogWindow = new RelayCommand((_) =>
+            {
+                Open_AddLogWindow();
 
             });
 

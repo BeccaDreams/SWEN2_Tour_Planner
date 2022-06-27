@@ -6,7 +6,14 @@
         xmlns:local="clr-namespace:Tour_Planner.Views"
         xmlns:mvvm="clr-namespace:Tour_Planner.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="600">
+        Title="MainWindow" Height="450" Width="800"
+		MinWidth="400"
+        MinHeight="300"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="CanResizeWithGrip"
+        WindowStartupLocation="CenterScreen"
+        Background="Black">
     <Window.DataContext>
         <mvvm:MainViewModel/>
     </Window.DataContext>
@@ -16,68 +23,108 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="2*"/>
+          
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1"/>
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
-        <DockPanel Background="LightGray" Grid.Row="0" Grid.ColumnSpan="3">
-            <Label  DockPanel.Dock="Top" Content="Tour Planner" FontSize="23" HorizontalAlignment="Center"></Label>
-            <Border BorderBrush="Black" BorderThickness="0.5"></Border>
-        </DockPanel>
+		
+		<Border Background="White"
+			   BorderBrush="#3A4149"
+			   BorderThickness="1"
+			   CornerRadius="6,6,0,0"
+			   Grid.Column="0"
+			   Grid.ColumnSpan="3">
+			<Label Grid.Row="0" FontSize="25" FontWeight="Bold"  HorizontalAlignment="Center">Tour-Planner</Label>
+		</Border>
 
-        <DockPanel Background="Beige" Grid.ColumnSpan="3" Grid.Row="1">
-            <Menu>
-                <MenuItem FontSize="15" Header="_File">
-                    <MenuItem Header="_New"></MenuItem>
-                    <MenuItem Header="_New"></MenuItem>
-                    <MenuItem Header="_New"></MenuItem>
-                </MenuItem>
-                <MenuItem FontSize="15"  Header="Edit">
-                    <MenuItem Header="_New"></MenuItem>
-                    <MenuItem Header="_New"></MenuItem>
-                    <MenuItem Header="_New"></MenuItem>
-                </MenuItem>
-                <MenuItem FontSize="15"  Header="Options">
-                    <MenuItem Header="_New"></MenuItem>
-                    <MenuItem Header="_New"></MenuItem>
-                    <MenuItem Header="_New"></MenuItem>
-                </MenuItem>
-                <MenuItem FontSize="15"  Header="Help" >
-                    <MenuItem Header="_New"></MenuItem>
-                    <MenuItem Header="_New"></MenuItem>
-                    <MenuItem Header="_New"></MenuItem>
-                </MenuItem>
-            </Menu>
-        </DockPanel>
+		<StackPanel Grid.Row="1" Grid.ColumnSpan="3">
+			<ToolBar>
+				<Menu>
+					<MenuItem Header="File">
+						<MenuItem Header="New"/>
+						<MenuItem Header="Open"/>
+						<MenuItem Header="Exit"/>
+					</MenuItem>
+				</Menu>
 
+				<Menu>
+					<MenuItem Header="Edit">
+						<MenuItem Header="Cut"/>
+						<MenuItem Header="Copy"/>
+						<MenuItem Header="Paste"/>
+						<MenuItem Header="Delete"/>
+					</MenuItem>
+				</Menu>
 
+				<Menu>
+					<MenuItem Header="Options">
+						<MenuItem Header="Item1"/>
+						<MenuItem Header="Item2"/>
+						<MenuItem Header="Item3"/>
+					</MenuItem>
+				</Menu>
+
+				<Menu>
+					<MenuItem Header="Help">
+						<MenuItem Header="item1"/>
+					</MenuItem>
+				</Menu>
+			</ToolBar>
+		</StackPanel>
+      
         <!-- SearchBar -->
-        <DockPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
-            <local:SearchBarView x:Name="SearchBar" DockPanel.Dock="Right"/>
-
-        </DockPanel>
-
+		<Border
+				 BorderBrush="#3A4149"
+				 BorderThickness="3"
+				 CornerRadius="6,6,6,6"
+				 Grid.Row="2" Grid.ColumnSpan="3">
+			<StackPanel>
+				<local:SearchBarView x:Name="SearchBar"/>
+			</StackPanel>
+		</Border>
+      
         <!-- TourList -->
-        <local:TourListView x:Name="TourList" Grid.Row="3" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="2" />
-
-        <GridSplitter Grid.Column="1" Grid.Row="3" ResizeDirection="Columns" ResizeBehavior="PreviousAndNext" Background="Black" Grid.RowSpan="3" Width="1"/>
-
+		<Border Background="white"
+			   BorderBrush="#3A4149"
+			   BorderThickness="3"
+			   CornerRadius="6,6,6,6"
+			   Grid.Row="3" Grid.RowSpan="5" Grid.Column="0">
+			<StackPanel>
+				<local:TourListView x:Name="TourList" />
+			</StackPanel>
+		</Border>
+		
         <!-- TourDetails -->
-        <local:TourDetailsView x:Name="TourDetails" Grid.Row="4" Grid.Column="2" Margin="0,0,0,60"/>
-
+		<Border Background="White"
+                BorderBrush="#3A4149"
+                BorderThickness="3"
+                CornerRadius="6,6,6,6"
+                Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2">
+			<StackPanel >
+				<local:TourDetailsView x:Name="TourDetails" />
+			</StackPanel>
+		</Border>
+        
         <!-- TourLogs -->
-        <DockPanel Grid.Row="5" Grid.Column="2" >
-            <local:TourLogsView DockPanel.Dock="Right" x:Name="TourLogs" />
-
-        </DockPanel>
-
-
-    </Grid>
-
+		<Border Background="White"
+                BorderBrush="#3A4149"
+                BorderThickness="3"
+                CornerRadius="6,6,6,6"
+                Grid.Row="4"
+                Grid.RowSpan="6"
+                Grid.Column="1"
+                Grid.ColumnSpan="3">
+			<StackPanel>
+				<local:TourLogsView x:Name="TourLogs" />
+			</StackPanel>
+		</Border>
+       
+    </Grid>   
 </Window>

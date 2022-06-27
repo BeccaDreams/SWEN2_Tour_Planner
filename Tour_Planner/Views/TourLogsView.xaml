@@ -7,7 +7,7 @@
              xmlns:test="clr-namespace:Tour_Planner.ViewModels" 
              d:DataContext="{d:DesignInstance Type=test:MainViewModel}"
              mc:Ignorable="d"  
-             d:DesignHeight="200" d:DesignWidth="250">
+             d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -15,28 +15,29 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <!-- https://stackoverflow.com/questions/56381187/create-a-textblock-for-every-item-in-a-listobject-->
-        <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" Background="LightGray" Orientation="Horizontal">
-            <Label Width="100">Logs:</Label>
+      	<!-- https://stackoverflow.com/questions/56381187/create-a-textblock-for-every-item-in-a-listobject-->
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Background="LightGray" Orientation="Horizontal">
+            <Label>Logs:</Label>
             <Button Width="20" Content="+" Command="{Binding OpenAddLogWindow}"></Button>
             <Button Width="20" Content="-"></Button>
             <Button Width="20" Content="[]"></Button>
         </StackPanel>
 
 
-        <DataGrid Grid.Row="2" Grid.RowSpan="3" HorizontalAlignment="Stretch" Width="Auto" ItemsSource="{Binding Logs}" AutoGenerateColumns="False" AlternatingRowBackground="LightGray" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+        <DataGrid Grid.Row="2" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" Width="Auto" ItemsSource="{Binding Logs}" AutoGenerateColumns="False" AlternatingRowBackground="LightGray" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Date}" Header="Date" Width="50"/>
-                <DataGridTextColumn Binding="{Binding TourComment}" Header="Comment" Width="50"/>
-                <DataGridTextColumn Binding="{Binding Difficulty}" Header="Difficulty" Width="50"/>
-                <DataGridTextColumn Binding="{Binding Duration}" Header="Duration" Width="50"/>
-                <DataGridTextColumn Binding="{Binding Rating}" Header="Rating" Width="50"/>
+                <DataGridTextColumn Binding="{Binding Date}" Header="Date" Width="*"/>
+                <DataGridTextColumn Binding="{Binding TourComment}" Header="Comment" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Difficulty}" Header="Difficulty" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Duration}" Header="Duration" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Rating}" Header="Rating" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-      
-
-
     </Grid>
 </UserControl>

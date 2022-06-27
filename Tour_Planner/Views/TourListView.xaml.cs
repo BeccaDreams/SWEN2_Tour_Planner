@@ -30,5 +30,6 @@ namespace Tour_Planner.Views
             AddTourWindow win2 = new AddTourWindow();
             win2.Show();
         }
+        
     }
 }

@@ -7,7 +7,12 @@
         xmlns:mvvm="clr-namespace:Tour_Planner.ViewModels"
         d:DataContext="{d:DesignInstance Type=mvvm:AddTourToListViewModel}"
         mc:Ignorable="d"
-        Title="AddTourWindow" Height="400" Width="420"
+        Title="AddTourWindow" Height="450" Width="800"
+        MinWidth="450"
+        MinHeight="450"
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="CanResizeWithGrip"
+        Background="White"
         x:Name="AddLog_Window"
         xmlns:b="clr-namespace:Tour_Planner">
     <Grid>
@@ -21,54 +26,84 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
+        <Border Background="LightGray"
+                BorderBrush="LightGray"
+                BorderThickness="2"
+                CornerRadius="3,3,3,3"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Height="50">
+            <Label Grid.Row="0" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center"  Content="Add Log"></Label>
+        </Border>
 
-        <Label Grid.Row="0" Grid.ColumnSpan="5" FontSize="45" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Add Log"></Label>
+        <Border Grid.Row="1"
+                Grid.RowSpan="5"
+                Grid.Column="0"
+                Background="White"
+                BorderBrush="White">
+            <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1"
+                Grid.RowSpan="5">
+                <Label FontSize="20" FontWeight="Bold" Content=" Date:" Margin="10,0,0,10"></Label>
+                <Label FontSize="20" FontWeight="Bold" Content=" Comment:" Margin="10,0,0,10"></Label>
+                <Label FontSize="20" FontWeight="Bold" Content=" Difficulty:" Margin="10,0,0,10"></Label>
+                <Label FontSize="20" FontWeight="Bold" Content=" Duration:" Margin="10,0,0,10"></Label>
+                <Label FontSize="20" FontWeight="Bold" Content=" Rating:" Margin="10,0,0,0"></Label>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="1"
+                Grid.RowSpan="5"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Height="320"
+                Background="White">
+            <StackPanel Orientation="Vertical">
+                <Border BorderBrush="LightGray"
+                        BorderThickness="1"
+                        CornerRadius="1,1,1,1"
+                        Height="30"
+                        Margin="0,4,6,6">
+                    <TextBox x:Name="AddLog_Date" FontSize="15"></TextBox>
+                </Border>
+                <Border BorderBrush="LightGray"
+                        BorderThickness="1"
+                        CornerRadius="1,1,1,1"
+                        Height="30"
+                        Margin="0,10,6,6">
+                    <TextBox x:Name="AddLog_Comment" FontSize="15"></TextBox>
+                </Border> 
+                <Border BorderBrush="LightGray"
+                        BorderThickness="1"
+                        CornerRadius="1,1,1,1"
+                        Height="30"
+                        Margin="0,10,6,6">
+                    <TextBox x:Name="AddLog_Difficulty" FontSize="15"></TextBox>
+                </Border>
+                <Border BorderBrush="LightGray"
+                        BorderThickness="1"
+                        CornerRadius="1,1,1,1"
+                        Height="30"
+                        Margin="0,12,6,6">
+                    <TextBox x:Name="AddLog_Duration" Text="{Binding AddNewFrom}" FontSize="15"></TextBox>
+                </Border>
+                <Border BorderBrush="LightGray"
+                        BorderThickness="1"
+                        CornerRadius="1,1,1,1"
+                        Height="30"
+                        Margin="0,12,6,6">
+                    <TextBox x:Name="AddLog_Rating" Text="{Binding AddNewTo}" FontSize="15"></TextBox>
+                </Border>
 
 
-        <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" FontSize="20" Content="Date:"  
-               VerticalAlignment="Center" Margin="10,0,0,0"></Label>
-
-        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalAlignment="Left" 
-                 x:Name="AddLog_Date" FontSize="20" Width="250" Height="30" TextAlignment="Left" ></TextBox>
-        
-
-        <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" FontSize="20" Content="Comment:"  
-               VerticalAlignment="Center" Margin="10,0,0,0"></Label>
-
-        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalAlignment="Left" 
-                 x:Name="AddLog_Comment" FontSize="20" Width="250" Height="30" TextAlignment="Left" ></TextBox>
-        
-
-        <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" FontSize="20" Content="Difficulty:"  
-               VerticalAlignment="Center" Margin="10,0,0,0"></Label>
-
-        <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalAlignment="Left" 
-                 x:Name="AddLog_Difficulty" FontSize="20" Width="250" Height="30" TextAlignment="Left" ></TextBox>
-        
-
-
-        <Label Grid.Row="4" Grid.Column="0" FontSize="20" Content="Duration:" HorizontalAlignment="Left" VerticalAlignment="Center" 
-               Margin="10,0,0,0"></Label>
-
-        <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalAlignment="Left" 
-                 x:Name="AddLog_Duration" FontSize="20" Width="250" Height="30" TextAlignment="Left" Text="{Binding AddNewFrom}"></TextBox>
-
-
-
-        <Label Grid.Row="5" Grid.Column="0" FontSize="20" Content="Rating:" HorizontalAlignment="Left" VerticalAlignment="Center" 
-               Margin="10,0,0,0"></Label>
-
-        <TextBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Left" x:Name="AddLog_Rating" FontSize="20" 
-                 Width="250" Height="30" TextAlignment="Left" Text="{Binding AddNewTo}"></TextBox>
-
-
-        <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Content="Submit" HorizontalAlignment="Center" Width="100" Height="30" 
-                Command="{Binding AddNewTourCommand}"  b:CloseOnClickBehaviour.IsEnabled="True">
+            </StackPanel>
+        </Border>
+        <Button Grid.Row="6" Grid.Column="1" Content="Submit" Width="Auto" MaxWidth="150" Height="40" 
+                BorderBrush="LightGray" FontWeight="Bold" Background="LightGray" Command="{Binding AddNewTourCommand}"  b:CloseOnClickBehaviour.IsEnabled="True">
         </Button>
-
     </Grid>
 </Window>

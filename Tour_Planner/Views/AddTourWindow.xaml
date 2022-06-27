@@ -7,55 +7,105 @@
         xmlns:mvvm="clr-namespace:Tour_Planner.ViewModels"
         d:DataContext="{d:DesignInstance Type=mvvm:AddTourToListViewModel}"
         mc:Ignorable="d"
-        Title="AddTourWindow" Height="350" Width="420"
+        Title="AddTourWindow" Height="450" Width="800"
+        MinWidth="450"
+        MinHeight="450"
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="CanResizeWithGrip"
+        Background="White"
         x:Name="AddTour_Window"
         xmlns:b="clr-namespace:Tour_Planner">
-
+        
     <Window.DataContext>
         <mvvm:AddTourToListViewModel/>
     </Window.DataContext>
-
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        
-        <Label Grid.Row="0" Grid.ColumnSpan="5" FontSize="45" HorizontalAlignment="Center" Content="Add Tour"></Label>
 
+        <Border Background="LightGray"
+                BorderBrush="LightGray"
+                BorderThickness="2"
+                CornerRadius="3,3,3,3"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Height="50">
+            <Label FontSize="25" FontWeight="Bold"  HorizontalAlignment="Center" Content="Add Tour"></Label>
+        </Border>
 
-        <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" FontSize="20" Content="Tour Name:"  
-               VerticalAlignment="Center" Margin="10,0,0,0"></Label>
+        <Border Grid.Row="1"
+                Grid.Column="0"
+                Height="320"
+                Background="White">
+            <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+                <Label Content=" Tour Name:" FontSize="20" FontWeight="Bold"></Label>
+                <Label Content=" From:" FontSize="20" FontWeight="bold"></Label>
+                <Label Content=" To:" FontSize="20" FontWeight="bold"></Label>
+                <Label Content=" Transport Type:" FontSize="20" FontWeight="bold"></Label>
+                <Label Content=" Description:" FontSize="20" FontWeight="bold"></Label>
+            </StackPanel>
+        </Border>
 
-        <TextBox Grid.Row="1" Text="{Binding AddNewTourName}" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalAlignment="Left" 
-                 x:Name="AddTour_NewTourName" FontSize="20" Width="250" Height="30" TextAlignment="Left" ></TextBox>
-        
-
-
-        <Label Grid.Row="2" Grid.Column="0" FontSize="20" Content="From:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"></Label>
-
-        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalAlignment="Left" x:Name="AddTour_Start" FontSize="20" Width="250" Height="30" 
-                 TextAlignment="Left" Text="{Binding AddNewFrom}"></TextBox>
-
-
-
-        <Label Grid.Row="3" Grid.Column="0" FontSize="20" Content="To:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"></Label>
-
-        <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Left" x:Name="AddTour_Destination" FontSize="20" 
-                 Width="250" Height="30" TextAlignment="Left" Text="{Binding AddNewTo}"></TextBox>
-
-
-        <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Content="Submit" HorizontalAlignment="Center" Width="100" Height="30" 
-                Command="{Binding AddNewTourCommand}"  b:CloseOnClickBehaviour.IsEnabled="True">
-        </Button>
-
+        <Border Grid.Row="1"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Height="320"
+                Background="White">
+            <StackPanel Orientation="Vertical">
+                <Border BorderBrush="LightGray"
+                        BorderThickness="1"
+                        CornerRadius="1,1,1,1"
+                        Height="30"
+                        Margin="0,4,6,6"> 
+                    <TextBlock x:Name="AddTour_NewTourName" Text="{Binding AddNewTourName}" ></TextBlock>
+                </Border>
+                <Border BorderBrush="LightGray"
+                        BorderThickness="1"
+                        CornerRadius="1,1,1,1"
+                        Height="30"
+                        Margin="0,0,6,6">
+                    <TextBlock x:Name="AddTour_Start" Text="{Binding AddNewFrom}"></TextBlock>
+                </Border>
+                <Border BorderBrush="LightGray"
+                        BorderThickness="1"
+                        CornerRadius="1,1,1,1"
+                        Height="30"
+                        Margin="0,0,6,8">
+                    <TextBlock x:Name="AddTour_Destination" Text="{Binding AddNewTo}"></TextBlock>
+                </Border>
+                <Border BorderBrush="LightGray"
+                        BorderThickness="1"
+                        CornerRadius="1,1,1,1"
+                        Height="30"
+                        Margin="0,0,6,8">
+                   <!-- <TextBlock x:Name="TransportType"></TextBlock> -->
+                    <ComboBox x:Name="TransportType">
+                        <ComboBoxItem>Walking</ComboBoxItem>
+                        <ComboBoxItem>Bicycle</ComboBoxItem>
+                        <ComboBoxItem>Car</ComboBoxItem>
+                    </ComboBox>
+                </Border>
+                <Border BorderBrush="LightGray"
+                        BorderThickness="1"
+                        CornerRadius="1,1,1,1"
+                        Height="60"
+                        Margin="0,0,6,8">
+                   <TextBlock x:Name="Description"></TextBlock> 
+                    
+                </Border>
+            </StackPanel>
+        </Border>
+        <StackPanel Grid.Column="1" Grid.Row="2">
+            <Button Width="Auto" MaxWidth="150" Height="40" BorderBrush="LightGray" FontWeight="Bold" Background="LightGray" Command="{Binding AddNewTourCommand}"  b:CloseOnClickBehaviour.IsEnabled="True">Submit</Button>
+        </StackPanel>
     </Grid>
 </Window>

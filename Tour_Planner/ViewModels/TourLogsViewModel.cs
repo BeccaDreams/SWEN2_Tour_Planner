@@ -11,7 +11,7 @@ namespace Tour_Planner.ViewModels
 {
     public class TourLogsViewModel : BaseModel 
     {
-        public ObservableCollection<TourLog> DataLogs { get; }
+        public ObservableCollection<TourLog> DataLogs { get; set; }
           = new ObservableCollection<TourLog>();
 
         public TourLogsViewModel()
@@ -22,9 +22,9 @@ namespace Tour_Planner.ViewModels
         private void loadLogs()
         {
             DataLogs.Clear();
-            DataLogs.Add(new TourLog("13.12.22", "12min", "22km", "Bike"));
-            DataLogs.Add(new TourLog("12.12.22", "12min", "22km", "Bike"));
-            DataLogs.Add(new TourLog("11.12.22", "12min", "22km", "Bike"));
+            DataLogs.Add(new TourLog("13.12.22", "12min", 2, "22km", 4));
+            DataLogs.Add(new TourLog("12.12.22", "12min", 3, "22km", 3));
+            DataLogs.Add(new TourLog("11.12.22", "12min", 1, "22km", 5));
         }
 
        

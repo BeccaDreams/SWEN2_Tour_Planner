@@ -5,20 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Tour_Planner.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="400">
+             d:DesignHeight="450" d:DesignWidth="600">
     
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
 
-        <TextBox Grid.Row="0" Grid.Column="0" Name="searchTxt"   Width="350" Text="{Binding SearchText, Mode=TwoWay}"></TextBox>
-        <Button Grid.Column="1" x:Name="ButtonClick" Grid.Row="0"  VerticalAlignment="Center" Width="50" Command="{Binding SearchCommand}" >Search</Button>
+        
+            <TextBox Grid.Row="0" Grid.Column="0" Name="searchTxt" FontSize="20"  HorizontalAlignment="Stretch" Width="Auto"  Text="{Binding SearchText, Mode=TwoWay}"></TextBox>
+            <Button Grid.Column="1" x:Name="ButtonClick" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Width="100" FontSize="20" Command="{Binding SearchCommand}" >Search</Button>
+        
 
 
     </Grid>

@@ -20,14 +20,14 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Row="0" Background="LightGray" Orientation="Horizontal">
-            <Label>Title:</Label>
-            <Label Content="{Binding Title, Mode=OneWay}"></Label>
+            <Label FontSize="15">Title:</Label>
+            <Label FontSize="15" Content="{Binding Title, Mode=OneWay}"></Label>
         </StackPanel>
         
             <StackPanel Orientation="Vertical" Grid.Row="1" Grid.RowSpan="2">
             <TabPanel>
-                <TabItem Header="Route"></TabItem>
-                <TabItem Header="Description"></TabItem>
+                <TabItem FontSize="13" Header="Route"></TabItem>
+                <TabItem FontSize="13" Header="Description"></TabItem>
             </TabPanel>
             <Label >Placeholder</Label>
         </StackPanel>

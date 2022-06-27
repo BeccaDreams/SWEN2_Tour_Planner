@@ -10,12 +10,32 @@ namespace Tour_Planner.ViewModels
 {
     public class TourDetailsViewModel : BaseModel
     {
-        public String Title { get; set; }
+        private string _title;
+        public string Title
+        {
+            get { return _title; }
+            set 
+            {
+                try
+                {
+                    _title = value;
+                    OnPropertyChanged("Title");
+                }
+                catch (StackOverflowException e)
+                {
+                    Console.WriteLine(e);
+                }
+                }
+        }
+
+        public RelayCommand GetOnSelectedItem;
 
         public TourDetailsViewModel()
         {
-            Title = "Testtitle";
-            OnPropertyChanged();
+           //RelayCommand
         }
+
+
+
     }
 }

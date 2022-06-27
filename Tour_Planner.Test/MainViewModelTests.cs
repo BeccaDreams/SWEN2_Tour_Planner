@@ -8,9 +8,22 @@ namespace Tour_Planner.Test
 {
     public class MainViewModelTests
     {
+        public TourListViewModel mockedTourListViewModel;
+        public TourDetailsViewModel mockedTourDetailsViewModel;
+        public SearchBarViewModel mockedSearchBarViewModel;
+        public TourLogsViewModel mockedTourLogsViewModel;
+        public MainViewModel mvvm;
+
+
         [SetUp]
         public void Setup()
         {
+            mockedTourListViewModel = new Mock<TourListViewModel>().Object;
+            mockedTourDetailsViewModel = new Mock<TourDetailsViewModel>().Object;
+            mockedSearchBarViewModel = new Mock<SearchBarViewModel>().Object;
+            mockedTourLogsViewModel = new Mock<TourLogsViewModel>().Object;
+
+            mvvm = new Mock<MainViewModel>(mockedTourListViewModel, mockedTourLogsViewModel, mockedTourDetailsViewModel, mockedSearchBarViewModel).Object;
         }
 
         [Test]
@@ -28,6 +41,14 @@ namespace Tour_Planner.Test
             //var mockedSearchbar = new Mock<SearchBarViewModel>();
             //MainViewModel mvm = new MainViewModel();
             //Assert.Pass();
+        }
+
+        [Test]
+        public void Test_MVVM_TourItems_shouldNotBeEmptyWhenInstanciated()
+        {
+
+            Assert.IsNotEmpty(mvvm.TourItems);
+
         }
     }
 }

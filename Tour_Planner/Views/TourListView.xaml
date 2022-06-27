@@ -17,7 +17,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Row="0" Background="LightGray" Orientation="Horizontal">
@@ -27,19 +27,10 @@
             <Button Width="25" Content="-"></Button>
             <Button Width="25" Content="Edit"></Button>
         </StackPanel>
-        <!--<ListBox Grid.Row="1" Grid.RowSpan="5" ItemsSource="{Binding TourCollection}" SelectedItem="{Binding Tour}" >
-            <ListBoxItem>Tour</ListBoxItem>
-            <ListBoxItem>Tour</ListBoxItem>
-            <ListBoxItem>Tour</ListBoxItem>
-            <ListBoxItem>Tour</ListBoxItem>
-            <ListBoxItem>Tour</ListBoxItem>
-            <ListBoxItem>Tour</ListBoxItem>
-            <ListBoxItem>Tour</ListBoxItem>
-            <ListBoxItem>Tour</ListBoxItem>
-        </ListBox>-->
+       
         <DataGrid Grid.Row="1" Grid.RowSpan="5" ItemsSource="{Binding TourItems}" AutoGenerateColumns="False" AlternatingRowBackground="LightGray" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Name}" Header="Tourname" Width="Auto" />
+                <DataGridTextColumn Binding="{Binding Name}" Header="Tourname" Width="Auto"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

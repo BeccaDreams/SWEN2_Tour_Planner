@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Shared.Models
 {
-    public class TourDetail : INotifyPropertyChanged
+    public class TourDetail : BaseModel
     {
         private string Title
         {
@@ -25,11 +25,6 @@ namespace Shared.Models
             Title = title;
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+     
     }
 }

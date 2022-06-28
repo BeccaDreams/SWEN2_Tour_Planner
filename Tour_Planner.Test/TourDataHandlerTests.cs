@@ -52,8 +52,8 @@ namespace Tour_Planner.Test
         {
             tourList = tourDataHandler.getTourById(1);
 
-            //Assert.IsNotEmpty(tourList);  DB muss noch befüllt werden
-            Assert.IsEmpty(tourList);
+            Assert.IsNotEmpty(tourList);
+            //Assert.IsEmpty(tourList);
         }
 
         [Test]

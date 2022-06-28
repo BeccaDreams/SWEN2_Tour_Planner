@@ -48,6 +48,11 @@ namespace Tour_Planner.ViewModels
 
         }
 
+        public void DisplaySearchResult(string searchText)
+        {
+            
+        }
+
 
        
 

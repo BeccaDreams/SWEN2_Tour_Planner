@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,6 +29,13 @@ namespace Tour_Planner_BL
             return TourList;
         }
 
+
+        //public bool Controller_addTour( Tour newTour )
+       // {
+       //     var added = handler.addTour(newTour);
+       //     return added;
+       //}
+
         public List<Tour> Controller_searchTour(string searchTerm)
         {
             return handler.searchTour(searchTerm);
@@ -42,6 +49,7 @@ namespace Tour_Planner_BL
             newTour.Distance = distance;
             newTour.RouteInformation = map;
             handler.addTour(newTour);
+
         }
 
         public void Controller_editTour(Tour tour)

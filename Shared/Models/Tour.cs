@@ -19,15 +19,22 @@ namespace Shared.Models
         private double _distance;
         private TimeSpan _time;
         private string _routeInformation;
+        private string _imgLocation;
 
         public Tour()
         {
         }
 
-        public Tour(string name, string from, string to) {
+        public Tour(string name, string description, string from, string to, string transportType, double distance, TimeSpan time, string routeInfo) {
             Name = name;
+            Description = description;
             From = from;
             To = to;
+            TransportType = transportType;
+            Distance = distance;
+            Time = time;
+            RouteInformation = routeInfo;
+
         }
 
         public int Id
@@ -190,6 +197,24 @@ namespace Shared.Models
                     Console.WriteLine(e);
                 }
                 
+            }
+        }
+
+        public string ImgLocation
+        {
+            get { return _imgLocation; }
+            set
+            {
+                try
+                {
+                    _imgLocation = value;
+                    OnPropertyChanged("ImgLocation");
+                }
+                catch (StackOverflowException e)
+                {
+                    Console.WriteLine(e);
+                }
+
             }
         }
     }

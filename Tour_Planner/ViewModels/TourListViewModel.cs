@@ -8,54 +8,73 @@ using Shared.Models;
 using System.Collections.ObjectModel;
 using System.Windows;
 using Tour_Planner_BL;
+using System.Windows.Input;
 
 namespace Tour_Planner.ViewModels
 {
     public class TourListViewModel : BaseModel
     {
+        private List<Tour> _tourList;
+        private string _selectedTour;
+        public string SelectedTour
+        {
+            get { return _selectedTour; }
+            set
+            {
+                _selectedTour = value;
+                OnPropertyChanged(nameof(SelectedTour));
+            }
+        }
+            
         
         public ObservableCollection<Tour> TourNames { get; set; }
-          = new ObservableCollection<Tour>();
-        
-        public RelayCommand AddTourCommand;
-        
 
-      //  public event EventHandler<Tour> AddTourNameEvent;
+        TourController _tourController;
+        Window win1;
+
+        public ICommand OpenAddTourWindow { get; set; }
 
         public TourListViewModel()
         {
-            
-            LoadData();
+            //AddTourToListViewModel subscribe = new AddTourToListViewModel();
+           // subscribe.AddNewTourEvent += LoadTours();
+            _tourController = new TourController();
+            _tourList = new List<Tour>();
 
-            AddTourCommand = new RelayCommand((_) =>
-            {
-               
-            });
-            
-        }
-
-        private void LoadData()
-        {
-            TourNames.Clear();
-            TourNames.Add(new Tour("Testtour", "testfrom", "testto"));
-            TourNames.Add(new Tour("Testtour2", "testfrom", "testto"));
-            TourNames.Add(new Tour("Testtour3", "testfrom", "testto"));
-            TourNames.Add(new Tour("Testtour4", "testfrom", "testto"));
-        }
-
-        private void AddNewTour()
-        {
+            SetCommands();
+            LoadTours();
 
         }
 
+        
+        
         public void DisplaySearchResult(string searchText)
         {
             
         }
 
 
-       
+        public void LoadTours()
+        {
+            _tourList = _tourController.Controller_getTours();
+            TourNames = new ObservableCollection<Tour>(_tourList);
+           
+        }
 
+        public void SetCommands()
+        {
+            OpenAddTourWindow = new RelayCommand((_) =>
+            {
+                Open_AddTourWindow();
+
+            });
+        }
+
+        public void Open_AddTourWindow()
+        {
+            this.win1 = new AddTourWindow();
+            win1.Show();
+        }
 
     }
 }

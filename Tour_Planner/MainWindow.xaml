@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tour_Planner.Views"
-        xmlns:mvvm="clr-namespace:Tour_Planner.ViewModels"
+        xmlns:mvvm="clr-namespace:Tour_Planner.ViewModels" 
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
 		MinWidth="400"
@@ -14,11 +14,13 @@
         ResizeMode="CanResizeWithGrip"
         WindowStartupLocation="CenterScreen"
         Background="Black">
+<!--
     <Window.DataContext>
         <mvvm:MainViewModel/>
     </Window.DataContext>
-
+-->
     <Grid ShowGridLines="False">
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -97,7 +99,7 @@
 			   CornerRadius="6,6,6,6"
 			   Grid.Row="3" Grid.RowSpan="5" Grid.Column="0">
 			<StackPanel>
-				<local:TourListView x:Name="TourList" />
+                <local:TourListView x:Name="TourList" DataContext="{Binding TourList}"/>
 			</StackPanel>
 		</Border>
 		
@@ -122,7 +124,7 @@
                 Grid.Column="1"
                 Grid.ColumnSpan="3">
 			<StackPanel>
-				<local:TourLogsView x:Name="TourLogs" />
+				<local:TourLogsView x:Name="TourLogs" DataContext="{Binding TourDetails}"/>
 			</StackPanel>
 		</Border>
        

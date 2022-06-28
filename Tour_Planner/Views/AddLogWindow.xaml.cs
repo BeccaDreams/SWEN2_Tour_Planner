@@ -23,5 +23,9 @@ namespace Tour_Planner.Views
         {
             InitializeComponent();
         }
+
+        
     }
+
+   
 }

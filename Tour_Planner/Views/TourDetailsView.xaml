@@ -29,7 +29,9 @@
                 <TabItem FontSize="13" Header="Route"></TabItem>
                 <TabItem FontSize="13" Header="Description"></TabItem>
             </TabPanel>
-            <Label >Placeholder</Label>
+            <Image Source="{Binding MapImg}">
+                
+            </Image>
         </StackPanel>
     </Grid>
 </UserControl>

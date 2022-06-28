@@ -20,18 +20,22 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Row="0" Background="LightGray" Orientation="Horizontal">
-            <Label FontSize="15">Title:</Label>
+            <Label FontSize="15" FontWeight="Bold">Title:</Label>
             <Label FontSize="15" Content="{Binding Title, Mode=OneWay}"></Label>
         </StackPanel>
         
             <StackPanel Orientation="Vertical" Grid.Row="1" Grid.RowSpan="2">
-            <TabPanel>
-                <TabItem FontSize="13" Header="Route"></TabItem>
-                <TabItem FontSize="13" Header="Description"></TabItem>
-            </TabPanel>
-            <Image Source="{Binding MapImg}">
-                
-            </Image>
+            <TabControl>
+                <TabItem FontSize="12" FontWeight="Bold" Header="Route" x:Name="Route">
+                    <Image Source="{Binding MapImg}">
+
+                    </Image>
+                </TabItem>
+                <TabItem FontSize="12" FontWeight="Bold" Header="Description"  x:Name="Description">
+                    <TextBlock Height="Auto"></TextBlock>
+                </TabItem>
+            </TabControl>
+            
         </StackPanel>
     </Grid>
 </UserControl>

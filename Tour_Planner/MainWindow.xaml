@@ -9,8 +9,6 @@
         Title="MainWindow" Height="450" Width="800"
 		MinWidth="400"
         MinHeight="300"
-        WindowStyle="None"
-        AllowsTransparency="True"
         ResizeMode="CanResizeWithGrip"
         WindowStartupLocation="CenterScreen"
         Background="Black">
@@ -45,40 +43,11 @@
 			   Grid.ColumnSpan="3">
 			<Label Grid.Row="0" FontSize="25" FontWeight="Bold"  HorizontalAlignment="Center">Tour-Planner</Label>
 		</Border>
-
+        
+        <!-- Toolbar -->
 		<StackPanel Grid.Row="1" Grid.ColumnSpan="3">
-			<ToolBar>
-				<Menu>
-					<MenuItem Header="File">
-						<MenuItem Header="New"/>
-						<MenuItem Header="Open"/>
-						<MenuItem Header="Exit"/>
-					</MenuItem>
-				</Menu>
-
-				<Menu>
-					<MenuItem Header="Edit">
-						<MenuItem Header="Cut"/>
-						<MenuItem Header="Copy"/>
-						<MenuItem Header="Paste"/>
-						<MenuItem Header="Delete"/>
-					</MenuItem>
-				</Menu>
-
-				<Menu>
-					<MenuItem Header="Options">
-						<MenuItem Header="Item1"/>
-						<MenuItem Header="Item2"/>
-						<MenuItem Header="Item3"/>
-					</MenuItem>
-				</Menu>
-
-				<Menu>
-					<MenuItem Header="Help">
-						<MenuItem Header="item1"/>
-					</MenuItem>
-				</Menu>
-			</ToolBar>
+            <local:ToolBarView x:Name="ToolBar"/>
+			
 		</StackPanel>
       
         <!-- SearchBar -->

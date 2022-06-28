@@ -13,12 +13,14 @@ namespace Tour_Planner_BL
         private TourDataHandler handler;
         private JsonExporter exporter;
         private JsonImporter importer;
+        private MapQuestClient mapQuestClient;
 
         public TourController()
         {
             handler = new TourDataHandler();
             exporter = new JsonExporter();
             importer = new JsonImporter();
+            mapQuestClient = new MapQuestClient();
         }
 
         public List<Tour> Controller_getTours()
@@ -27,8 +29,18 @@ namespace Tour_Planner_BL
             return TourList;
         }
 
-        public void Controller_addTour( Tour newTour )
+        public List<Tour> Controller_searchTour(string searchTerm)
         {
+            return handler.searchTour(searchTerm);
+        }
+
+        public async void Controller_addTour(Tour newTour)
+        {
+            var distance = await mapQuestClient.GetDistance(newTour.From, newTour.To, newTour.TransportType);
+            var map = await mapQuestClient.GetMapQuestStaticMap(newTour.From, newTour.To, newTour.TransportType);
+
+            newTour.Distance = distance;
+            newTour.RouteInformation = map;
             handler.addTour(newTour);
         }
 

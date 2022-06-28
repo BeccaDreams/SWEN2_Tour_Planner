@@ -68,7 +68,7 @@
                         CornerRadius="1,1,1,1"
                         Height="30"
                         Margin="0,4,6,6">
-                    <TextBox x:Name="AddLog_Date" FontSize="15"></TextBox>
+                    <TextBox x:Name="AddLog_Date" FontSize="15" Text="{Binding Date, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 </Border>
                 <Border BorderBrush="LightGray"
                         BorderThickness="1"
@@ -89,21 +89,22 @@
                         CornerRadius="1,1,1,1"
                         Height="30"
                         Margin="0,12,6,6">
-                    <TextBox x:Name="AddLog_Duration" Text="{Binding AddNewFrom}" FontSize="15"></TextBox>
+                    <TextBox x:Name="AddLog_Duration" Text="{Binding AddNewFrom, UpdateSourceTrigger=PropertyChanged}" FontSize="15"></TextBox>
                 </Border>
                 <Border BorderBrush="LightGray"
                         BorderThickness="1"
                         CornerRadius="1,1,1,1"
                         Height="30"
                         Margin="0,12,6,6">
-                    <TextBox x:Name="AddLog_Rating" Text="{Binding AddNewTo}" FontSize="15"></TextBox>
+                    <TextBox x:Name="AddLog_Rating" Text="{Binding AddNewTo, UpdateSourceTrigger=PropertyChanged}" FontSize="15"></TextBox>
                 </Border>
 
 
             </StackPanel>
         </Border>
         <Button Grid.Row="6" Grid.Column="1" Content="Submit" Width="Auto" MaxWidth="150" Height="40" 
-                BorderBrush="LightGray" FontWeight="Bold" Background="LightGray" Command="{Binding AddNewTourCommand}"  b:CloseOnClickBehaviour.IsEnabled="True">
+                BorderBrush="LightGray" FontWeight="Bold" Background="LightGray" Command="{Binding AddNewTourCommand}" 
+                b:CloseOnClickBehaviour.IsEnabled="True" >
         </Button>
     </Grid>
 </Window>

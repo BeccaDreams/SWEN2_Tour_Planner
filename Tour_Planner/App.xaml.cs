@@ -22,7 +22,7 @@ namespace Tour_Planner
             var searchBar = new SearchBarViewModel();
 
 
-            var window = new MainWindow()
+            MainWindow = new MainWindow()
             {
                 DataContext = new MainViewModel(tourList, tourLogs, tourDetails, searchBar),
                 TourList = { DataContext = tourList },
@@ -30,7 +30,7 @@ namespace Tour_Planner
                 TourLogs = { DataContext = tourLogs },
                 TourDetails = { DataContext = tourDetails }
             };
-            window.Show();
+            MainWindow.Show();
         }
     }
 }

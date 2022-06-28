@@ -17,7 +17,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <TextBox Grid.Row="0" Grid.Column="0" Name="searchTxt" Text="{Binding SearchText, Mode=TwoWay}"></TextBox>
+        <TextBox Grid.Row="0" Grid.Column="0" Name="searchTxt" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"></TextBox>
         <Button Grid.Column="1" x:Name="ButtonClick" Grid.Row="0"  VerticalAlignment="Center" Command="{Binding SearchCommand}" >Search</Button>
 
     </Grid>

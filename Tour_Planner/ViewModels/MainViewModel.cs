@@ -22,6 +22,7 @@ namespace Tour_Planner.ViewModels
         //private static ILoggerWrapper logger;
 
         TourController tourController;
+        MapQuestClient tourMapClient;
 
         public TourListViewModel TourList;
         public TourLogsViewModel TourLogs;
@@ -29,68 +30,13 @@ namespace Tour_Planner.ViewModels
         public SearchBarViewModel SearchBar;
         public AddTourToListViewModel AddTourToList;
 
+        Tour tmpTour;
+
         Window win1, win2;
 
         public RelayCommand AddNewTourCommand { get; set; }
-       // public readonly ISearchEngine searchEngine;
-
-        /* --------------------------------------------------------------------------------*/
-        //sollte ausgebessert werden, das gehört hier nicht her.
-        private string _addtourName;
-        public string AddNewTourName
-        {
-            get { return _addtourName; }
-            set
-            {
-                try
-                {
-                    _addtourName = value;
-                    OnPropertyChanged("AddNewTourName");
-                }
-                catch (StackOverflowException e)
-                {
-                    Console.WriteLine(e);
-                }
-            }
-        }
-
-        private string _addfrom;
-        public string AddNewFrom
-        {
-            get { return _addfrom; }
-            set
-            {
-                try
-                {
-                    _addfrom = value;
-                    OnPropertyChanged("AddNewFrom");
-                }
-                catch (StackOverflowException e)
-                {
-                    Console.WriteLine(e);
-                }
-            }
-        }
-
-        private string _addto;
-        public string AddNewTo
-        {
-            get { return _addto; }
-            set
-            {
-                try
-                {
-                    _addto = value;
-                    OnPropertyChanged("AddNewTo");
-                }
-                catch (StackOverflowException e)
-                {
-                    Console.WriteLine(e);
-                }
-            }
-        }
-
-        /* --------------------------------------------------------------------------------*/
+       
+       
         public ObservableCollection<Tour> TourItems { get; set; }
             = new ObservableCollection<Tour>();
 
@@ -101,151 +47,29 @@ namespace Tour_Planner.ViewModels
         public RelayCommand OpenAddLogWindow { get; set; }
 
 
-        public MainViewModel()
-        {
-            TourList = new TourListViewModel();
-            TourLogs = new TourLogsViewModel();
-            TourDetails = new TourDetailsViewModel();
-            SearchBar = new SearchBarViewModel();
-            AddTourToList = new AddTourToListViewModel();
-            tourController = new TourController();
-
-          
-            TourItems = TourList.TourNames;
-            Logs = TourLogs.DataLogs;
-
-            SetAllCommands();
-
-
-           
-
-            AddNewTourCommand = new RelayCommand((_) =>
-            {
-               TourItems.Add(new Tour("was anderes", "from", "to"));
-                Console.WriteLine(TourItems.Count);
-                //if (AddNewTourName != null)
-                //{
-                //    Tour newAddedTour = new Tour(AddNewTourName, AddNewFrom, AddNewTo);
-
-                //    TourItems.Add(newAddedTour);
-                //}
-                //else
-                //{
-
-                //    TourItems.Add(new Tour("was anderes","from","to"));
-
-                //}
-                // Close_AddWindow();
-
-
-            });
-            
-        }
-
-        public void Open_AddTourWindow()
-        {
-            this.win1 = new AddTourWindow();
-            win1.Show();
-        }
-        public void Open_AddLogWindow()
-        {
-            this.win2 = new AddLogWindow();
-            win2.Show();
-        }
-
-       
-
-        public void SetAllCommands()
-        {
-            OpenAddTourWindow = new RelayCommand((_) =>
-            {
-                Open_AddTourWindow();
-
-            });
-
-            OpenAddLogWindow = new RelayCommand((_) =>
-            {
-                Open_AddLogWindow();
-
-            });
-
-            AddNewTourCommand = new RelayCommand((_) =>
-            {
-                TourItems.Add(new Tour("was anderes", "from", "to"));
-                Console.WriteLine(TourItems.Count);
-                //if (AddNewTourName != null)
-                //{
-                //    Tour newAddedTour = new Tour(AddNewTourName, AddNewFrom, AddNewTo);
-
-                //    TourItems.Add(newAddedTour);
-                //}
-                //else
-                //{
-
-                //    TourItems.Add(new Tour("was anderes","from","to"));
-
-                //}
-                // Close_AddWindow();
-
-
-            });
-
-            //SearchBar.SearchTextChanged += (_, searchText) =>
-            //{
-            //    SearchTours(searchText);
-            //    SearchLogs(searchText);
-            //};
-          //  this.resultToursView = result
-           // this.resultLogsView = resultView;
-           // this.searchEngine = searchEngine;
-
-        }
-
-        //public void SearchTours(string text)
-        //{
-        //    var results = this.searchEngine.SearchFor(text);
-        //}
-
-        //public void SearchLogs(string text)
-        //{
-        //    var results = this.searchEngine.SearchFor(text);
-        //}
-
-
+    
         public MainViewModel(TourListViewModel tourList, TourLogsViewModel tourLogs, TourDetailsViewModel tourDetails, SearchBarViewModel searchBar)    
         {
-           
-            //searchBar = new SearchBarViewModel();
+
 
             TourList = tourList;
             TourLogs = tourLogs;
             TourDetails = tourDetails;
             SearchBar = searchBar;
-
-            TourItems = TourList.TourNames;
-
-
-            Logs = TourLogs.DataLogs;
-
+            AddTourToList = new AddTourToListViewModel();
             tourController = new TourController();
 
+
+   
+           // Logs = TourLogs.DataLogs;
+            tmpTour = new Tour();
+
             
-            
-
-            //searchBar.SearchTextChanged += (_, searchText) =>
-            //{
-            //    //SearchTours(searchText);
-            //};
-
-           
-
-            //log4net.Config.XmlConfigurator.Configure(new FileInfo("./log4net.config"));
-            //logger.Debug("created()");
-            //logger.Debug($"OnPropertyChanged() propertyName={propertyName}");
-            //h ttps://logging.apache.org/log4net/release/manual/configuration.html 
-
 
         }
+
+       
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

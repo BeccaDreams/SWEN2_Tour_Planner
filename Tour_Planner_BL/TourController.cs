@@ -16,23 +16,24 @@ namespace Tour_Planner_BL
             handler = new TourDataHandler();
         }
 
-        private List<Tour> Controller_getTours()
+        public List<Tour> Controller_getTours()
         {
             var TourList = handler.getTours();
             return TourList;
         }
 
-        private void Controller_addTour( Tour newTour )
+        public bool Controller_addTour( Tour newTour )
         {
-            handler.addTour(newTour);
+            var added = handler.addTour(newTour);
+            return added;
         }
 
-        private void Controller_editTour(Tour tour)
+        public void Controller_editTour(Tour tour)
         {
             handler.updateTour(tour);
         }
 
-        private void Controller_deleteTour(/* Tour delTour */)
+        public void Controller_deleteTour(/* Tour delTour */)
         {
             //db.deleteTour(delTour);
         }

@@ -12,7 +12,7 @@ using System.Windows;
 using Tour_Planner_BL;
 using System.Windows.Input;
 using Shared.Models;
-
+using Tour_Planner.SearchEngine;
 
 namespace Tour_Planner.ViewModels
 {
@@ -32,7 +32,10 @@ namespace Tour_Planner.ViewModels
         Window win2;
 
         public RelayCommand AddNewTourCommand { get; set; }
+        public readonly ISearchEngine searchEngine;
 
+        /* --------------------------------------------------------------------------------*/
+        //sollte ausgebessert werden, das gehört hier nicht her.
         private string _addtourName;
         public string AddNewTourName
         {
@@ -86,6 +89,8 @@ namespace Tour_Planner.ViewModels
                 }
             }
         }
+
+        /* --------------------------------------------------------------------------------*/
         public ObservableCollection<Tour> TourItems { get; set; }
             = new ObservableCollection<Tour>();
 
@@ -181,6 +186,25 @@ namespace Tour_Planner.ViewModels
 
             });
 
+            SearchBar.SearchTextChanged += (_, searchText) =>
+            {
+                SearchTours(searchText);
+                SearchLogs(searchText);
+            };
+          //  this.resultToursView = result
+           // this.resultLogsView = resultView;
+           // this.searchEngine = searchEngine;
+
+        }
+
+        public void SearchTours(string text)
+        {
+            var results = this.searchEngine.SearchFor(text);
+        }
+
+        public void SearchLogs(string text)
+        {
+            var results = this.searchEngine.SearchFor(text);
         }
 
 

@@ -11,16 +11,16 @@ namespace Tour_Planner.ViewModels
     {
 
         public event EventHandler<string> SearchTextChanged;
-        //public event PropertyChangedEventHandler? PropertyChanged;
 
         public ICommand SearchCommand { get; }
 
+        private string _searchText;
         public string SearchText
         {
-            get => SearchText;
+            get => _searchText;
             set
             {
-                SearchText = value;
+                _searchText = value;
                 OnPropertyChanged();
             }
         }

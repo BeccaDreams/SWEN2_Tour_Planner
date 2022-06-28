@@ -18,7 +18,7 @@
 
 
         
-            <TextBox Grid.Row="0" Grid.Column="0" Name="searchTxt" FontSize="20"  HorizontalAlignment="Stretch" Width="Auto"  Text="{Binding SearchText, Mode=TwoWay}"></TextBox>
+            <TextBox Grid.Row="0" Grid.Column="0" Name="searchTxt" FontSize="20"  HorizontalAlignment="Stretch" Width="Auto"  Text="{Binding SearchText}"></TextBox>
             <Button Grid.Column="1" x:Name="ButtonClick" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Width="100" FontSize="20" Command="{Binding SearchCommand}" >Search</Button>
         
 

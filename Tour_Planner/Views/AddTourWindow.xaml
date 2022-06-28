@@ -66,21 +66,21 @@
                         CornerRadius="1,1,1,1"
                         Height="30"
                         Margin="0,4,6,6">
-                    <TextBox x:Name="AddTour_NewTourName" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <TextBox x:Name="AddTour_NewTourName" FontSize="15" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 </Border>
                 <Border BorderBrush="LightGray"
                         BorderThickness="1"
                         CornerRadius="1,1,1,1"
                         Height="30"
                         Margin="0,0,6,6">
-                    <TextBox x:Name="AddTour_Start" Text="{Binding From, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <TextBox x:Name="AddTour_Start" FontSize="15" Text="{Binding From, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 </Border>
                 <Border BorderBrush="LightGray"
                         BorderThickness="1"
                         CornerRadius="1,1,1,1"
                         Height="30"
                         Margin="0,0,6,8">
-                    <TextBox x:Name="AddTour_Destination" Text="{Binding To, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <TextBox x:Name="AddTour_Destination" FontSize="15" Text="{Binding To, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 </Border>
                 <Border BorderBrush="LightGray"
                         BorderThickness="1"
@@ -88,7 +88,7 @@
                         Height="30"
                         Margin="0,0,6,8">
                    <!-- <TextBlock x:Name="TransportType"></TextBlock> -->
-                    <ComboBox x:Name="TransportType" SelectedItem="{Binding TransportType, UpdateSourceTrigger=PropertyChanged}">
+                    <ComboBox x:Name="TransportType" SelectedItem="{Binding TransportType, UpdateSourceTrigger=PropertyChanged}" IsEditable="True" IsReadOnly="True" FontSize="15" Text="Please select a transport type">
                         <ComboBoxItem>Walking</ComboBoxItem>
                         <ComboBoxItem>Bicycle</ComboBoxItem>
                         <ComboBoxItem>Car</ComboBoxItem>
@@ -97,15 +97,15 @@
                 <Border BorderBrush="LightGray"
                         BorderThickness="1"
                         CornerRadius="1,1,1,1"
-                        Height="60"
+                        Height="50"
                         Margin="0,0,6,8">
-                    <TextBox x:Name="Description" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"></TextBox> 
+                    <TextBox x:Name="Description" FontSize="15" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"></TextBox> 
                     
                 </Border>
             </StackPanel>
         </Border>
         <StackPanel Grid.Column="1" Grid.Row="2">
-            <Button Width="Auto" MaxWidth="150" Height="40" BorderBrush="LightGray" FontWeight="Bold" Background="LightGray" Command="{Binding SubmitCommand}" b:CloseOnClickBehaviour.IsEnabled="True" >Submit</Button>
+            <Button Width="Auto" MaxWidth="150" Height="30" BorderBrush="LightGray" FontWeight="Bold" Background="LightGray" Command="{Binding SubmitCommand}" b:CloseOnClickBehaviour.IsEnabled="True" >Submit</Button>
         </StackPanel>
     </Grid>
 </Window>

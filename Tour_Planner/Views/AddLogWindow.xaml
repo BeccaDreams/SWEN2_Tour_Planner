@@ -44,6 +44,7 @@
         <Border Grid.Row="1"
                 Grid.RowSpan="5"
                 Grid.Column="0"
+                Height="320"
                 Background="White"
                 BorderBrush="White">
             <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1"

@@ -22,7 +22,7 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Row="0" Background="LightGray" Orientation="Horizontal">
-            <Label>Tours:</Label>
+            <Label FontSize="13" FontWeight="Bold">Tours:</Label>
             <Button Width="25" Content="+"  Command="{Binding OpenAddTourWindow}" ></Button>
             <!-- Click="AddTourWin" -->
             <Button Width="25" Content="-"></Button>

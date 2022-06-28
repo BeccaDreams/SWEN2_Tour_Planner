@@ -23,7 +23,7 @@
         </Grid.ColumnDefinitions>
       	<!-- https://stackoverflow.com/questions/56381187/create-a-textblock-for-every-item-in-a-listobject-->
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Background="LightGray" Orientation="Horizontal">
-            <Label>Logs:</Label>
+            <Label FontWeight="Bold" FontSize="13">Logs:</Label>
             <Button Width="20" Content="+" Command="{Binding OpenAddLogWindow}"></Button>
             <Button Width="20" Content="-"></Button>
             <Button Width="20" Content="[]"></Button>

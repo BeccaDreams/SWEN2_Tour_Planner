@@ -7,16 +7,16 @@ using Tour_Planner.Views;
 using Shared.Models;
 using System.Collections.ObjectModel;
 using System.Windows;
-using Tour_Planner_BL;
 using System.Windows.Input;
+using Tour_Planner_BL.Controller;
 
 namespace Tour_Planner.ViewModels
 {
     public class TourListViewModel : BaseModel
     {
         private List<Tour> _tourList;
-        private string _selectedTour;
-        public string SelectedTour
+        private Tour _selectedTour;
+        public Tour SelectedTour
         {
             get { return _selectedTour; }
             set

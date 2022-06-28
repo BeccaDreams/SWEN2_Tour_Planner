@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Shared.Models;
 using Tour_Planner_DAL;
 
-namespace Tour_Planner_BL
+namespace Tour_Planner_BL.Controller
 {
     public class LogController
     {

@@ -12,6 +12,7 @@ using System.Windows;
 using Tour_Planner_BL;
 using System.Windows.Input;
 using Shared.Models;
+using Tour_Planner_BL.Controller;
 //using Tour_Planner.SearchEngine;
 
 namespace Tour_Planner.ViewModels
@@ -46,7 +47,7 @@ namespace Tour_Planner.ViewModels
         public RelayCommand OpenAddTourWindow { get; set; }
         public RelayCommand OpenAddLogWindow { get; set; }
 
-
+        public Tour selectedTour;
     
         public MainViewModel(TourListViewModel tourList, TourLogsViewModel tourLogs, TourDetailsViewModel tourDetails, SearchBarViewModel searchBar)    
         {
@@ -59,7 +60,7 @@ namespace Tour_Planner.ViewModels
             AddTourToList = new AddTourToListViewModel();
             tourController = new TourController();
 
-
+            this.selectedTour = TourList.SelectedTour;
    
            // Logs = TourLogs.DataLogs;
             tmpTour = new Tour();

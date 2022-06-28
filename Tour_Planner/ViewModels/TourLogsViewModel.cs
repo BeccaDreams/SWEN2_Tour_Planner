@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Tour_Planner.Views;
 using System.Collections.ObjectModel;
 using Shared.Models;
-using Tour_Planner_BL;
 using System.Windows;
 using System.Windows.Input;
+using Tour_Planner_BL.Controller;
 
 namespace Tour_Planner.ViewModels
 {

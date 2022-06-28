@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Tour_Planner_DAL;
 using Shared.Models;
 
-namespace Tour_Planner_BL
+namespace Tour_Planner_BL.Controller
 {
     public class TourController
     {
@@ -31,10 +31,10 @@ namespace Tour_Planner_BL
 
 
         //public bool Controller_addTour( Tour newTour )
-       // {
-       //     var added = handler.addTour(newTour);
-       //     return added;
-       //}
+        // {
+        //     var added = handler.addTour(newTour);
+        //     return added;
+        //}
 
         public List<Tour> Controller_searchTour(string searchTerm)
         {

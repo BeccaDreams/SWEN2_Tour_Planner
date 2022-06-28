@@ -7,6 +7,7 @@ using Tour_Planner.Views;
 using Shared.Models;
 using System.Collections.ObjectModel;
 using System.Windows;
+using Tour_Planner_BL;
 
 namespace Tour_Planner.ViewModels
 {

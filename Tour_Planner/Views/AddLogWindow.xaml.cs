@@ -10,26 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Tour_Planner.Views
 {
     /// <summary>
-    /// Interaktionslogik für TourList.xaml
+    /// Interaktionslogik für AddLogWindow.xaml
     /// </summary>
-    public partial class TourListView : UserControl
+    public partial class AddLogWindow : Window
     {
-        public TourListView()
+        public AddLogWindow()
         {
             InitializeComponent();
         }
-
-        private void AddTourWin(object sender, RoutedEventArgs e)
-        {
-            AddTourWindow win2 = new AddTourWindow();
-            win2.Show();
-        }
-        
     }
 }

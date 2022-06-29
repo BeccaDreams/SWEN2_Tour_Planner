@@ -68,6 +68,7 @@ namespace Tour_Planner.ViewModels
                 Open_AddTourWindow();
 
             });
+
         }
 
         public void Open_AddTourWindow()

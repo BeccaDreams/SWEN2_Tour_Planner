@@ -29,14 +29,15 @@ namespace Tour_Planner.ViewModels
         public TourDetailsViewModel TourDetails;
         public SearchBarViewModel SearchBar;
         public AddTourToListViewModel AddTourToList;
+        public AddLogToTourViewModel AddLogToTourList;
 
-        Tour tmpTour;
+        //Tour tmpTour;
 
-        Window win1, win2;
+        // Window win1, win2;
 
         public RelayCommand AddNewTourCommand { get; set; }
-       
-       
+        public RelayCommand AddNewLogCommand { get; set; }
+
         public ObservableCollection<Tour> TourItems { get; set; }
             = new ObservableCollection<Tour>();
 
@@ -59,12 +60,14 @@ namespace Tour_Planner.ViewModels
             TourDetails = tourDetails;
             SearchBar = searchBar;
             AddTourToList = new AddTourToListViewModel();
+            AddLogToTourList = new AddLogToTourViewModel();
+           
             tourController = new TourController();
 
             this.selectedTour = TourList.SelectedTour;
 
             TourList.PropertyChanged += SelectedItem_PropertyChanged;
-            tmpTour = new Tour();
+            //tmpTour = new Tour();
 
             
 
@@ -76,7 +79,7 @@ namespace Tour_Planner.ViewModels
             if(e.PropertyName == "SelectedTour")
             {
                 showDetails();
-                showLogs();
+               // showLogs();
             }
         }
 
@@ -85,6 +88,9 @@ namespace Tour_Planner.ViewModels
             TourDetails.Title = TourList.SelectedTour.Name;
             TourDetails.DetailDescription = TourList.SelectedTour.Description;
             TourDetails.RouteInformation = TourList.SelectedTour.RouteInformation;
+            TourLogs.LoadLogs(TourList.SelectedTour.Id);
+            TourLogs.EnableAddWindow();
+            AddLogToTourList.TourId = TourList.SelectedTour.Id;
         }
 
         public void showLogs()

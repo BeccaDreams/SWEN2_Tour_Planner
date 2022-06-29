@@ -85,6 +85,7 @@ namespace Tour_Planner.ViewModels
 
         public void showDetails()
         {
+            TourList.EnableEditAndDeleteWindow();
             TourDetails.Title = TourList.SelectedTour.Name;
             TourDetails.DetailDescription = TourList.SelectedTour.Description;
             TourDetails.RouteInformation = TourList.SelectedTour.RouteInformation;

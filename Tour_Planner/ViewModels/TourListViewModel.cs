@@ -25,8 +25,21 @@ namespace Tour_Planner.ViewModels
                 OnPropertyChanged(nameof(SelectedTour));
             }
         }
-            
-        
+
+        private bool _isEnabled;
+        public bool IsEnabled
+        {
+            get
+            {
+                return _isEnabled;
+            }
+            set
+            {
+                _isEnabled = value;
+                OnPropertyChanged("IsEnabled");
+            }
+        }
+
         public ObservableCollection<Tour> TourNames { get; set; }
 
         TourController _tourController;
@@ -46,8 +59,11 @@ namespace Tour_Planner.ViewModels
 
         }
 
-        
-        
+        public void EnableEditAndDeleteWindow()
+        {
+            IsEnabled = true;
+        }
+
         public void DisplaySearchResult(string searchText)
         {
             

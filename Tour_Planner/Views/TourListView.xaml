@@ -25,8 +25,8 @@
             <Label FontSize="13" FontWeight="Bold">Tours:</Label>
             <Button Width="25" Content="+"  Command="{Binding OpenAddTourWindow}" ></Button>
             <!-- Click="AddTourWin" -->
-            <Button Width="25" Content="-"></Button>
-            <Button Width="25" Content="Edit"></Button>
+            <Button Width="25" Content="-" Command="{Binding DeleteTourCommand}" IsEnabled="{Binding IsEnabled}"></Button>
+            <Button Width="25" Content="Edit" Command="{Binding EditTourCommand}" IsEnabled="{Binding IsEnabled}"></Button>
         </StackPanel>
        
         <!--

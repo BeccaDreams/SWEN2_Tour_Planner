@@ -9,6 +9,7 @@
              mc:Ignorable="d" 
              
              d:DesignHeight="450" d:DesignWidth="800">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -26,7 +27,12 @@
             <Button Width="25" Content="+"  Command="{Binding OpenAddTourWindow}" ></Button>
             <!-- Click="AddTourWin" -->
             <Button Width="25" Content="-" Command="{Binding DeleteTourCommand}" IsEnabled="{Binding IsEnabled}"></Button>
-            <Button Width="25" Content="Edit" Command="{Binding EditTourCommand}" IsEnabled="{Binding IsEnabled}"></Button>
+            <Button Width="25" Content="[]" Command="{Binding EditTourCommand}" IsEnabled="{Binding IsEnabled}"></Button>
+            <Button Width="Auto" Content="Report" Command="{Binding TourReport}" IsEnabled="{Binding IsEnabled}"></Button>
+            <Button Width="Auto" Content="SumReport" Command="{Binding SummarizeReport}" IsEnabled="{Binding IsEnabled}"></Button>
+
+
+
         </StackPanel>
        
         <!--
@@ -36,7 +42,9 @@
             </DataGrid.Columns>
         </DataGrid> -->
 
-        <ListView Grid.Row="1" Grid.RowSpan="5" ItemsSource="{Binding TourNames}" SelectedItem="{Binding SelectedTour, UpdateSourceTrigger=PropertyChanged}">
+        <ListView Grid.Row="1" Grid.RowSpan="5" Height="270" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Visible"
+          ScrollViewer.CanContentScroll="True" ItemsSource="{Binding TourNames}" SelectedItem="{Binding SelectedTour, UpdateSourceTrigger=PropertyChanged}">
+
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -55,4 +63,5 @@
             </ListView.View>
         </ListView>
     </Grid>
+
 </UserControl>

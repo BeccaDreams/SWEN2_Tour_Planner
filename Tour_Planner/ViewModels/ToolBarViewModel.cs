@@ -22,8 +22,6 @@ namespace Tour_Planner.ViewModels
 
         public ICommand ExportFile { get; set; }
         public ICommand ImportFile { get; set; }
-        //public ICommand TourReport { get; set; }
-        //public ICommand SummarizeReport { get; set; }
         public ICommand OpenFaqWindow { get; set; }
         
         public ToolBarViewModel()
@@ -43,16 +41,6 @@ namespace Tour_Planner.ViewModels
             _tourController.Controller_import();
         }
 
-        /*public void GenerateTourReport()
-        {
-            _reportController.GenerateTourReport(_tour);
-        }
-
-        public void GenerateSummarizeReport()
-        {
-            _reportController.GenerateSummarizeReport();
-        }*/
-
         public void Open_FaqWindow()
         {
             this.win3 = new FaqWindow();
@@ -70,16 +58,6 @@ namespace Tour_Planner.ViewModels
             {
                 ImportTourFile();
             });
-
-            /*TourReport = new RelayCommand((_) =>
-            {
-                GenerateTourReport();
-            });
-
-            SummarizeReport = new RelayCommand((_) =>
-            {
-                GenerateSummarizeReport();
-            });*/
 
             OpenFaqWindow = new RelayCommand((_) =>
             {

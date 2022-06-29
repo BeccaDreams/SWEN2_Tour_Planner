@@ -34,7 +34,7 @@ namespace Tour_Planner.Commands
         public override async void Execute(object parameter)
         {
             string routeType = SetTransportType(_newTourData.TransportType);
-            _tour = new Tour(_newTourData.Name, _newTourData.Description, _newTourData.From, _newTourData.To, _newTourData.TransportType, _newTourData.Distance, _newTourData.Time, _newTourData.RouteInformation);
+            _tour = new Tour(_newTourData.Name, _newTourData.Description, _newTourData.From, _newTourData.To, routeType, _newTourData.Distance, _newTourData.Time, _newTourData.RouteInformation);
             try
             {
                 _tourController.Controller_addTour(_tour);

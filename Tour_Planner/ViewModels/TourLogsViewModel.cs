@@ -9,6 +9,7 @@ using Shared.Models;
 using System.Windows;
 using System.Windows.Input;
 using Tour_Planner_BL.Controller;
+using Tour_Planner.Commands;
 
 namespace Tour_Planner.ViewModels
 {
@@ -20,25 +21,31 @@ namespace Tour_Planner.ViewModels
         public LogController _logController;
         Window win2;
 
+        private TourLog _selectedLog;
+        public TourLog SelectedLog
+        {
+            get { return _selectedLog; }
+            set
+            {
+                _selectedLog = value;
+                OnPropertyChanged(nameof(SelectedLog));
+            }
+        }
+
         public ICommand OpenAddLogWindow { get; set; }
+        public ICommand DeleteSelectedItem { get; set; }
 
         public TourLogsViewModel()
         {
             _logController = new LogController();
             _logList = new List<TourLog>();
-            LoadLogs();
+
             SetCommands();
         }
 
-        private void LoadLogs()
+        public void LoadLogs(int id)
         {
-            //DataLogs.Clear();
-            //DataLogs.Add(new TourLog("13.12.22", "12min", 2, "22km", 4));
-            //DataLogs.Add(new TourLog("12.12.22", "12min", 3, "22km", 3));
-            //DataLogs.Add(new TourLog("11.12.22", "12min", 1, "22km", 5));
-
-            //hier selecteditem einfügen
-            _logList = _logController.Controller_getTourLogsByTourId(1);
+            _logList = _logController.Controller_getTourLogsByTourId(id);
             DataLogs = new ObservableCollection<TourLog>(_logList);
         }
 
@@ -55,6 +62,8 @@ namespace Tour_Planner.ViewModels
                 Open_AddLogWindow();
 
             });
+
+            DeleteSelectedItem = new DeleteLogCommand(this.SelectedLog);
         }
 
 

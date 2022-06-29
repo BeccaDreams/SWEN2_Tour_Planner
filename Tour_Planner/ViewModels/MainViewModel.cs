@@ -76,6 +76,7 @@ namespace Tour_Planner.ViewModels
             if(e.PropertyName == "SelectedTour")
             {
                 showDetails();
+                showLogs();
             }
         }
 
@@ -86,6 +87,10 @@ namespace Tour_Planner.ViewModels
             TourDetails.RouteInformation = TourList.SelectedTour.RouteInformation;
         }
 
+        public void showLogs()
+        {
+            TourLogs.LoadLogs(TourList.SelectedTour.Id);
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

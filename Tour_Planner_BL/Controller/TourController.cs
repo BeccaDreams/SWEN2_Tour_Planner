@@ -30,12 +30,6 @@ namespace Tour_Planner_BL.Controller
         }
 
 
-        //public bool Controller_addTour( Tour newTour )
-        // {
-        //     var added = handler.addTour(newTour);
-        //     return added;
-        //}
-
         public List<Tour> Controller_searchTour(string searchTerm)
         {
             return handler.searchTour(searchTerm);

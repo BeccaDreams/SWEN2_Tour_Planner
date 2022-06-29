@@ -27,7 +27,7 @@
             <StackPanel Orientation="Vertical" Grid.Row="1" Grid.RowSpan="2">
             <TabControl>
                 <TabItem FontSize="12" FontWeight="Bold" Header="Route" x:Name="Route">
-                    <Image Source="{Binding RouteInformation}" >
+                    <Image Source="{Binding RouteInformation}" Margin="200" >
 
                     </Image>
                 </TabItem>

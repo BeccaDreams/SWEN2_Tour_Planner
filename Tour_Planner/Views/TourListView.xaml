@@ -30,6 +30,9 @@
             <Button Width="25" Content="[]" Command="{Binding EditTourCommand}" IsEnabled="{Binding IsEnabled}"></Button>
             <Button Width="Auto" Content="Report" Command="{Binding TourReport}" IsEnabled="{Binding IsEnabled}"></Button>
             <Button Width="Auto" Content="SumReport" Command="{Binding SummarizeReport}" IsEnabled="{Binding IsEnabled}"></Button>
+
+
+
         </StackPanel>
        
         <!--
@@ -38,8 +41,10 @@
                 <DataGridTextColumn Binding="{Binding Name}" Header="Tourname" Width="Auto"/>
             </DataGrid.Columns>
         </DataGrid> -->
+
         <ListView Grid.Row="1" Grid.RowSpan="5" Height="270" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Visible"
           ScrollViewer.CanContentScroll="True" ItemsSource="{Binding TourNames}" SelectedItem="{Binding SelectedTour, UpdateSourceTrigger=PropertyChanged}">
+
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>

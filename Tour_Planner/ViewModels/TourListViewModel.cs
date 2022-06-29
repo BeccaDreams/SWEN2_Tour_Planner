@@ -29,8 +29,21 @@ namespace Tour_Planner.ViewModels
                 OnPropertyChanged(nameof(SelectedTour));
             }
         }
-            
-        
+
+        private bool _isEnabled;
+        public bool IsEnabled
+        {
+            get
+            {
+                return _isEnabled;
+            }
+            set
+            {
+                _isEnabled = value;
+                OnPropertyChanged("IsEnabled");
+            }
+        }
+
         public ObservableCollection<Tour> TourNames { get; set; }
 
         public ICommand OpenAddTourWindow { get; set; }
@@ -57,8 +70,11 @@ namespace Tour_Planner.ViewModels
 
         }
 
-        
-        
+        public void EnableEditAndDeleteWindow()
+        {
+            IsEnabled = true;
+        }
+
         public void DisplaySearchResult(string searchText)
         {
             
@@ -80,6 +96,7 @@ namespace Tour_Planner.ViewModels
 
             });
 
+
             TourReport = new RelayCommand((_) =>
             {
                 GenerateTourReport();
@@ -100,6 +117,7 @@ namespace Tour_Planner.ViewModels
         public void GenerateSummarizeReport()
         {
             _reportController.GenerateSummarizeReport();
+
         }
 
         public void Open_AddTourWindow()

@@ -23,32 +23,36 @@ namespace Tour_Planner.Commands
 
         public AddNewLogCommand(AddLogToTourViewModel newLogData)
         {
-
             _newLogData = newLogData;
             _logController = new LogController();
-            _logger = LoggerFactory.GetLogger("AddNewTourCommand");
+            _logger = LoggerFactory.GetLogger("AddNewLogCommand");
 
             _newLogData.PropertyChanged += OnViewModelPropertyChanged;
         }
 
-        //Wenn Name, From und To vorhanden sind, dann wird der Button aktiv
+      
         private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if ((e.PropertyName == nameof(AddLogToTourViewModel.LogDate)) || (e.PropertyName == nameof(AddLogToTourViewModel.Difficulty)) || (e.PropertyName == nameof(AddLogToTourViewModel.Rating)))
-            {
-                OnCanExecutedChanged();
-            }
+           OnCanExecutedChanged();
         }
 
 
         public override async void Execute(object parameter)
         {
-
+            _newLogData.TotalTime = TimeSpan.Parse(_newLogData.Duration);
 
             _log = new TourLog(_newLogData.LogDate, _newLogData.Comment, _newLogData.Difficulty, _newLogData.TotalTime, _newLogData.Rating, _newLogData.TourId);
             try
             {
-                _logController.Controller_addTourLog(_log.TourId, _log);
+                added = _logController.Controller_addTourLog(_log.TourId, _log);
+                if (added)
+                {
+                    _logger.Debug("Added new log.");
+                }
+                else
+                {
+                    _logger.Debug("Failed adding log.");
+                }
 
             }
             catch (Exception ex)
@@ -58,10 +62,9 @@ namespace Tour_Planner.Commands
         }
 
 
-
-        //public override bool CanExecute(object parameter)
-        //{
-        //   // return !(_newLogData.LogDate) && !string.IsNullOrEmpty(_newLogData.Difficulty) && !string.IsNullOrEmpty(_newLogData.Rating) && base.CanExecute(parameter);
-        //}
+        public override bool CanExecute(object parameter)
+        {
+             return base.CanExecute(parameter);
+        }
     }
 }

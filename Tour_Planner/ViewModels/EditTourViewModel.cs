@@ -1,20 +1,16 @@
-﻿using System;
+﻿using Shared.Models;
+using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
-using Shared.Models;
 using Tour_Planner.Commands;
 
 namespace Tour_Planner.ViewModels
 {
-    public class AddTourToListViewModel : BaseModel
+    public class EditTourViewModel : BaseModel
     {
-        public event Action SubmitCommandEvent;
-
 
         private string _name;
         public string Name
@@ -33,7 +29,7 @@ namespace Tour_Planner.ViewModels
             get { return _description; }
             set
             {
-                _description = value; 
+                _description = value;
                 OnPropertyChanged(nameof(Description));
             }
         }
@@ -104,34 +100,13 @@ namespace Tour_Planner.ViewModels
             }
         }
 
-        public ICommand SubmitCommand { get; set; }
+        public ICommand Edit_TourCommand { get; set; }
 
-
-        public AddTourToListViewModel()
+        public EditTourViewModel()
         {
-
-            SubmitCommand = new AddNewTourCommand(this);
-
-
+            Edit_TourCommand = new EditTourCommand(this);
         }
 
-
-        private void createTour()
-        {
-            //tour = new Tour();
-            //tour.Name = AddNewTourName;
-            //tour.From = AddNewFrom;
-            //tour.To = AddNewTo;
-            //tour.TransportType = AddNewTransportType;
-            //tour.Description = AddNewDescription;
-            //tour.RouteInformation = "placeholder";
-        }
-
-
-        public void AddNewTour()
-        {
-
-        }
 
 
     }

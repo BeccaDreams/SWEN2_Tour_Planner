@@ -57,11 +57,11 @@ namespace Tour_Planner.ViewModels
             }
         }
 
-        public RelayCommand GetOnSelectedItem;
+        
 
         public TourDetailsViewModel()
         {
-           //RelayCommand
+           
         }
 
 

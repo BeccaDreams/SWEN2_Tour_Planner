@@ -64,7 +64,6 @@ namespace Tour_Planner.ViewModels
             this.selectedTour = TourList.SelectedTour;
 
             TourList.PropertyChanged += SelectedItem_PropertyChanged;
-           // Logs = TourLogs.DataLogs;
             tmpTour = new Tour();
 
             

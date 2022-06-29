@@ -1,15 +1,17 @@
-﻿using System;
+﻿using Shared.Models;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Tour_Planner.Commands;
 
-namespace Shared.Models
+namespace Tour_Planner.ViewModels
 {
-    public class TourLog : BaseModel
+    public class AddLogToTourViewModel : BaseModel
     {
+
         private int? _id;
         private DateOnly _logDate;
         private string _comment;
@@ -18,10 +20,6 @@ namespace Shared.Models
         private int _rating;
         private int _tourId;
 
-       
-        public TourLog()
-        { 
-        }
 
         public int Id
         {
@@ -38,8 +36,8 @@ namespace Shared.Models
                     Console.WriteLine(ex);
                 }
             }
-        } 
-        
+        }
+
         public DateOnly LogDate
         {
             get { return _logDate; }
@@ -56,7 +54,7 @@ namespace Shared.Models
                 }
             }
         }
-        
+
         public string Comment
         {
             get { return _comment; }
@@ -73,7 +71,7 @@ namespace Shared.Models
                 }
             }
         }
-        
+
         public int Difficulty
         {
             get { return _difficulty; }
@@ -89,8 +87,8 @@ namespace Shared.Models
                     Console.WriteLine(ex);
                 }
             }
-        }  
-        
+        }
+
         public TimeSpan TotalTime
         {
             get { return _totalTime; }
@@ -107,7 +105,7 @@ namespace Shared.Models
                 }
             }
         }
-        
+
         public int Rating
         {
             get { return _rating; }
@@ -123,8 +121,8 @@ namespace Shared.Models
                     Console.WriteLine(ex);
                 }
             }
-        } 
-        
+        }
+
         public int TourId
         {
             get { return _tourId; }
@@ -142,16 +140,16 @@ namespace Shared.Models
             }
         }
 
-        public TourLog(DateOnly date, string comment, int difficulty, TimeSpan totalTime, int rating, int tourId)
+
+
+
+
+
+        public ICommand SubmitCommand { get; }
+
+        public AddLogToTourViewModel()
         {
-            LogDate = date;
-            Comment = comment;
-            Difficulty = difficulty;
-            TimeSpan TotalTime = totalTime;
-            Rating = rating;
-            TourId = tourId;
+            SubmitCommand = new AddNewLogCommand(this);
         }
-
-
     }
 }

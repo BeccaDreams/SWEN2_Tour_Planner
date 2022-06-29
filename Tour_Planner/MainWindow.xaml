@@ -79,7 +79,7 @@
                 CornerRadius="6,6,6,6"
                 Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2">
 			<StackPanel >
-				<local:TourDetailsView x:Name="TourDetails" />
+				<local:TourDetailsView x:Name="TourDetails" DataContext="{Binding TourDetails}"/>
 			</StackPanel>
 		</Border>
         

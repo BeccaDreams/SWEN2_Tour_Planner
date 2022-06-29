@@ -19,13 +19,42 @@ namespace Tour_Planner.ViewModels
                 try
                 {
                     _title = value;
-                    OnPropertyChanged("Title");
+                    OnPropertyChanged(nameof(Title));
                 }
                 catch (StackOverflowException e)
                 {
                     Console.WriteLine(e);
                 }
                 }
+        }
+
+        private string _detailDescription;
+        public string DetailDescription
+        {
+            get { return _detailDescription; }
+            set
+            {
+                try
+                {
+                    _title = value;
+                    OnPropertyChanged(nameof(DetailDescription));
+                }
+                catch (StackOverflowException e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+        }
+
+        private string _routeInformation;
+        public string RouteInformation
+        {
+            get { return _routeInformation; }
+            set
+            {
+                _routeInformation = value;
+                OnPropertyChanged(nameof(RouteInformation));
+            }
         }
 
         public RelayCommand GetOnSelectedItem;

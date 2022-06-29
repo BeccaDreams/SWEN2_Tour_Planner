@@ -93,7 +93,7 @@
                 Grid.Column="1"
                 Grid.ColumnSpan="3">
 			<StackPanel>
-				<local:TourLogsView x:Name="TourLogs" DataContext="{Binding TourDetails}"/>
+				<local:TourLogsView x:Name="TourLogs" DataContext="{Binding TourLogs}"/>
 			</StackPanel>
 		</Border>
        

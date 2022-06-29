@@ -13,7 +13,6 @@ using Tour_Planner_BL;
 using System.Windows.Input;
 using Shared.Models;
 using Tour_Planner_BL.Controller;
-//using Tour_Planner.SearchEngine;
 
 namespace Tour_Planner.ViewModels
 {
@@ -48,6 +47,8 @@ namespace Tour_Planner.ViewModels
         public RelayCommand OpenAddLogWindow { get; set; }
 
         public Tour selectedTour;
+       
+        
     
         public MainViewModel(TourListViewModel tourList, TourLogsViewModel tourLogs, TourDetailsViewModel tourDetails, SearchBarViewModel searchBar)    
         {
@@ -61,7 +62,8 @@ namespace Tour_Planner.ViewModels
             tourController = new TourController();
 
             this.selectedTour = TourList.SelectedTour;
-   
+
+            TourList.PropertyChanged += SelectedItem_PropertyChanged;
            // Logs = TourLogs.DataLogs;
             tmpTour = new Tour();
 
@@ -70,6 +72,20 @@ namespace Tour_Planner.ViewModels
         }
 
        
+        private void SelectedItem_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == "SelectedTour")
+            {
+                showDetails();
+            }
+        }
+
+        public void showDetails()
+        {
+            TourDetails.Title = TourList.SelectedTour.Name;
+            TourDetails.DetailDescription = TourList.SelectedTour.Description;
+            TourDetails.RouteInformation = TourList.SelectedTour.RouteInformation;
+        }
 
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -19,7 +19,6 @@ namespace Shared.Models
         private double _distance;
         private TimeSpan _time;
         private string _routeInformation;
-        private string _imgLocation;
 
         public Tour()
         {
@@ -200,22 +199,6 @@ namespace Shared.Models
             }
         }
 
-        public string ImgLocation
-        {
-            get { return _imgLocation; }
-            set
-            {
-                try
-                {
-                    _imgLocation = value;
-                    OnPropertyChanged("ImgLocation");
-                }
-                catch (StackOverflowException e)
-                {
-                    Console.WriteLine(e);
-                }
-
-            }
-        }
+        
     }
 }

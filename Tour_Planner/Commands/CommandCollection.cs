@@ -39,26 +39,20 @@ namespace Tour_Planner.Commands
         public override async void Execute(object parameter)
         {
             string routeType = SetTransportType(_newTourData.TransportType);
-            _newTourData.ImgLocation = await _client.GetMapQuestStaticMap(_newTourData.From, _newTourData.To, routeType);
+           // _newTourData.RouteInformation = await _client.GetMapQuestStaticMap(_newTourData.From, _newTourData.To, routeType);
+           // _newTourData.Distance = await _client.GetDistance(_newTourData.From, _newTourData.To, routeType);
+            _newTourData.Time = new TimeSpan (03, 30, 00);
             //    _newTourData.Distance = _client.GetDistance();
             _tour = new Tour(_newTourData.Name, _newTourData.Description, _newTourData.From, _newTourData.To, _newTourData.TransportType, _newTourData.Distance, _newTourData.Time, _newTourData.RouteInformation);
-            //try
-            //{
-            //    added = _tourController.Controller_addTour(_tour);
-            //    if (added)
-            //    {
-            //        _logger.Debug("New Tour added");
-            //    }
-            //    else
-            //    {
-            //        _logger.Error("Exception adding Tour!");
-            //    }
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    _logger.Error("Exception adding Tour: " + ex.Message);
-            //}
+            try
+            {
+                _tourController.Controller_addTour(_tour);
+               
+            }
+            catch (Exception ex)
+            {
+                _logger.Error("Exception adding Tour: " + ex.Message);
+            }
         }
 
         public string SetTransportType(string transportType)

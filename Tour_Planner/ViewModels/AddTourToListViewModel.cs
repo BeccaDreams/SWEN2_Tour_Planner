@@ -104,17 +104,6 @@ namespace Tour_Planner.ViewModels
             }
         }
 
-        private string _imgLocation;
-        public string ImgLocation
-        {
-            get { return _imgLocation; }
-            set
-            {
-                _routeInformation = value;
-                
-            }
-        }
-
         public ICommand SubmitCommand { get; }
 
 

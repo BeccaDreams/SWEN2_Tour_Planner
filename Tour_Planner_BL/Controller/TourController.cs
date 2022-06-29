@@ -37,7 +37,6 @@ namespace Tour_Planner_BL.Controller
 
         public async void Controller_addTour(Tour newTour)
         {
-
             var direction = await mapQuestClient.GetMapQuestDirection(newTour.From, newTour.To, newTour.TransportType);
             var map = await mapQuestClient.GetMapQuestStaticMap(direction);
 

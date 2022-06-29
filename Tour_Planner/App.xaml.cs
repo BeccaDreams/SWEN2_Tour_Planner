@@ -20,6 +20,7 @@ namespace Tour_Planner
             var tourLogs = new TourLogsViewModel();
             var tourDetails = new TourDetailsViewModel();
             var searchBar = new SearchBarViewModel();
+            var toolBar = new ToolBarViewModel();
 
 
             MainWindow = new MainWindow()
@@ -28,7 +29,8 @@ namespace Tour_Planner
                 TourList = { DataContext = tourList },
                 SearchBar = { DataContext = searchBar },
                 TourLogs = { DataContext = tourLogs },
-                TourDetails = { DataContext = tourDetails }
+                TourDetails = { DataContext = tourDetails },
+                ToolBar = { DataContext = toolBar }
             };
             MainWindow.Show();
         }

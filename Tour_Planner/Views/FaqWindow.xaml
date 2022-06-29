@@ -1,0 +1,70 @@
+﻿<Window x:Class="Tour_Planner.Views.FaqWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tour_Planner.Views"
+        mc:Ignorable="d"
+        Title="FaqWindow" Height="450" Width="800"
+        MinWidth="450"
+        MinHeight="450"
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="CanResizeWithGrip"
+        Background="White"
+        x:Name="Faq_Window">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+      
+            <Border Background="LightGray"
+                BorderBrush="LightGray"
+                BorderThickness="2"
+                CornerRadius="3,3,3,3"
+                Grid.Row="0"
+          
+                Height="50"
+                Margin="0,0,0,5">
+                <Label Grid.Row="0" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  Content="Frequently Asked Questions(FAQ)"></Label>
+            </Border>
+            
+            <StackPanel Grid.Row="1" Margin="5,0,0,15">
+                <TextBlock FontSize="15" FontWeight="Bold">1. What is the need for tour planner?</TextBlock>
+                <TextBlock FontSize="15" TextWrapping="Wrap">The main goal  of tour Planner is to help the user managing the logs and statistical data of already accomplished (bike-, hike- or ride-) tours.</TextBlock>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Margin="5,0,0,15">
+                <TextBlock FontSize="15" FontWeight="Bold">2. Do I have to register myself to use tour planner? </TextBlock>
+                <TextBlock FontSize="15" TextWrapping="Wrap">No, everone is allowed to use tour planner without user management, registeration, login.. etc.</TextBlock>
+            </StackPanel>
+            <StackPanel Grid.Row="3" Margin="5,0,0,15">
+                <TextBlock FontSize="15" FontWeight="Bold">3. How can I add a tour?</TextBlock>
+                <TextBlock FontSize="15" TextWrapping="Wrap">Click on the plus sign in the tour list on the left side of the window then you will be redirected to add tour window, that allows you to add a new tour.</TextBlock>
+            </StackPanel>
+            <StackPanel Grid.Row="4" Margin="5,0,0,15">
+                <TextBlock FontSize="15" FontWeight="Bold">4. How can I edit my tours?</TextBlock>
+                <TextBlock FontSize="15" TextWrapping="Wrap">Click on the Edit button in the tour list on the left side of the window then you will be redirected to edit tour window, that allows you to edit an existing tour.</TextBlock>
+            </StackPanel>
+            <StackPanel Grid.Row="5" Margin="5,0,0,15">
+                <TextBlock FontSize="15" FontWeight="Bold">5. Can I generate tour report?</TextBlock>
+                <TextBlock FontSize="15" TextWrapping="Wrap">Yes, you can mainly generate two types of reports, a tour-report which contains all information of a single tour and all its associated tour-logs and a summarize-report for statistical analysis, which for each tour provides the average time, -distance and rating over all associated tour-logs. By clicking on Report item in the tool bar you will be able to choose the type of report you wish.</TextBlock>
+            </StackPanel>
+            <StackPanel Grid.Row="6" Margin="5,0,0,15">
+                <TextBlock FontSize="15" FontWeight="Bold">6. Can I export and import files?</TextBlock>
+                <TextBlock FontSize="15" TextWrapping="Wrap">Yes, by clicking on file item in the tool bar you will be able to export and import files.</TextBlock>
+            </StackPanel>
+            <StackPanel Grid.Row="7" Margin="5,0,0,10">
+                <TextBlock FontSize="15" FontWeight="Bold">7. Can I search among the tours?</TextBlock>
+                <TextBlock FontSize="15" TextWrapping="Wrap">Yes, our tour planner provides a full-text search in tour and tour-log data.</TextBlock>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+   
+</Window>

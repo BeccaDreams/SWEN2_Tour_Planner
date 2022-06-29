@@ -9,14 +9,13 @@ using Tour_Planner.Commands;
 
 namespace Tour_Planner.ViewModels
 {
-    public class AddLogToTourViewModel : BaseModel
+    public class EditLogViewModel : BaseModel
     {
 
         private int? _id;
         private DateOnly _logDate;
         private string _comment;
         private int _difficulty;
-        private string _duration;
         private TimeSpan _totalTime;
         private int _rating;
         private int _tourId;
@@ -90,23 +89,6 @@ namespace Tour_Planner.ViewModels
             }
         }
 
-        public string Duration
-        {
-            get { return _duration; }
-            set
-            {
-                try
-                {
-                    _duration = value;
-                    OnPropertyChanged(nameof(Duration));
-                   
-                }
-                catch(Exception ex)
-                {
-                    Console.WriteLine(ex);
-                }
-            }
-        }
         public TimeSpan TotalTime
         {
             get { return _totalTime; }
@@ -115,6 +97,7 @@ namespace Tour_Planner.ViewModels
                 try
                 {
                     _totalTime = value;
+                    OnPropertyChanged("TotalTime");
                 }
                 catch (Exception ex)
                 {
@@ -148,7 +131,7 @@ namespace Tour_Planner.ViewModels
                 try
                 {
                     _tourId = value;
-                    //OnPropertyChanged("TourId");
+                    OnPropertyChanged("TourId");
                 }
                 catch (Exception ex)
                 {
@@ -157,14 +140,12 @@ namespace Tour_Planner.ViewModels
             }
         }
 
-
-        public ICommand SubmitLogCommand { get; }
-
-        public AddLogToTourViewModel()
+        public ICommand EditCommand { get; set; }
+        public EditLogViewModel()
         {
-            SubmitLogCommand = new AddNewLogCommand(this);
-
-
+            EditCommand = new EditLogCommand(this);
         }
+
+
     }
 }

@@ -30,12 +30,13 @@
                     <MenuItem Header="Paste"/>
                     <MenuItem Header="Delete"/>
                 </MenuItem>
-            </Menu> 
+            </Menu>
 
             <Menu>
-                <MenuItem Header="Reports">
-                    <MenuItem Header="Tour Report" x:Name="tourReport" Click="tourReport_Click" Command="{Binding TourReport}"/>
-                    <MenuItem Header="Summarize Report" x:Name="summarizeReport" Click="summarizeReport_Click" Command="{Binding SummarizeReport}"/>
+                <MenuItem Header="Options">
+                    <MenuItem Header="OptionsItem1"/>
+                    <MenuItem Header="OptionsItem2"/>
+                    <MenuItem Header="OptionsItem3"/>
                 </MenuItem>
             </Menu>
 

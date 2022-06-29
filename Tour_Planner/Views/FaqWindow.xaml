@@ -54,7 +54,7 @@
             </StackPanel>
             <StackPanel Grid.Row="5" Margin="5,0,0,15">
                 <TextBlock FontSize="15" FontWeight="Bold">5. Can I generate tour report?</TextBlock>
-                <TextBlock FontSize="15" TextWrapping="Wrap">Yes, you can mainly generate two types of reports, a tour-report which contains all information of a single tour and all its associated tour-logs and a summarize-report for statistical analysis, which for each tour provides the average time, -distance and rating over all associated tour-logs. By clicking on Report item in the tool bar you will be able to choose the type of report you wish.</TextBlock>
+                <TextBlock FontSize="15" TextWrapping="Wrap">Yes, you can mainly generate two types of reports, a tour-report which contains all information of a single tour and all its associated tour-logs and a summarize-report for statistical analysis, which for each tour provides the average time, -distance and rating over all associated tour-logs. These two options can be found on the top of the tour list on the left side of the application.</TextBlock>
             </StackPanel>
             <StackPanel Grid.Row="6" Margin="5,0,0,15">
                 <TextBlock FontSize="15" FontWeight="Bold">6. Can I export and import files?</TextBlock>

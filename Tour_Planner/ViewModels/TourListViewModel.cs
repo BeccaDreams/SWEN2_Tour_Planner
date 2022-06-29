@@ -16,6 +16,10 @@ namespace Tour_Planner.ViewModels
     {
         private List<Tour> _tourList;
         private Tour _selectedTour;
+        Tour_Planner_BL.ReportController _reportController;
+        TourController _tourController;
+        Window win1;
+
         public Tour SelectedTour
         {
             get { return _selectedTour; }
@@ -29,10 +33,11 @@ namespace Tour_Planner.ViewModels
         
         public ObservableCollection<Tour> TourNames { get; set; }
 
-        TourController _tourController;
-        Window win1;
-
         public ICommand OpenAddTourWindow { get; set; }
+        public ICommand TourReport{ get; set; }
+        public ICommand SummarizeReport { get; set; }
+        public ICommand EditTourCommand { get; set; }
+        
 
         public TourListViewModel()
         {
@@ -40,6 +45,8 @@ namespace Tour_Planner.ViewModels
            // subscribe.AddNewTourEvent += LoadTours();
             _tourController = new TourController();
             _tourList = new List<Tour>();
+            _reportController = new Tour_Planner_BL.ReportController();
+
 
             var tour = new Tour { Name = "Vienna to Graz", Description = "Descrition 28.06.2022", From = "Vienna", To = "Graz", TransportType = "fastest" };
             var tourController = new TourController();
@@ -72,6 +79,27 @@ namespace Tour_Planner.ViewModels
                 Open_AddTourWindow();
 
             });
+
+            TourReport = new RelayCommand((_) =>
+            {
+                GenerateTourReport();
+            });
+
+            SummarizeReport = new RelayCommand((_) =>
+            {
+                GenerateSummarizeReport();
+            });
+
+        }
+
+        public void GenerateTourReport()
+        {
+            _reportController.GenerateTourReport(SelectedTour);
+        }
+
+        public void GenerateSummarizeReport()
+        {
+            _reportController.GenerateSummarizeReport();
         }
 
         public void Open_AddTourWindow()

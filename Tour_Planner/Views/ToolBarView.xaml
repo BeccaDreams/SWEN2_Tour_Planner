@@ -13,12 +13,12 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
+        
         <ToolBar>
             <Menu IsMainMenu="True">
                 <MenuItem Header="File">
-                    <MenuItem Header="Export" x:Name="export" Click="export_Click"/>
-                    <MenuItem Header="Import" x:Name="import" Click="import_Click"/>
+                    <MenuItem Header="Export" x:Name="export" Click="export_Click" Command="{Binding ExportFile}"/>
+                    <MenuItem Header="Import" x:Name="import" Click="import_Click" Command="{Binding ImportFile}"/>
                     <MenuItem Header="Exit"/>
                 </MenuItem>
             </Menu>
@@ -34,14 +34,14 @@
 
             <Menu>
                 <MenuItem Header="Reports">
-                    <MenuItem Header="Tour Report" x:Name="tourReport" Click="tourReport_Click"/>
-                    <MenuItem Header="Summarize Report" x:Name="summarizeReport" Click="summarizeReport_Click"/>
+                    <MenuItem Header="Tour Report" x:Name="tourReport" Click="tourReport_Click" Command="{Binding TourReport}"/>
+                    <MenuItem Header="Summarize Report" x:Name="summarizeReport" Click="summarizeReport_Click" Command="{Binding SummarizeReport}"/>
                 </MenuItem>
             </Menu>
 
             <Menu>
                 <MenuItem Header="Help">
-                    <MenuItem Header="FAQ" x:Name="FAQ" Click="FAQ_Click"/>
+                    <MenuItem Header="FAQ" x:Name="FAQ" Click="FAQ_Click" Command="{Binding OpenFaqWindow}"/>
                 </MenuItem>
             </Menu>
         </ToolBar>

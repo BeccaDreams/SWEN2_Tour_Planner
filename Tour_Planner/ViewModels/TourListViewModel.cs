@@ -41,6 +41,10 @@ namespace Tour_Planner.ViewModels
             _tourController = new TourController();
             _tourList = new List<Tour>();
 
+            var tour = new Tour { Name = "Vienna to Graz", Description = "Descrition 28.06.2022", From = "Vienna", To = "Graz", TransportType = "fastest" };
+            var tourController = new TourController();
+            tourController.Controller_addTour(tour);
+
             SetCommands();
             LoadTours();
 

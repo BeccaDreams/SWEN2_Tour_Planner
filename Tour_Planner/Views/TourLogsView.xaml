@@ -25,12 +25,12 @@
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Background="LightGray" Orientation="Horizontal">
             <Label FontWeight="Bold" FontSize="13">Logs:</Label>
             <Button Width="20" Content="+" Command="{Binding OpenAddLogWindow}"></Button>
-            <Button Width="20" Content="-"></Button>
+            <Button Width="20" Content="-" Command="{Binding DeleteSelectedLog}"></Button>
             <Button Width="20" Content="[]"></Button>
         </StackPanel>
 
 
-        <DataGrid Grid.Row="2" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" Width="Auto" ItemsSource="{Binding DataLogs}" AutoGenerateColumns="False" AlternatingRowBackground="LightGray" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+        <DataGrid Grid.Row="2" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" Width="Auto" ItemsSource="{Binding DataLogs}" SelectedItem="{Binding SelctedLog}" AutoGenerateColumns="False" AlternatingRowBackground="LightGray" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Date}" Header="Date" Width="*"/>
                 <DataGridTextColumn Binding="{Binding TourComment}" Header="Comment" Width="*"/>

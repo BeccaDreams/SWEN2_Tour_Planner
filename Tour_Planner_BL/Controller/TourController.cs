@@ -43,10 +43,12 @@ namespace Tour_Planner_BL.Controller
 
         public async void Controller_addTour(Tour newTour)
         {
-            var distance = await mapQuestClient.GetDistance(newTour.From, newTour.To, newTour.TransportType);
-            var map = await mapQuestClient.GetMapQuestStaticMap(newTour.From, newTour.To, newTour.TransportType);
 
-            newTour.Distance = distance;
+            var direction = await mapQuestClient.GetMapQuestDirection(newTour.From, newTour.To, newTour.TransportType);
+            var map = await mapQuestClient.GetMapQuestStaticMap(direction);
+
+            newTour.Distance = direction.Route.Distance;
+            newTour.Time = direction.Route.FormattedTime;
             newTour.RouteInformation = map;
             handler.addTour(newTour);
 

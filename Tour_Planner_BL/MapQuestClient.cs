@@ -25,29 +25,10 @@ namespace Tour_Planner_BL
             _logger = LoggerFactory.GetLogger("Business Layer - MapQuestClient");
         }
 
-        public async Task<float> GetDistance(string fromCity, string toCity, string routeType) 
+        
+        public async Task<String> GetMapQuestStaticMap(MapQuestDirectionResponse direction)
         {
-            if (
-                string.IsNullOrEmpty(fromCity)
-                || string.IsNullOrEmpty(toCity)
-                || string.IsNullOrEmpty(routeType)
-            )
-            {
-                _logger.Error("GetMapQuestStaticMap - ArgumentException");
-                throw new ArgumentException();
-            }
-
-            var direction = await GetMapQuestDirection(fromCity, toCity, routeType);
-            return direction.Route.Distance;
-        }
-
-        public async Task<String> GetMapQuestStaticMap(string fromCity, string toCity, string routeType)
-        {
-            if (
-                string.IsNullOrEmpty(fromCity)
-                || string.IsNullOrEmpty(toCity)
-                || string.IsNullOrEmpty(routeType)
-            )
+            if ( direction == null )
             {
                 _logger.Error("GetMapQuestStaticMap - ArgumentException");
                 throw new ArgumentException();
@@ -57,7 +38,6 @@ namespace Tour_Planner_BL
             
             try 
             {
-                var direction = await GetMapQuestDirection(fromCity, toCity, routeType);
                 
                 var boundingBox = direction.Route.BoundingBox;
                 var url = _baseUrl + string.Format("staticmap/v5/map?key={0}&boundingBox={1},{2},{3},{4}&session={5}",
@@ -84,7 +64,7 @@ namespace Tour_Planner_BL
             return mapPath;
         }
 
-        private async Task<MapQuestDirectionResponse> GetMapQuestDirection(string fromCity, string toCity, string routeType)
+        public async Task<MapQuestDirectionResponse> GetMapQuestDirection(string fromCity, string toCity, string routeType)
         {
             if (
                 string.IsNullOrEmpty(fromCity)

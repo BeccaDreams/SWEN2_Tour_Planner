@@ -23,7 +23,8 @@ namespace Tour_Planner.ViewModels
         private Tour _deleteTour;
         ReportController _reportController;
         TourController _tourController;
-        Window win1;
+        Window win1, win2;
+        EditTourViewModel _editTourViewModel;
 
         public Tour SelectedTour
         {
@@ -64,14 +65,13 @@ namespace Tour_Planner.ViewModels
         public ICommand OpenAddTourWindow { get; set; }
         public ICommand TourReport{ get; set; }
         public ICommand SummarizeReport { get; set; }
-        public ICommand EditTourCommand { get; set; }
         public ICommand TestCommand { get; set; }
         public ICommand DeleteTourCommand { get; set; }
+        public ICommand OpenEditTourCommand { get; set; }
 
         public TourListViewModel()
         {
-            //AddTourToListViewModel subscribe = new AddTourToListViewModel();
-           // subscribe.AddNewTourEvent += LoadTours();
+           
             _tourController = new TourController();
             _tourList = new List<Tour>();
             _reportController = new ReportController();
@@ -90,6 +90,11 @@ namespace Tour_Planner.ViewModels
         public void EnableEditAndDeleteWindow()
         {
             IsEnabled = true;
+        }
+
+        public void DisableEditAndDeleteWindow()
+        {
+            IsEnabled= false;
         }
 
         public void DisplaySearchResult(string searchText)
@@ -118,6 +123,12 @@ namespace Tour_Planner.ViewModels
 
             });
 
+            OpenEditTourCommand = new RelayCommand((_) =>
+            {
+                _editTourViewModel = new EditTourViewModel(SelectedTour);
+                Open_EditTourWindow();
+            });
+
 
             TourReport = new RelayCommand((_) =>
             {
@@ -132,40 +143,33 @@ namespace Tour_Planner.ViewModels
             DeleteTourCommand = new RelayCommand((_) =>
             {
                 TestCommand = new DeleteSelectedTourCommand(this);
-                try
-                {
-                    RemoveItem();
-                }
-                catch(Exception e)
-                {
-                    _logger.Error("Failed removing Tour from Tournames: " + e.Message);
-                }
                
+                //try
+                //{
+                //    if(SelectedTour != null)
+                //    RemoveItem();
+                //    OnPropertyChanged(nameof(TourNames));
+                //}
+                //catch (Exception e)
+                //{
+                //    _logger.Error("Failed removing Tour from Tournames: " + e.Message);
+                //}
+             
             });
 
         }
 
         public void RemoveItem()
         {
-            int index = 0; 
-            foreach (Tour tour in TourNames)
-            {
-                if(tour.Id == SelectedTour.Id)
+            if(TourNames.Remove(TourNames.SingleOrDefault(i => i.Id == SelectedTour.Id)))
                 {
-                    break;
+                    _logger.Debug("Tour has been removed.");
                 }
-                index++;
-            }
-            try
-            {
-                TourNames.RemoveAt(index);
-
-            }
-            catch(Exception e)
-            {
-                _logger.Error("FAIL: "+ e.Message);
-            }
-            
+                else
+                {
+                    _logger.Debug("Failed removing Tour from Tournames");
+                }
+          
         }
 
         public void GenerateTourReport()
@@ -185,7 +189,13 @@ namespace Tour_Planner.ViewModels
             win1.Show();
         }
 
-       
+        public void Open_EditTourWindow()
+        {
+            this.win2 = new TourEditView();
+            win2.Show();
+        }
+
+
 
     }
 }

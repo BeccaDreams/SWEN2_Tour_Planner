@@ -39,6 +39,7 @@ namespace Tour_Planner.Commands
             {
                 _logger.Debug("Failed deleting tour.");
             }
+
         }
     }
 }

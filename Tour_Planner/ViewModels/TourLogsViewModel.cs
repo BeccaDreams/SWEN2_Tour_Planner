@@ -71,9 +71,22 @@ namespace Tour_Planner.ViewModels
             DataLogs = new ObservableCollection<TourLog>(_logList);
         }
 
+        public void ClearLogs()
+        {
+            if(DataLogs != null)
+            DataLogs.Clear();
+        }
+
         public void EnableAddWindow()
         {
+            if(IsEnabled != true)
             IsEnabled = true;
+        }
+
+        public void DisableAddWindow()
+        {
+            if(IsEnabled != false)
+            IsEnabled = false;
         }
 
         public void Open_AddLogWindow()

@@ -27,7 +27,7 @@
             <Button Width="25" Content="+"  Command="{Binding OpenAddTourWindow}" ></Button>
             <!-- Click="AddTourWin" -->
             <Button Width="25" Content="-" Command="{Binding DeleteTourCommand}" IsEnabled="{Binding IsEnabled}"></Button>
-            <Button Width="25" Content="[]" Command="{Binding EditTourCommand}" IsEnabled="{Binding IsEnabled}"></Button>
+            <Button Width="25" Content="[]" Command="{Binding OpenEditTourCommand}" IsEnabled="{Binding IsEnabled}"></Button>
             <Button Width="Auto" Content="Report" Command="{Binding TourReport}" IsEnabled="{Binding IsEnabled}"></Button>
             <Button Width="Auto" Content="SumReport" Command="{Binding SummarizeReport}" IsEnabled="{Binding IsEnabled}"></Button>
 
@@ -43,7 +43,7 @@
         </DataGrid> -->
 
         <ListView Grid.Row="1" Grid.RowSpan="5" Height="270" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Visible"
-          ScrollViewer.CanContentScroll="True" ItemsSource="{Binding TourNames}" SelectedItem="{Binding SelectedTour, UpdateSourceTrigger=PropertyChanged}">
+          ScrollViewer.CanContentScroll="True" ItemsSource="{Binding TourNames, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedTour, UpdateSourceTrigger=PropertyChanged}">
 
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">

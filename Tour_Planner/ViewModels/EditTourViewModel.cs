@@ -11,6 +11,12 @@ namespace Tour_Planner.ViewModels
 {
     public class EditTourViewModel : BaseModel
     {
+        private int _id;
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
 
         private string _name;
         public string Name
@@ -102,8 +108,18 @@ namespace Tour_Planner.ViewModels
 
         public ICommand Edit_TourCommand { get; set; }
 
-        public EditTourViewModel()
+        public EditTourViewModel(Tour tour)
         {
+            Id = tour.Id;
+            Name = tour.Name;
+            Description = tour.Description;
+            From = tour.From;
+            To = tour.To;
+            TransportType = tour.TransportType;
+            Distance = tour.Distance;
+            Time = tour.Time;
+            RouteInformation = tour.RouteInformation;
+
             Edit_TourCommand = new EditTourCommand(this);
         }
 

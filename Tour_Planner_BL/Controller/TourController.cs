@@ -47,8 +47,14 @@ namespace Tour_Planner_BL.Controller
 
         }
 
-        public void Controller_editTour(Tour tour)
+        public async void Controller_editTour(Tour tour)
         {
+            var direction = await mapQuestClient.GetMapQuestDirection(tour.From, tour.To, tour.TransportType);
+            var map = await mapQuestClient.GetMapQuestStaticMap(direction);
+
+            tour.Distance = direction.Route.Distance;
+            tour.Time = direction.Route.FormattedTime;
+            tour.RouteInformation = map;
             handler.updateTour(tour);
         }
 

@@ -29,7 +29,7 @@ namespace Tour_Planner.Commands
             _newLog.PropertyChanged += OnViewModelPropertyChanged;
         }
 
-        public override async void Execute(object parameter)
+        public override void Execute(object parameter)
         {
             try
             {

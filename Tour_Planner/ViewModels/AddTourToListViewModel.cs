@@ -116,22 +116,7 @@ namespace Tour_Planner.ViewModels
         }
 
 
-        private void createTour()
-        {
-            //tour = new Tour();
-            //tour.Name = AddNewTourName;
-            //tour.From = AddNewFrom;
-            //tour.To = AddNewTo;
-            //tour.TransportType = AddNewTransportType;
-            //tour.Description = AddNewDescription;
-            //tour.RouteInformation = "placeholder";
-        }
-
-
-        public void AddNewTour()
-        {
-
-        }
+       
 
 
     }

@@ -31,6 +31,7 @@ namespace Tour_Planner.ViewModels
         public AddLogToTourViewModel AddLogToTourList;
         public ToolBarViewModel ToolBar;
         public EditLogViewModel EditLog;
+        public EditTourViewModel EditTour;
 
         public RelayCommand AddNewTourCommand { get; set; }
         public RelayCommand AddNewLogCommand { get; set; }
@@ -60,10 +61,11 @@ namespace Tour_Planner.ViewModels
             AddTourToList = new AddTourToListViewModel();
             AddLogToTourList = new AddLogToTourViewModel();
             EditLog = new EditLogViewModel();
+            EditTour = new EditTourViewModel();
 
             //  TourLogs.LoadLogs(1);
 
-            this.selectedTour = TourList.SelectedTour;
+         //   this.selectedTour = TourList.SelectedTour;
             TourList.PropertyChanged += SelectedItem_PropertyChanged;
 
             TourList.PropertyChanged += TourNames_PropertyChanged;
@@ -83,17 +85,17 @@ namespace Tour_Planner.ViewModels
 
         public void showDetails()
         {
-           
-                TourList.EnableEditAndDeleteWindow();
-                TourDetails.Title = TourList.SelectedTour.Name;
-                TourDetails.DetailDescription = TourList.SelectedTour.Description;
-                TourDetails.RouteInformation = TourList.SelectedTour.RouteInformation;
-                TourLogs.LoadLogs(TourList.SelectedTour.Id);
-                TourLogs.PropertyChanged += DataLogs_PropertyChanged;
-                TourLogs.EnableAddWindow();
+            EditTour.SetParameter(TourList.SelectedTour);
+            TourList.EnableEditAndDeleteWindow();
+            TourDetails.Title = TourList.SelectedTour.Name;
+            TourDetails.DetailDescription = TourList.SelectedTour.Description;
+            TourDetails.RouteInformation = TourList.SelectedTour.RouteInformation;
+            TourLogs.LoadLogs(TourList.SelectedTour.Id);
+            TourLogs.PropertyChanged += DataLogs_PropertyChanged;
+            TourLogs.EnableAddWindow();
                
-                AddLogToTourList.TourId = TourList.SelectedTour.Id;
-                TourList.LoadTours();
+            AddLogToTourList.TourId = TourList.SelectedTour.Id;
+            TourList.LoadTours();
            
         }
 

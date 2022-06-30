@@ -52,9 +52,9 @@ namespace Tour_Planner_BL.Controller
             handler.updateTour(tour);
         }
 
-        public void Controller_deleteTour(/* Tour delTour */)
+        public bool Controller_deleteTour(Tour delTour)
         {
-            //db.deleteTour(delTour);
+            return handler.deleteTour(delTour);
         }
 
         public void Controller_export()

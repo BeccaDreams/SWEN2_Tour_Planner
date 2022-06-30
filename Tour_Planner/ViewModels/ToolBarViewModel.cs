@@ -16,7 +16,7 @@ namespace Tour_Planner.ViewModels
     {
         Window win3;
         TourController _tourController;
-        Tour_Planner_BL.ReportController _reportController;
+        ReportController _reportController;
         Tour _tour;
 
 
@@ -27,7 +27,7 @@ namespace Tour_Planner.ViewModels
         public ToolBarViewModel()
         {
             _tourController = new TourController();
-            _reportController = new Tour_Planner_BL.ReportController();
+            _reportController = new ReportController();
             SetCommands();
         }
 

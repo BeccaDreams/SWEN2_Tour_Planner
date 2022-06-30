@@ -4,8 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tour_Planner.Views"
-             xmlns:test="clr-namespace:Tour_Planner.ViewModels" 
-            
+             xmlns:test="clr-namespace:Tour_Planner.ViewModels" d:DataContext="{d:DesignInstance Type=test:TourLogsViewModel}"
              mc:Ignorable="d"  
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -30,13 +29,13 @@
         </StackPanel>
 
 
-        <DataGrid Grid.Row="2" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" Width="Auto" ItemsSource="{Binding DataLogs}" SelectedItem="{Binding SelctedLog}" AutoGenerateColumns="False" AlternatingRowBackground="LightGray" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+        <DataGrid Grid.Row="2" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" Width="Auto" ItemsSource="{Binding DataLogs, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelctedLog}" AutoGenerateColumns="False" AlternatingRowBackground="LightGray" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Date}" Header="Date" Width="*"/>
-                <DataGridTextColumn Binding="{Binding TourComment}" Header="Comment" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Difficulty}" Header="Difficulty" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Duration}" Header="Duration" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Rating}" Header="Rating" Width="*"/>
+                <DataGridTextColumn Binding="{Binding LogDate, UpdateSourceTrigger=PropertyChanged}" Header="Date" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Comment, UpdateSourceTrigger=PropertyChanged}" Header="Comment" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Difficulty, UpdateSourceTrigger=PropertyChanged}" Header="Difficulty" Width="*"/>
+                <DataGridTextColumn Binding="{Binding TotalTime, UpdateSourceTrigger=PropertyChanged}" Header="Duration" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Rating, UpdateSourceTrigger=PropertyChanged}" Header="Rating" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

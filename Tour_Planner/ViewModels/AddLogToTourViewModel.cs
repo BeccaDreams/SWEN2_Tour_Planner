@@ -11,6 +11,7 @@ namespace Tour_Planner.ViewModels
 {
     public class AddLogToTourViewModel : BaseModel
     {
+        public event Action SubmitLogCommandEvent;
 
         private int? _id;
         private DateOnly _logDate;
@@ -158,11 +159,11 @@ namespace Tour_Planner.ViewModels
         }
 
 
-        public ICommand SubmitLogCommand { get; }
+        public ICommand SubmitLogCommand { get; set; }
 
         public AddLogToTourViewModel()
         {
-            SubmitLogCommand = new AddNewLogCommand(this);
+            SubmitLogCommand = new AddNewLog(this);
 
 
         }

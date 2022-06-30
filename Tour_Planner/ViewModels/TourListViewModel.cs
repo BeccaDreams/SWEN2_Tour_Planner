@@ -10,11 +10,14 @@ using System.Windows;
 using System.Windows.Input;
 using Tour_Planner_BL.Controller;
 using Tour_Planner.Commands;
+using System.Windows.Data;
+using Shared.Logging;
 
 namespace Tour_Planner.ViewModels
 {
     public class TourListViewModel : BaseModel
     {
+        private ILoggerWrapper _logger;
         private List<Tour> _tourList;
         private Tour _selectedTour;
         private Tour _deleteTour;
@@ -62,6 +65,7 @@ namespace Tour_Planner.ViewModels
         public ICommand TourReport{ get; set; }
         public ICommand SummarizeReport { get; set; }
         public ICommand EditTourCommand { get; set; }
+        public ICommand TestCommand { get; set; }
         public ICommand DeleteTourCommand { get; set; }
 
         public TourListViewModel()
@@ -71,7 +75,8 @@ namespace Tour_Planner.ViewModels
             _tourController = new TourController();
             _tourList = new List<Tour>();
             _reportController = new ReportController();
-            DeleteTourCommand = new DeleteSelectedTourCommand(this);
+            _logger = LoggerFactory.GetLogger("TourListViewModel");
+            //DeleteTourCommand = new DeleteSelectedTourCommand(this);
 
             //var tour = new Tour { Name = "Vienna to Graz", Description = "Descrition 28.06.2022", From = "Vienna", To = "Graz", TransportType = "fastest" };
             // var tourController = new TourController();
@@ -90,6 +95,11 @@ namespace Tour_Planner.ViewModels
         public void DisplaySearchResult(string searchText)
         {
             
+        }
+
+        public void Delete_Tour()
+        {
+
         }
 
 
@@ -119,7 +129,43 @@ namespace Tour_Planner.ViewModels
                 GenerateSummarizeReport();
             });
 
+            DeleteTourCommand = new RelayCommand((_) =>
+            {
+                TestCommand = new DeleteSelectedTourCommand(this);
+                try
+                {
+                    RemoveItem();
+                }
+                catch(Exception e)
+                {
+                    _logger.Error("Failed removing Tour from Tournames: " + e.Message);
+                }
+               
+            });
 
+        }
+
+        public void RemoveItem()
+        {
+            int index = 0; 
+            foreach (Tour tour in TourNames)
+            {
+                if(tour.Id == SelectedTour.Id)
+                {
+                    break;
+                }
+                index++;
+            }
+            try
+            {
+                TourNames.RemoveAt(index);
+
+            }
+            catch(Exception e)
+            {
+                _logger.Error("FAIL: "+ e.Message);
+            }
+            
         }
 
         public void GenerateTourReport()
@@ -138,6 +184,8 @@ namespace Tour_Planner.ViewModels
             this.win1 = new AddTourWindow();
             win1.Show();
         }
+
+       
 
     }
 }

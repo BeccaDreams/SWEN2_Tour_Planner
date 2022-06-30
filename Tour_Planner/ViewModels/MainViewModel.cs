@@ -13,6 +13,7 @@ using Tour_Planner_BL;
 using System.Windows.Input;
 using Shared.Models;
 using Tour_Planner_BL.Controller;
+using System.Windows.Data;
 
 namespace Tour_Planner.ViewModels
 {
@@ -57,13 +58,13 @@ namespace Tour_Planner.ViewModels
             SearchBar = searchBar;
             ToolBar = toolbar;
             AddTourToList = new AddTourToListViewModel();
-           
+
+          //  TourLogs.LoadLogs(1);
            
             this.selectedTour = TourList.SelectedTour;
-
             TourList.PropertyChanged += SelectedItem_PropertyChanged;
 
-            
+            TourList.PropertyChanged += TourNames_PropertyChanged;
 
         }
 
@@ -83,13 +84,28 @@ namespace Tour_Planner.ViewModels
             TourDetails.DetailDescription = TourList.SelectedTour.Description;
             TourDetails.RouteInformation = TourList.SelectedTour.RouteInformation;
             TourLogs.LoadLogs(TourList.SelectedTour.Id);
+            TourLogs.PropertyChanged += DataLogs_PropertyChanged;
             TourLogs.EnableAddWindow();
             AddLogToTourList = new AddLogToTourViewModel();
             AddLogToTourList.TourId = TourList.SelectedTour.Id;
             TourList.LoadTours();
         }
 
-       
+        public void TourNames_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == "TourNames")
+            {
+                TourList.LoadTours();
+            }
+        }
+
+        public void DataLogs_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == "DataLogs")
+            {
+                CollectionViewSource.GetDefaultView(TourLogs.DataLogs).Refresh();
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

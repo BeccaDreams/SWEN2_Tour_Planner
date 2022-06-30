@@ -29,13 +29,13 @@
         </StackPanel>
 
 
-        <DataGrid Grid.Row="2" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" Width="Auto" ItemsSource="{Binding DataLogs, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelctedLog}" AutoGenerateColumns="False" AlternatingRowBackground="LightGray" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+        <DataGrid Grid.Row="2" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" Width="Auto" ItemsSource="{Binding DataLogs, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelctedLog, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" AlternatingRowBackground="LightGray" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding LogDate, UpdateSourceTrigger=PropertyChanged}" Header="Date" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Comment, UpdateSourceTrigger=PropertyChanged}" Header="Comment" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Difficulty, UpdateSourceTrigger=PropertyChanged}" Header="Difficulty" Width="*"/>
-                <DataGridTextColumn Binding="{Binding TotalTime, UpdateSourceTrigger=PropertyChanged}" Header="Duration" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Rating, UpdateSourceTrigger=PropertyChanged}" Header="Rating" Width="*"/>
+                <DataGridTextColumn Binding="{Binding LogDate}" Header="Date" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Comment}" Header="Comment" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Difficulty}" Header="Difficulty" Width="*"/>
+                <DataGridTextColumn Binding="{Binding TotalTime}" Header="Duration" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Rating}" Header="Rating" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

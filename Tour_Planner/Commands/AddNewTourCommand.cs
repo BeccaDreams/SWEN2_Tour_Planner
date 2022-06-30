@@ -37,7 +37,7 @@ namespace Tour_Planner.Commands
             _tour = new Tour(_newTourData.Name, _newTourData.Description, _newTourData.From, _newTourData.To, routeType, _newTourData.Distance, _newTourData.Time, _newTourData.RouteInformation);
             try
             {
-                _tourController.Controller_addTour(_tour);
+                _tourController.Controller_addTour(_tour, false);
 
             }
             catch (Exception ex)

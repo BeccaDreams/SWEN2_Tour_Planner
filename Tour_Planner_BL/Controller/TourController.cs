@@ -35,14 +35,18 @@ namespace Tour_Planner_BL.Controller
             return handler.searchTour(searchTerm);
         }
 
-        public async void Controller_addTour(Tour newTour)
+        public async void Controller_addTour(Tour newTour, bool ignoreDirectionApi)
         {
-            var direction = await mapQuestClient.GetMapQuestDirection(newTour.From, newTour.To, newTour.TransportType);
-            var map = await mapQuestClient.GetMapQuestStaticMap(direction);
+            if(ignoreDirectionApi == false)
+            {
+                var direction = await mapQuestClient.GetMapQuestDirection(newTour.From, newTour.To, newTour.TransportType);
+                var map = await mapQuestClient.GetMapQuestStaticMap(direction);
 
-            newTour.Distance = direction.Route.Distance;
-            newTour.Time = direction.Route.FormattedTime;
-            newTour.RouteInformation = map;
+                newTour.Distance = direction.Route.Distance;
+                newTour.Time = direction.Route.FormattedTime;
+                newTour.RouteInformation = map;
+            }
+            
             handler.addTour(newTour);
 
         }
@@ -75,7 +79,7 @@ namespace Tour_Planner_BL.Controller
 
             foreach (var tour in tours)
             {
-                Controller_addTour(tour);
+                Controller_addTour(tour, true);
             }
         }
 

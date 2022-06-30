@@ -1,7 +1,9 @@
 ﻿using Shared.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -107,8 +109,14 @@ namespace Tour_Planner.ViewModels
         }
 
         public ICommand Edit_TourCommand { get; set; }
+        
 
-        public EditTourViewModel(Tour tour)
+        public EditTourViewModel()
+        {
+            Edit_TourCommand = new EditTourCommand(this);
+        }
+
+        public void SetParameter(Tour tour)
         {
             Id = tour.Id;
             Name = tour.Name;
@@ -119,10 +127,10 @@ namespace Tour_Planner.ViewModels
             Distance = tour.Distance;
             Time = tour.Time;
             RouteInformation = tour.RouteInformation;
-
-            Edit_TourCommand = new EditTourCommand(this);
         }
 
+        
+       
 
 
     }

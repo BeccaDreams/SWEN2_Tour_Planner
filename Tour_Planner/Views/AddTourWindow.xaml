@@ -105,7 +105,8 @@
             </StackPanel>
         </Border>
         <StackPanel Grid.Column="1" Grid.Row="2">
-            <Button Width="Auto" MaxWidth="150" Height="30" BorderBrush="LightGray" FontWeight="Bold" Background="LightGray" Command="{Binding SubmitCommand}" b:CloseOnClickBehaviour.IsEnabled="True" >Submit</Button>
+            <Button Width="Auto" MaxWidth="150" Height="30" BorderBrush="LightGray" FontWeight="Bold" Background="LightGray" 
+                    Command="{Binding SubmitCommand}" b:CloseOnClickBehaviour.IsEnabled="True" >Submit</Button>
         </StackPanel>
     </Grid>
 </Window>

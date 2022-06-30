@@ -23,8 +23,8 @@ namespace Tour_Planner.ViewModels
         private Tour _deleteTour;
         ReportController _reportController;
         TourController _tourController;
-        Window win1, win2;
-        EditTourViewModel _editTourViewModel;
+        Window win1;
+        Window win2;
 
         public Tour SelectedTour
         {
@@ -125,7 +125,6 @@ namespace Tour_Planner.ViewModels
 
             OpenEditTourCommand = new RelayCommand((_) =>
             {
-                _editTourViewModel = new EditTourViewModel(SelectedTour);
                 Open_EditTourWindow();
             });
 

@@ -106,7 +106,7 @@
             </StackPanel>
         </Border>
         <Button Grid.Row="6" Grid.Column="1" Content="Submit" Width="Auto" MaxWidth="150" Height="40" 
-                BorderBrush="LightGray" FontWeight="Bold" Background="LightGray" Command="{Binding SubmitLogCommand, UpdateSourceTrigger=PropertyChanged}" 
+                BorderBrush="LightGray" FontWeight="Bold" Background="LightGray" Command="{Binding SubmitLogCommand}" 
                 b:CloseOnClickBehaviour.IsEnabled="True" >
         </Button>
     </Grid>

@@ -21,8 +21,6 @@ namespace Tour_Planner.ViewModels
         //private static ILoggerWrapper logger = log4net.LogManager.GetLogger("MainViewModel");
         //private static ILoggerWrapper logger;
 
-        TourController tourController;
-        MapQuestClient tourMapClient;
 
         public TourListViewModel TourList;
         public TourLogsViewModel TourLogs;
@@ -30,10 +28,8 @@ namespace Tour_Planner.ViewModels
         public SearchBarViewModel SearchBar;
         public AddTourToListViewModel AddTourToList;
         public AddLogToTourViewModel AddLogToTourList;
+        public ToolBarViewModel ToolBar;
 
-        //Tour tmpTour;
-
-        // Window win1, win2;
 
         public RelayCommand AddNewTourCommand { get; set; }
         public RelayCommand AddNewLogCommand { get; set; }
@@ -51,7 +47,7 @@ namespace Tour_Planner.ViewModels
        
         
     
-        public MainViewModel(TourListViewModel tourList, TourLogsViewModel tourLogs, TourDetailsViewModel tourDetails, SearchBarViewModel searchBar)    
+        public MainViewModel(TourListViewModel tourList, TourLogsViewModel tourLogs, TourDetailsViewModel tourDetails, SearchBarViewModel searchBar, ToolBarViewModel toolbar)    
         {
 
 
@@ -59,15 +55,13 @@ namespace Tour_Planner.ViewModels
             TourLogs = tourLogs;
             TourDetails = tourDetails;
             SearchBar = searchBar;
+            ToolBar = toolbar;
             AddTourToList = new AddTourToListViewModel();
-            AddLogToTourList = new AddLogToTourViewModel();
            
-            tourController = new TourController();
-
+           
             this.selectedTour = TourList.SelectedTour;
 
             TourList.PropertyChanged += SelectedItem_PropertyChanged;
-            //tmpTour = new Tour();
 
             
 
@@ -79,7 +73,6 @@ namespace Tour_Planner.ViewModels
             if(e.PropertyName == "SelectedTour")
             {
                 showDetails();
-               // showLogs();
             }
         }
 
@@ -91,13 +84,12 @@ namespace Tour_Planner.ViewModels
             TourDetails.RouteInformation = TourList.SelectedTour.RouteInformation;
             TourLogs.LoadLogs(TourList.SelectedTour.Id);
             TourLogs.EnableAddWindow();
+            AddLogToTourList = new AddLogToTourViewModel();
             AddLogToTourList.TourId = TourList.SelectedTour.Id;
+            TourList.LoadTours();
         }
 
-        public void showLogs()
-        {
-            TourLogs.LoadLogs(TourList.SelectedTour.Id);
-        }
+       
 
         public event PropertyChangedEventHandler PropertyChanged;
 

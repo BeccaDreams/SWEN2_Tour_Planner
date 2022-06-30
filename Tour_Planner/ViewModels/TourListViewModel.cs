@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 using Tour_Planner_BL.Controller;
+using Tour_Planner.Commands;
 
 namespace Tour_Planner.ViewModels
 {
@@ -16,7 +17,8 @@ namespace Tour_Planner.ViewModels
     {
         private List<Tour> _tourList;
         private Tour _selectedTour;
-        Tour_Planner_BL.ReportController _reportController;
+        private Tour _deleteTour;
+        ReportController _reportController;
         TourController _tourController;
         Window win1;
 
@@ -29,6 +31,16 @@ namespace Tour_Planner.ViewModels
                 OnPropertyChanged(nameof(SelectedTour));
             }
         }
+
+        public Tour DeleteTour
+        {
+            get { return _deleteTour; }
+            set
+            {
+                _deleteTour = value;
+            }
+        }
+
 
         private bool _isEnabled;
         public bool IsEnabled
@@ -50,7 +62,7 @@ namespace Tour_Planner.ViewModels
         public ICommand TourReport{ get; set; }
         public ICommand SummarizeReport { get; set; }
         public ICommand EditTourCommand { get; set; }
-        
+        public ICommand DeleteTourCommand { get; set; }
 
         public TourListViewModel()
         {
@@ -58,12 +70,12 @@ namespace Tour_Planner.ViewModels
            // subscribe.AddNewTourEvent += LoadTours();
             _tourController = new TourController();
             _tourList = new List<Tour>();
-            _reportController = new Tour_Planner_BL.ReportController();
+            _reportController = new ReportController();
+            DeleteTourCommand = new DeleteSelectedTourCommand(this);
 
-
-            var tour = new Tour { Name = "Vienna to Graz", Description = "Descrition 28.06.2022", From = "Vienna", To = "Graz", TransportType = "fastest" };
-            var tourController = new TourController();
-            tourController.Controller_addTour(tour);
+            //var tour = new Tour { Name = "Vienna to Graz", Description = "Descrition 28.06.2022", From = "Vienna", To = "Graz", TransportType = "fastest" };
+            // var tourController = new TourController();
+            // tourController.Controller_addTour(tour);
 
             SetCommands();
             LoadTours();
@@ -106,6 +118,7 @@ namespace Tour_Planner.ViewModels
             {
                 GenerateSummarizeReport();
             });
+
 
         }
 

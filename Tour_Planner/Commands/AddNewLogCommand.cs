@@ -27,17 +27,11 @@ namespace Tour_Planner.Commands
             _logController = new LogController();
             _logger = LoggerFactory.GetLogger("AddNewLogCommand");
 
-            _newLogData.PropertyChanged += OnViewModelPropertyChanged;
         }
 
       
-        private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-           OnCanExecutedChanged();
-        }
 
-
-        public override async void Execute(object parameter)
+        public override void Execute(object parameter)
         {
             _newLogData.TotalTime = TimeSpan.Parse(_newLogData.Duration);
 
@@ -62,9 +56,6 @@ namespace Tour_Planner.Commands
         }
 
 
-        public override bool CanExecute(object parameter)
-        {
-             return base.CanExecute(parameter);
-        }
+   
     }
 }

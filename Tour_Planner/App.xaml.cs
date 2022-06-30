@@ -25,7 +25,7 @@ namespace Tour_Planner
 
             MainWindow = new MainWindow()
             {
-                DataContext = new MainViewModel(tourList, tourLogs, tourDetails, searchBar),
+                DataContext = new MainViewModel(tourList, tourLogs, tourDetails, searchBar, toolBar),
                 TourList = { DataContext = tourList },
                 SearchBar = { DataContext = searchBar },
                 TourLogs = { DataContext = tourLogs },

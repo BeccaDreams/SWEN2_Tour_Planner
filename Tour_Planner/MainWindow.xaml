@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tour_Planner.Views"
-        xmlns:mvvm="clr-namespace:Tour_Planner.ViewModels" 
+        xmlns:mvvm="clr-namespace:Tour_Planner.ViewModels" d:DataContext="{d:DesignInstance Type=mvvm:MainViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
 		MinWidth="400"
@@ -12,11 +12,9 @@
         ResizeMode="CanResizeWithGrip"
         WindowStartupLocation="CenterScreen"
         Background="Black">
-<!--
-    <Window.DataContext>
-        <mvvm:MainViewModel/>
-    </Window.DataContext>
--->
+
+
+
     <Grid ShowGridLines="False">
 
         <Grid.RowDefinitions>

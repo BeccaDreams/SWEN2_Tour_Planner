@@ -60,6 +60,11 @@ namespace Tour_Planner.ViewModels
             SetCommands();
         }
 
+
+
+
+
+
         public void LoadLogs(int id)
         {
             _logList = _logController.Controller_getTourLogsByTourId(id);

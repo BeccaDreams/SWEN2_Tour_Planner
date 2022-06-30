@@ -17,6 +17,7 @@ namespace Tour_Planner.Commands
         private readonly EditLogViewModel _logChanges;
         public TourLog _log;
         LogController _logController;
+        bool edited;
 
         public EditLogCommand(EditLogViewModel changedLog)
         {
@@ -24,17 +25,24 @@ namespace Tour_Planner.Commands
             _logger = LoggerFactory.GetLogger("EditLogCommand");
             _logChanges = changedLog;
         }
-        public override async void Execute(object parameter)
+        public override void Execute(object parameter)
         {
             _log = new TourLog(_logChanges.LogDate, _logChanges.Comment, _logChanges.Difficulty, _logChanges.TotalTime, _logChanges.Rating, _logChanges.TourId);
             try
             {
-                _logController.Controller_addTourLog(_log.TourId, _log);
-
+                edited = _logController.Controller_addTourLog(_log.TourId, _log);
+                if (edited)
+                {
+                    _logger.Debug("Log was edited.");
+                }
+                else
+                {
+                    _logger.Debug("Failed editing log.");
+                }
             }
             catch (Exception ex)
             {
-                _logger.Error("Exception adding Tour: " + ex.Message);
+                _logger.Error("Exception editing Log: " + ex.Message);
             }
         }
     }

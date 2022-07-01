@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:test="clr-namespace:Tour_Planner.ViewModels"
              xmlns:details="clr-namespace:Tour_Planner" 
-             d:DataContext="{d:DesignInstance Type=test:TourDetailsViewModel}"
+             
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     
@@ -27,9 +27,9 @@
             <StackPanel Orientation="Vertical" Grid.Row="1" Grid.RowSpan="2">
             <TabControl>
                 <TabItem FontSize="12" FontWeight="Bold" Header="Route" x:Name="Route">
-                    <Image Width="200" Height="200" Source="{Binding RouteInformation, UpdateSourceTrigger=PropertyChanged}"/>
-                    <!--    <Image Width="200" Height="200" Source="\bin\Debug\net6.0-windows\maps\5d3ec3063bf04d678bdc29baa12fae9c.png"/> -->
-                    <!--   <Image Width="200" Height="200" Source="/bin/Debug/net6.0-windows/maps/5d3ec3063bf04d678bdc29baa12fae9c.png"/> -->
+                       <Image x:Name="MapImage" Width="200" Height="200" Source="{Binding RouteInformation, UpdateSourceTrigger=PropertyChanged}"/> 
+                    <!--     <Image Width="200" Height="200" Source="/bin/Debug/net6.0-windows/maps/5d3ec3063bf04d678bdc29baa12fae9c.png" /> -->
+                    <!--     <TextBlock Text="{Binding RouteInformation, UpdateSourceTrigger=PropertyChanged}"/>-->
                 </TabItem>
                 <TabItem FontSize="12" FontWeight="Bold" Header="Description"  x:Name="Description">
                     <TextBlock Height="Auto" Text="{Binding DetailDescription, UpdateSourceTrigger=PropertyChanged}" 

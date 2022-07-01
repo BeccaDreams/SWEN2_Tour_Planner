@@ -1,6 +1,7 @@
 ﻿using Shared.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,9 +10,12 @@ using Tour_Planner.Commands;
 
 namespace Tour_Planner.ViewModels
 {
-    public class AddLogToTourViewModel : BaseModel
+    public class AddLogToTourViewModel : BaseModel, IDataErrorInfo
     {
         public event Action SubmitLogCommandEvent;
+        public string Error { get { return null; } }
+        public Dictionary<string, string> ErrorCollection { get; private set; } = new Dictionary<string, string>();
+
 
         private int? _id;
         private DateOnly _logDate;
@@ -100,9 +104,9 @@ namespace Tour_Planner.ViewModels
                 {
                     _duration = value;
                     OnPropertyChanged(nameof(Duration));
-                   
+
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex);
                 }
@@ -167,5 +171,39 @@ namespace Tour_Planner.ViewModels
 
 
         }
+
+        // log data Validation
+        static bool typeCheckLong(string UserInput)
+        {
+            long num = 0;
+            return long.TryParse(UserInput, out num);
+        }
+
+        public string this[string input]
+        {
+
+            get
+            {
+                string result = null;
+                switch (input)
+                {
+                    case "Comment":
+                        if (typeCheckLong(Comment) == true)
+                            result = "Comment must consist of letters";
+                        break;
+                }
+
+                if (ErrorCollection.ContainsKey(input))
+                    ErrorCollection[input] = result;
+                else if (result != null)
+                    ErrorCollection.Add(input, result);
+
+                OnPropertyChanged("ErrorCollection");
+                return result;
+
+            }
+        }
+
+
     }
 }

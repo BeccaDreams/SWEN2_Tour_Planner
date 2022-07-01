@@ -29,7 +29,9 @@ namespace Tour_Planner.Commands
         }
         public override void Execute(object parameter)
         {
-            _tour = new Tour(_tourChanges.Name, _tourChanges.Description, _tourChanges.From, _tourChanges.To, _tourChanges.TransportType, _tourChanges.Distance, _tourChanges.Time, _tourChanges.RouteInformation);
+            string routeType = SetTransportType(_tourChanges.TransportType);
+
+            _tour = new Tour(_tourChanges.Name, _tourChanges.Description, _tourChanges.From, _tourChanges.To, routeType, _tourChanges.Distance, _tourChanges.Time, _tourChanges.RouteInformation);
             _tour.Id = _tourChanges.Id;
             try
             {
@@ -41,6 +43,24 @@ namespace Tour_Planner.Commands
             {
                 _logger.Error("Exception editing Tour: " + ex.Message);
             }
+        }
+
+        public string SetTransportType(string transportType)
+        {
+            string result;
+            switch (transportType)
+            {
+                case "Walking":
+                    result = "pedestrian";
+                    break;
+                case "Bicycle":
+                    result = "bicycle";
+                    break;
+                default:
+                    result = "fastest";
+                    break;
+            }
+            return result;
         }
 
         private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)

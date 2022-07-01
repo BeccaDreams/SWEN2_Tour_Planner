@@ -51,8 +51,12 @@ namespace Tour_Planner_BL
 
                 var response = await _client.GetStreamAsync(url);
                 var mapId = Guid.NewGuid().ToString("N");
-                mapPath = string.Format("maps/{0}.png", mapId);
-
+                var mapFolder = "./maps";
+                mapPath = string.Format("./maps/{0}.png", mapId);
+                if (!Directory.Exists(mapFolder))
+                {
+                    Directory.CreateDirectory(mapFolder);
+                }
                 await using var fileStream = new FileStream(mapPath, FileMode.Create, FileAccess.Write);
                 response.CopyTo(fileStream);
             } 

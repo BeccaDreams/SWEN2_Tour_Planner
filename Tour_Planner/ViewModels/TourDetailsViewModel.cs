@@ -1,6 +1,7 @@
 ﻿using Shared.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,7 +49,9 @@ namespace Tour_Planner.ViewModels
             }
         }
 
-        
+    
+        public string folderPath = Directory.GetCurrentDirectory();
+
         private string _routeInformation;
         public string RouteInformation
         {
@@ -58,17 +61,16 @@ namespace Tour_Planner.ViewModels
                 try
                 {
                     _routeInformation = SetRoute(value);
-                    OnPropertyChanged(nameof(RouteInformation));
+                    OnPropertyChanged("RouteInformation");
                 }
                 catch (StackOverflowException e)
                 {
                     Console.WriteLine(e);
                 }
-               
+
             }
         }
 
-        string folderPath = "/bin/Debug/net6.0-windows";
 
         public TourDetailsViewModel()
         {

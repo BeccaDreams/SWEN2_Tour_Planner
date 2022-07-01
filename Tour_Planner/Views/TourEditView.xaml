@@ -15,6 +15,9 @@
         Background="White"
         x:Name="EditTour_Window"
         xmlns:b="clr-namespace:Tour_Planner">
+    <Window.DataContext>
+        <mvvm:EditTourViewModel/>
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -62,21 +65,21 @@
                         CornerRadius="1,1,1,1"
                         Height="30"
                         Margin="0,4,6,6">
-                    <TextBox x:Name="EditTour_NewTourName" FontSize="15" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <TextBox x:Name="EditTour_NewTourName" FontSize="15" Text="{Binding Name, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding ErrorCollection[Name]}"></TextBox>
                 </Border>
                 <Border BorderBrush="LightGray"
                         BorderThickness="1"
                         CornerRadius="1,1,1,1"
                         Height="30"
                         Margin="0,0,6,6">
-                    <TextBox x:Name="EditTour_Start" FontSize="15" Text="{Binding From, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <TextBox x:Name="EditTour_Start" FontSize="15" Text="{Binding From, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding ErrorCollection[From]}"></TextBox>
                 </Border>
                 <Border BorderBrush="LightGray"
                         BorderThickness="1"
                         CornerRadius="1,1,1,1"
                         Height="30"
                         Margin="0,0,6,8">
-                    <TextBox x:Name="EditTour_Destination" FontSize="15" Text="{Binding To, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <TextBox x:Name="EditTour_Destination" FontSize="15" Text="{Binding To, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding ErrorCollection[To]}"></TextBox>
                 </Border>
                 <Border BorderBrush="LightGray"
                         BorderThickness="1"
@@ -84,7 +87,7 @@
                         Height="30"
                         Margin="0,0,6,8">
                     <!-- <TextBlock x:Name="TransportType"></TextBlock> -->
-                    <ComboBox x:Name="EditTour_TransportType" SelectedItem="{Binding TransportType, UpdateSourceTrigger=PropertyChanged}" 
+                    <ComboBox x:Name="EditTour_TransportType" SelectedItem="{Binding TransportType, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding ErrorCollection[TransportType]}"
                               IsEditable="True" IsReadOnly="True" FontSize="15" Text="Please select a transport type">
                         <ComboBoxItem>Walking</ComboBoxItem>
                         <ComboBoxItem>Bicycle</ComboBoxItem>
@@ -96,7 +99,7 @@
                         CornerRadius="1,1,1,1"
                         Height="50"
                         Margin="0,0,6,8">
-                    <TextBox x:Name="EditTour_Description" FontSize="15" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <TextBox x:Name="EditTour_Description" FontSize="15" Text="{Binding Description, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding ErrorCollection[Description]}"></TextBox>
 
                 </Border>
             </StackPanel>

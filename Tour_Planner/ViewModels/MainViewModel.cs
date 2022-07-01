@@ -52,7 +52,6 @@ namespace Tour_Planner.ViewModels
         public MainViewModel(TourListViewModel tourList, TourLogsViewModel tourLogs, TourDetailsViewModel tourDetails, SearchBarViewModel searchBar, ToolBarViewModel toolbar)    
         {
 
-
             TourList = tourList;
             TourLogs = tourLogs;
             TourDetails = tourDetails;
@@ -99,7 +98,9 @@ namespace Tour_Planner.ViewModels
            
         }
 
-       
+      
+
+
 
         public void TourNames_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {

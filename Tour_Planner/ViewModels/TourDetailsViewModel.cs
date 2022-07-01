@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 using Tour_Planner.Views;
 
 namespace Tour_Planner.ViewModels
@@ -36,7 +38,7 @@ namespace Tour_Planner.ViewModels
             {
                 try
                 {
-                    _title = value;
+                    _detailDescription = value;
                     OnPropertyChanged(nameof(DetailDescription));
                 }
                 catch (StackOverflowException e)
@@ -46,23 +48,45 @@ namespace Tour_Planner.ViewModels
             }
         }
 
+        
         private string _routeInformation;
         public string RouteInformation
         {
             get { return _routeInformation; }
             set
             {
-                _routeInformation = value;
-                OnPropertyChanged(nameof(RouteInformation));
+                try
+                {
+                    _routeInformation = SetRoute(value);
+                    OnPropertyChanged(nameof(RouteInformation));
+                }
+                catch (StackOverflowException e)
+                {
+                    Console.WriteLine(e);
+                }
+               
             }
         }
 
-        
+        string folderPath = "/bin/Debug/net6.0-windows";
 
         public TourDetailsViewModel()
         {
-           
+            
+            
         }
+
+        public string SetRoute(string file)
+        {
+            string result = folderPath;
+            string newFile = file.Substring(1, file.Length - 1);
+            return result + newFile;
+        }
+       
+
+
+
+
 
 
 

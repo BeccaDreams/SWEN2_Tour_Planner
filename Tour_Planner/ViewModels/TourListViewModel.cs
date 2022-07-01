@@ -76,7 +76,7 @@ namespace Tour_Planner.ViewModels
             _tourList = new List<Tour>();
             _reportController = new ReportController();
             _logger = LoggerFactory.GetLogger("TourListViewModel");
-            //DeleteTourCommand = new DeleteSelectedTourCommand(this);
+            DeleteTourCommand = new DeleteSelectedTourCommand(this);
 
             SetCommands();
             LoadTours();
@@ -135,22 +135,22 @@ namespace Tour_Planner.ViewModels
                 GenerateSummarizeReport();
             });
 
-            DeleteTourCommand = new RelayCommand((_) =>
-            {
-                TestCommand = new DeleteSelectedTourCommand(this);
+            //DeleteTourCommand = new RelayCommand((_) =>
+            //{
+            //    TestCommand = new DeleteSelectedTourCommand(this);
                
-                //try
-                //{
-                //    if(SelectedTour != null)
-                //    RemoveItem();
-                //    OnPropertyChanged(nameof(TourNames));
-                //}
-                //catch (Exception e)
-                //{
-                //    _logger.Error("Failed removing Tour from Tournames: " + e.Message);
-                //}
+            //    //try
+            //    //{
+            //    //    if(SelectedTour != null)
+            //    //    RemoveItem();
+            //    //    OnPropertyChanged(nameof(TourNames));
+            //    //}
+            //    //catch (Exception e)
+            //    //{
+            //    //    _logger.Error("Failed removing Tour from Tournames: " + e.Message);
+            //    //}
              
-            });
+            //});
 
         }
 

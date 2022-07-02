@@ -20,7 +20,6 @@ namespace Tour_Planner.ViewModels
         private ILoggerWrapper _logger;
         private List<Tour> _tourList;
         private Tour _selectedTour;
-        private Tour _deleteTour;
         ReportController _reportController;
         TourController _tourController;
         Window win1;
@@ -33,15 +32,6 @@ namespace Tour_Planner.ViewModels
             {
                 _selectedTour = value;
                 OnPropertyChanged(nameof(SelectedTour));
-            }
-        }
-
-        public Tour DeleteTour
-        {
-            get { return _deleteTour; }
-            set
-            {
-                _deleteTour = value;
             }
         }
 
@@ -76,7 +66,7 @@ namespace Tour_Planner.ViewModels
             _tourList = new List<Tour>();
             _reportController = new ReportController();
             _logger = LoggerFactory.GetLogger("TourListViewModel");
-            DeleteTourCommand = new DeleteSelectedTourCommand(this);
+            //DeleteTourCommand = new DeleteSelectedTourCommand(this);
 
             SetCommands();
             LoadTours();
@@ -93,22 +83,21 @@ namespace Tour_Planner.ViewModels
             IsEnabled= false;
         }
 
-        public void DisplaySearchResult(string searchText)
-        {
-            
-        }
-
-        public void Delete_Tour()
-        {
-
-        }
-
+       
 
         public void LoadTours()
         {
             _tourList = _tourController.Controller_getTours();
             TourNames = new ObservableCollection<Tour>(_tourList);
-           
+        }
+
+        public void ReloadTours()
+        {
+            _tourList = _tourController.Controller_getTours();
+            foreach(Tour tour in _tourList)
+            {
+                TourNames.Add(tour);
+            }
         }
 
         public void SetCommands()
@@ -154,16 +143,36 @@ namespace Tour_Planner.ViewModels
 
         }
 
+        
+
+        public void DeleteSelectedTour()
+        {
+            bool isDeleted;
+            _logger = LoggerFactory.GetLogger("DeleteSelectedTourCommand");
+
+      
+            isDeleted = _tourController.Controller_deleteTour(SelectedTour);
+            if (isDeleted)
+            {
+                _logger.Debug("Tour was deleted.");
+            }
+            else
+            {
+                _logger.Debug("Failed deleting tour.");
+            }
+
+        }
+
         public void RemoveItem()
         {
             if(TourNames.Remove(TourNames.SingleOrDefault(i => i.Id == SelectedTour.Id)))
-                {
-                    _logger.Debug("Tour has been removed.");
-                }
-                else
-                {
-                    _logger.Debug("Failed removing Tour from Tournames");
-                }
+            {
+                _logger.Debug("Tour has been removed.");
+            }
+            else
+            {
+                _logger.Debug("Failed removing Tour from Tournames");
+            }
           
         }
 

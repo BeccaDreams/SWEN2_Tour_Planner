@@ -4,6 +4,9 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Tour_Planner.Views;
 using Shared.Models;
+using Tour_Planner.Commands;
+using System.Collections.Generic;
+using Tour_Planner_BL.Controller;
 
 namespace Tour_Planner.ViewModels
 {
@@ -11,8 +14,10 @@ namespace Tour_Planner.ViewModels
     {
 
         public event EventHandler<string> SearchTextChanged;
+        private TourController _tourController;
+        private LogController _logController;
 
-        public ICommand SearchCommand { get; }
+        public ICommand SearchCommand { get; set; }
 
         private string _searchText;
         public string SearchText
@@ -24,22 +29,44 @@ namespace Tour_Planner.ViewModels
                 OnPropertyChanged();
             }
         }
+        private List<Tour> _searchTourList;
+        public List<Tour> SearchTourList
+        {
+            get => _searchTourList;
+            set
+            {
+                _searchTourList = value;
+                OnPropertyChanged();
+            }
+        }
+        private List<TourLog> _searchLogList;
+        public List<TourLog> SearchLogList
+        {
+            get => _searchLogList;
+            set
+            {
+                _searchLogList = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         public SearchBarViewModel()
         {
-            //Button verknüpfen
-            SearchCommand = new SearchCommand((_) =>
-            {
-                this.SearchTextChanged?.Invoke(this, SearchText);
-            
-            });
+            _searchTourList = new List<Tour>();
+            _searchLogList = new List<TourLog>();
+
+            _tourController = new TourController();
+            _logController = new LogController();
         }
 
-        public void ButtonClick_Clicked(object sender, EventArgs e)
+        public void SearchFilter()
         {
-            //nach tour suchen, Liste filtern?
+            _searchTourList = _tourController.Controller_searchTour(SearchText);
+            _searchLogList = _logController.Controller_searchTourLog(SearchText);
         }
-
-        
+    
     }
+
+    
 }

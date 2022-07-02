@@ -7,16 +7,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using Shared.Logging;
 using Shared.Models;
 using Tour_Planner.Commands;
+using Tour_Planner_BL.Controller;
 
 namespace Tour_Planner.ViewModels
 {
     public class AddTourToListViewModel : BaseModel, IDataErrorInfo
     {
-        public event Action SubmitCommandEvent;
         public string Error { get { return null; } }
         public Dictionary<string, string> ErrorCollection { get; private set; } = new Dictionary<string, string>();
+
+        private ILoggerWrapper _logger;
+
+        public Tour _tour;
+        TourController _tourController;
+
 
 
         private string _name;
@@ -113,8 +120,9 @@ namespace Tour_Planner.ViewModels
 
         public AddTourToListViewModel()
         {
-
-            SubmitCommand = new AddNewTourCommand(this);
+            _tourController = new TourController();
+            _logger = LoggerFactory.GetLogger("AddNewTourCommand");
+             SubmitCommand = new AddNewTourCommand(this); //soll noch ausgebessert werden
 
 
         }
@@ -179,6 +187,45 @@ namespace Tour_Planner.ViewModels
 
             }
         }
+
+
+
+        public void AddNewTour()
+        {
+            string routeType = SetTransportType(TransportType);
+
+            _tour = new Tour(Name, Description, From, To, routeType, Distance, Time, RouteInformation);
+            try
+            {
+                _tourController.Controller_addTour(_tour, false);
+
+            }
+            catch (Exception ex)
+            {
+                _logger.Error("Exception adding Tour: " + ex.Message);
+            }
+        }
+
+        public string SetTransportType(string transportType)
+        {
+            string result;
+            switch (transportType)
+            {
+                case "Walking":
+                    result = "pedestrian";
+                    break;
+                case "Bicycle":
+                    result = "bicycle";
+                    break;
+                default:
+                    result = "fastest";
+                    break;
+            }
+            return result;
+        }
+
+
+
 
     }
 }

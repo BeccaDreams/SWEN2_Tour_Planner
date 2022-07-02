@@ -167,7 +167,7 @@ namespace Tour_Planner.ViewModels
 
         public AddLogToTourViewModel()
         {
-            SubmitLogCommand = new AddNewLog(this);
+            SubmitLogCommand = new AddNewLogCommand(this);
 
 
         }

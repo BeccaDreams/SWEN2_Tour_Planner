@@ -14,6 +14,7 @@ using System.Windows.Input;
 using Shared.Models;
 using Tour_Planner_BL.Controller;
 using System.Windows.Data;
+using Tour_Planner.Commands;
 
 namespace Tour_Planner.ViewModels
 {
@@ -33,21 +34,18 @@ namespace Tour_Planner.ViewModels
         public EditLogViewModel EditLog;
         public EditTourViewModel EditTour;
 
-        public RelayCommand AddNewTourCommand { get; set; }
-        public RelayCommand AddNewLogCommand { get; set; }
+     
 
-        public ObservableCollection<Tour> TourItems { get; set; }
-            = new ObservableCollection<Tour>();
+        // Commands die funktionieren!
+        public ICommand Search_Command { get; set;}
 
-        public ObservableCollection<TourLog> Logs { get; set; }
-            = new ObservableCollection<TourLog>();
+        //--------------------------------------------
+        //TestCommands
+       // public ICommand AddNewTourCommand { get; set; }
+        public ICommand Add_Tour_Command { get; set; }
+        public ICommand Delete_Tour_Command { get; set; }
 
-        public RelayCommand OpenAddTourWindow { get; set; }
-        public RelayCommand OpenAddLogWindow { get; set; }
 
-        public Tour selectedTour;
-       
-        
     
         public MainViewModel(TourListViewModel tourList, TourLogsViewModel tourLogs, TourDetailsViewModel tourDetails, SearchBarViewModel searchBar, ToolBarViewModel toolbar)    
         {
@@ -62,16 +60,89 @@ namespace Tour_Planner.ViewModels
             EditLog = new EditLogViewModel();
             EditTour = new EditTourViewModel();
 
-            //  TourLogs.LoadLogs(1);
+            Search_Command = new RelayCommand((_) =>
+            {
+                SearchBar.SearchFilter();
+                UpdateList_SearchTourNames(SearchBar.SearchTourList);
+                UpdateList_SearchDataLogs(SearchBar.SearchLogList);
+            });
 
-         //   this.selectedTour = TourList.SelectedTour;
+            //Add_Tour_Command = new RelayCommand((_) =>
+            //{
+            //    AddTourToList.AddNewTour();
+            //    UpdateList_TourNames();
+            //});
+
+            Delete_Tour_Command = new RelayCommand((_) =>
+            {
+                TourList.DeleteSelectedTour();
+                UpdateList_TourNames();
+            });
+
+            SearchBar.SearchCommand = Search_Command; //funktioniert
+           // AddTourToList.SubmitCommand = Add_Tour_Command;
+            TourList.DeleteTourCommand = Delete_Tour_Command;
+
+
+
+
+
             TourList.PropertyChanged += SelectedItem_PropertyChanged;
-
-            TourList.PropertyChanged += TourNames_PropertyChanged;
 
         }
 
+
        
+        private void UpdateList_SearchTourNames(List<Tour> _tourList)
+        {
+            if(_tourList != null)
+            {
+                TourList.TourNames.Clear();
+                if(_tourList.Count > 0)
+                {
+                    foreach (Tour tour in _tourList)
+                    {
+                        TourList.TourNames.Add(tour);
+                    }
+                }
+                else
+                {
+                    TourList.ReloadTours();
+                }
+            }
+        }
+
+        public void UpdateList_SearchDataLogs(List<TourLog> _logList)
+        {
+            if(_logList != null && TourLogs.DataLogs != null && TourLogs.DataLogs.Count > 0)
+            {
+                TourLogs.DataLogs.Clear();
+                foreach (TourLog log in _logList)
+                {
+                    TourLogs.DataLogs.Add(log);
+                }
+            }
+        }
+
+        public void UpdateList_TourNames()
+        {
+            if(TourList.TourNames.Count > 0)
+            {
+                TourList.TourNames.Clear();
+            }
+            TourList.ReloadTours();
+        }
+
+        public void UpdateList_DataLogs()
+        {
+            if (TourLogs.DataLogs.Count > 0)
+            {
+                TourLogs.DataLogs.Clear();
+            }
+            TourLogs.LoadLogs(TourList.SelectedTour.Id);
+        }
+
+
         private void SelectedItem_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if(e.PropertyName == "SelectedTour")
@@ -80,6 +151,15 @@ namespace Tour_Planner.ViewModels
             }
             
            
+        }
+
+        private void SearchText_PrpopertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == "SearchText")
+            {
+                //Update TourNames & Logs
+                SearchBar.SearchCommand.Execute(SearchBar.SearchText);
+            }
         }
 
         public void showDetails()

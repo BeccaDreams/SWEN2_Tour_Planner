@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shared.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Tour_Planner.ViewModels;
 
 namespace Tour_Planner.Views
 {
@@ -19,9 +21,15 @@ namespace Tour_Planner.Views
     /// </summary>
     public partial class LogEditView : Window
     {
-        public LogEditView()
+        public LogEditView(TourLog log)
         {
             InitializeComponent();
+            ((EditLogViewModel)this.DataContext).Id = log.Id;
+            ((EditLogViewModel)this.DataContext).LogDate = log.LogDate;
+            ((EditLogViewModel)this.DataContext).Comment = log.Comment;
+            ((EditLogViewModel)this.DataContext).Rating = log.Rating;
+            ((EditLogViewModel)this.DataContext).Difficulty = log.Difficulty;
+            ((EditLogViewModel)this.DataContext).TotalTime = log.TotalTime;
         }
     }
 }

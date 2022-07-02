@@ -61,7 +61,7 @@ namespace Tour_Planner.Test
         public void Test_searchTours_shouldCallDbExecuteReader()
         {
             //Arrange
-            mockSqlCommands.Setup(cmd => cmd.searchTour(It.IsAny<String>())).Returns(It.IsAny<NpgsqlCommand>());
+            //mockSqlCommands.Setup(cmd => cmd.searchTour(It.IsAny<String>())).Returns(It.IsAny<NpgsqlCommand>());
             mockDatabase.Setup(db => db.executeReader(It.IsAny<NpgsqlCommand>())).Returns(It.IsAny<NpgsqlDataReader>());
 
             //Act

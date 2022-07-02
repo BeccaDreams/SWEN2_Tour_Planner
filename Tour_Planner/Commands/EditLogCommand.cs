@@ -27,10 +27,21 @@ namespace Tour_Planner.Commands
         }
         public override void Execute(object parameter)
         {
-            _log = new TourLog(_logChanges.LogDate, _logChanges.Comment, _logChanges.Difficulty, _logChanges.TotalTime, _logChanges.Rating, _logChanges.TourId);
+            //_log = new TourLog(_logChanges.LogDate, _logChanges.Comment, _logChanges.Difficulty, _logChanges.TotalTime, _logChanges.Rating, _logChanges.TourId);
+            _log = new TourLog
+            {
+                Id = _logChanges.Id,
+                LogDate = _logChanges.LogDate,
+                Comment = _logChanges.Comment,
+                Difficulty = _logChanges.Difficulty,
+                TotalTime = _logChanges.TotalTime,
+                TourId = _logChanges.TourId,
+                Rating = _logChanges.Rating
+            };
+
             try
             {
-                edited = _logController.Controller_addTourLog(_log.TourId, _log);
+                edited = _logController.Controller_updateTourLog(_log);
                 if (edited)
                 {
                     _logger.Debug("Log was edited.");

@@ -195,7 +195,7 @@ namespace Tour_Planner.ViewModels
 
         public void Open_EditTourWindow()
         {
-            this.win2 = new TourEditView();
+            this.win2 = new TourEditView(SelectedTour);
             win2.Show();
         }
 

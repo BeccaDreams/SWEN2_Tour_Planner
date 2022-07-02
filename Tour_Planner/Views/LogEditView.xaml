@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tour_Planner.Views"
+        xmlns:mvvm="clr-namespace:Tour_Planner.ViewModels"
+        d:DataContext="{d:DesignInstance Type=mvvm:EditLogViewModel}"
         mc:Ignorable="d"
          Title="EditLogWindow" Height="450" Width="800"
         MinWidth="450"
@@ -13,6 +15,9 @@
         Background="White"
         x:Name="EditLog_Window"
         xmlns:b="clr-namespace:Tour_Planner">
+    <Window.DataContext>
+        <mvvm:EditLogViewModel/>
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -67,7 +72,9 @@
                         CornerRadius="1,1,1,1"
                         Height="30"
                         Margin="0,4,6,6">
-                    <TextBox x:Name="AddLog_Date" FontSize="15" Text="{Binding LogDate, UpdateSourceTrigger=PropertyChanged, StringFormat=dd-MM-yyyy}"></TextBox>
+                    <!--<TextBox x:Name="AddLog_Date" FontSize="15" Text="{Binding LogDate, UpdateSourceTrigger=PropertyChanged, StringFormat=dd-MM-yyyy}"></TextBox>-->
+                    <DatePicker x:Name="AddLog_Date" Text="{Binding LogDate, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
+
                 </Border>
                 <Border BorderBrush="LightGray"
                         BorderThickness="1"
@@ -102,7 +109,7 @@
             </StackPanel>
         </Border>
         <Button Grid.Row="6" Grid.Column="1" Content="Submit" Width="Auto" MaxWidth="150" Height="40" 
-                BorderBrush="LightGray" FontWeight="Bold" Background="LightGray" Command="{Binding EditLogCommand}" 
+                BorderBrush="LightGray" FontWeight="Bold" Background="LightGray" Command="{Binding EditCommand}" 
                 b:CloseOnClickBehaviour.IsEnabled="True" >
         </Button>
     </Grid>

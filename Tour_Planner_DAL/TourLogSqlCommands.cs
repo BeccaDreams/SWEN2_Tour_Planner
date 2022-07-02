@@ -37,7 +37,7 @@ namespace Tour_Planner_DAL
             return command;
         }
 
-        public NpgsqlCommand addTourLog(int tourId, TourLog log) 
+        public virtual NpgsqlCommand addTourLog(int tourId, TourLog log) 
         {
             var command = new NpgsqlCommand("INSERT INTO tour_log (tour_date, comment, difficulty, total_time, rating, tour_id) VALUES ($1, $2, $3, $4, $5, $6)", _connection)
             {
@@ -54,7 +54,7 @@ namespace Tour_Planner_DAL
             return command;
         }  
         
-        public NpgsqlCommand updateTourLog(TourLog log) 
+        public virtual NpgsqlCommand updateTourLog(TourLog log) 
         {
             var command = new NpgsqlCommand("UPDATE tour_log SET tour_date = $1, comment = $2, difficulty = $3, total_time = $4, rating = $5", _connection)
             {
@@ -71,7 +71,7 @@ namespace Tour_Planner_DAL
 
         }  
         
-        public NpgsqlCommand deleteTourLog(TourLog log) {
+        public virtual NpgsqlCommand deleteTourLog(TourLog log) {
             var command = new NpgsqlCommand("DELETE FROM tour_log WHERE id = $1", _connection)
             {
                 Parameters = { new() { Value = log.Id } }

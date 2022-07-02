@@ -7,60 +7,110 @@ using System.Threading.Tasks;
 using Tour_Planner_DAL;
 using Shared.Models;
 using Moq;
+using Npgsql;
+using System.Reflection;
 
 namespace Tour_Planner.Test
 {
     public class TourDataHandlerTests
     {
-        public TourDataHandler tourDataHandler;
-        public List<Tour> tourList;
-       // public Tour testtour;
+        TourDataHandler tourDataHandler;
+        Mock<Database> mockDatabase;
+        Mock<TourSqlCommands> mockSqlCommands;
+
         [SetUp]
         public void Setup()
         {
+            //https://stackoverflow.com/questions/2050892/how-to-mock-a-static-singleton
+            var unused = Database.Instance();
+            System.Reflection.FieldInfo instance = typeof(Database).GetField("instance", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic);
+            mockDatabase = new Mock<Database>();
+            instance.SetValue(null, mockDatabase.Object);
+
+            mockSqlCommands = new Mock<TourSqlCommands>();
             tourDataHandler = new TourDataHandler();
-            //tourList = new List<Tour>();
         }
 
         [Test]
-        public void Test_getTours_shouldReturnNotEmpty()
+        public void Test_getTours_shouldCallDbExecuteReader()
         {
-            //Mocks als ersatz, damit man 1 funktion testen kann und die anderen componenten nicht extra erstellen muss
+            //Arrange
+            mockDatabase.Setup(db => db.executeReader(It.IsAny<NpgsqlCommand>())).Returns(It.IsAny<NpgsqlDataReader>());
 
-            //var mockedArgumentHandler = new Mock<IArgumentHandler>();
-            //var mockedCommunicationHandler = new Mock<ICommunicationHandler>();
-            //var mockedContentInterpreter = new Mock<IContentInterpreter>();
-            //var mockedFilterHandler = new Mock<FilterHanlder>();
-            //var mockedTourLogs = new Mock<TourDetailsViewModel>();
-            //var mockedTourDetails = new Mock<TourDetailsViewModel>();
-            //var mockedTourList = new Mock<TourListViewModel>();
-            //var mockedSearchbar = new Mock<SearchBarViewModel>();
-            //MainViewModel mvm = new MainViewModel();
-            //Assert.Pass();
+            //Act
+            tourDataHandler.getTours();
 
-
-            tourList = tourDataHandler.getTours();
-
-            //Assert.IsNotEmpty(tourlist);
-            Assert.IsEmpty(tourList);
-
-
+            //Assert
+            mockDatabase.Verify(db => db.executeReader(It.IsAny<NpgsqlCommand>()), Times.Once);
         }
 
         [Test]
-        public void Test_getTourById_shouldFindTourById()
+        public void Test_getTourById_shouldCallDbExecuteReader()
         {
-            tourList = tourDataHandler.getTourById(1);
+            //Arrange
+            mockDatabase.Setup(db => db.executeReader(It.IsAny<NpgsqlCommand>())).Returns(It.IsAny<NpgsqlDataReader>());
 
-            Assert.IsNotEmpty(tourList);
-            //Assert.IsEmpty(tourList);
+            //Act
+            tourDataHandler.getTourById(It.IsAny<int>());
+
+            //Assert
+            mockDatabase.Verify(db => db.executeReader(It.IsAny<NpgsqlCommand>()), Times.Once);
+        }  
+        
+        [Test]
+        public void Test_searchTours_shouldCallDbExecuteReader()
+        {
+            //Arrange
+            mockSqlCommands.Setup(cmd => cmd.searchTour(It.IsAny<String>())).Returns(It.IsAny<NpgsqlCommand>());
+            mockDatabase.Setup(db => db.executeReader(It.IsAny<NpgsqlCommand>())).Returns(It.IsAny<NpgsqlDataReader>());
+
+            //Act
+            tourDataHandler.searchTour("test");
+
+            //Assert
+            mockDatabase.Verify(db => db.executeReader(It.IsAny<NpgsqlCommand>()), Times.Once);
         }
 
         [Test]
-        public void Test_addTour_shoultBeTrue()
+        public void Test_addTour_shouldCallDbExecuteNoneQuery()
         {
-            var mockedTour = new Mock<Tour>();
-           // bool isAdded = tourDataHandler.addTour(mockedTour);
+            //Arrange
+            mockSqlCommands.Setup(cmd => cmd.addTour(It.IsAny<Tour>())).Returns(It.IsAny<NpgsqlCommand>());
+            mockDatabase.Setup(db => db.executeNonQuery(It.IsAny<NpgsqlCommand>())).Returns(It.IsAny<bool>());
+
+            //Act
+            tourDataHandler.addTour(new Tour());
+
+            //Assert
+            mockDatabase.Verify(db => db.executeNonQuery(It.IsAny<NpgsqlCommand>()), Times.Once);
+        }  
+        
+        [Test]
+        public void Test_updateTour_shouldCallDbExecuteNoneQuery()
+        {
+            //Arrange
+            mockSqlCommands.Setup(cmd => cmd.updateTour(It.IsAny<Tour>())).Returns(It.IsAny<NpgsqlCommand>());
+            mockDatabase.Setup(db => db.executeNonQuery(It.IsAny<NpgsqlCommand>())).Returns(It.IsAny<bool>());
+
+            //Act
+            tourDataHandler.updateTour(new Tour());
+
+            //Assert
+            mockDatabase.Verify(db => db.executeNonQuery(It.IsAny<NpgsqlCommand>()), Times.Once);
+        }
+        
+        [Test]
+        public void Test_deleteTour_shouldCallDbExecuteNoneQuery()
+        {
+            //Arrange
+            mockSqlCommands.Setup(cmd => cmd.deleteTour(It.IsAny<Tour>())).Returns(It.IsAny<NpgsqlCommand>());
+            mockDatabase.Setup(db => db.executeNonQuery(It.IsAny<NpgsqlCommand>())).Returns(It.IsAny<bool>());
+
+            //Act
+            tourDataHandler.deleteTour(new Tour());
+
+            //Assert
+            mockDatabase.Verify(db => db.executeNonQuery(It.IsAny<NpgsqlCommand>()), Times.Once);
         }
 
 

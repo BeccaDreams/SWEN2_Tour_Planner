@@ -38,7 +38,7 @@ namespace Shared.Models
 
         public int Id
         {
-            get { return _id.Value; }
+            get { return _id.HasValue ? _id.Value : 0; }
             set
             {
                 try

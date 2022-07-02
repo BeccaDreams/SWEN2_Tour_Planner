@@ -32,7 +32,7 @@ namespace Tour_Planner_DAL
             get { return _connection; }
         }
 
-        public bool executeNonQuery(NpgsqlCommand command) {
+        public virtual bool executeNonQuery(NpgsqlCommand command) {
 
             try
             {
@@ -47,7 +47,7 @@ namespace Tour_Planner_DAL
             return true;
         }
 
-        public NpgsqlDataReader executeReader(NpgsqlCommand command) {
+        public virtual NpgsqlDataReader executeReader(NpgsqlCommand command) {
             return command.ExecuteReader();
         }
 

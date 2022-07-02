@@ -22,7 +22,9 @@ namespace Tour_Planner_DAL
             return new NpgsqlCommand("SELECT * FROM tour", _connection);
         }
 
-        public NpgsqlCommand addTour(Tour tour)
+        // virtual to be able to override it when unit testing
+        // https://stackoverflow.com/questions/56905578/moq-non-overridable-members-may-not-be-used-in-setup-verification-expression
+        public virtual NpgsqlCommand addTour(Tour tour)
         {
             var command = new NpgsqlCommand("INSERT INTO tour (name, description, from_city, to_city, transport_type, distance, planned_time, route_information) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)", _connection)
             {
@@ -41,7 +43,7 @@ namespace Tour_Planner_DAL
             return command;
         }
 
-        public NpgsqlCommand updateTour(Tour tour)
+        public virtual NpgsqlCommand updateTour(Tour tour)
         {
             var command = new NpgsqlCommand("UPDATE tour SET name = $1, description= $2, from_city = $3, to_city = $4, transport_type = $5, distance = $6, planned_time = $7, route_information = $8 WHERE id = $9", _connection)
             {
@@ -61,7 +63,7 @@ namespace Tour_Planner_DAL
             return command;
         }
 
-        public NpgsqlCommand deleteTour(Tour tour)
+        public virtual NpgsqlCommand deleteTour(Tour tour)
         {
             var command = new NpgsqlCommand("DELETE FROM tour WHERE id = $1", _connection)
             {
@@ -87,7 +89,7 @@ namespace Tour_Planner_DAL
             return command;
         }  
         
-        public NpgsqlCommand getTourById(int id)
+        public virtual NpgsqlCommand getTourById(int id)
         {
             var command = new NpgsqlCommand("SELECT * FROM tour WHERE id = $1", _connection)
             {

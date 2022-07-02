@@ -20,7 +20,7 @@ namespace Tour_Planner_DAL
             _logger.Debug("TourDataHandler initialized.");
         }
 
-        public List<Tour> getTours() 
+        public virtual List<Tour> getTours() 
         {
             var reader = _db.executeReader(_sqlCommands.getTours());
             return getToursFromReader(reader);
@@ -38,17 +38,17 @@ namespace Tour_Planner_DAL
             return getToursFromReader(reader);
         }
 
-        public bool addTour(Tour tour) 
+        public virtual bool addTour(Tour tour) 
         {
             return _db.executeNonQuery(_sqlCommands.addTour(tour));
         }
 
-        public bool updateTour(Tour tour) 
+        public virtual bool updateTour(Tour tour) 
         { 
             return _db.executeNonQuery(_sqlCommands.updateTour(tour));
         }
 
-        public bool deleteTour(Tour tour) 
+        public virtual bool deleteTour(Tour tour) 
         {
             return _db.executeNonQuery(_sqlCommands.deleteTour(tour));
         } 

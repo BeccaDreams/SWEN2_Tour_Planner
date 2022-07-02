@@ -14,7 +14,7 @@ namespace Tour_Planner_BL
         {
         }
 
-        public List<Tour> ImportTours(string filePath)
+        public virtual List<Tour> ImportTours(string filePath)
         {
             var tours = new List<Tour>();
             using (StreamReader r = new StreamReader(filePath))

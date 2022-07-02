@@ -25,8 +25,13 @@ namespace Tour_Planner_BL
             _logger = LoggerFactory.GetLogger("Business Layer - MapQuestClient");
         }
 
-        
-        public async Task<String> GetMapQuestStaticMap(MapQuestDirectionResponse direction)
+        public HttpClient Client
+        {
+            get { return _client; }
+            set { _client = value; }
+        }
+       
+        public virtual async Task<String> GetMapQuestStaticMap(MapQuestDirectionResponse direction)
         {
             if ( direction == null )
             {
@@ -38,17 +43,7 @@ namespace Tour_Planner_BL
             
             try 
             {
-                
-                var boundingBox = direction.Route.BoundingBox;
-                var url = _baseUrl + string.Format("staticmap/v5/map?key={0}&boundingBox={1},{2},{3},{4}&session={5}",
-                    _config.MapQuestKey,
-                    boundingBox.Ul.Lat.ToString(CultureInfo.InvariantCulture),
-                    boundingBox.Ul.Lng.ToString(CultureInfo.InvariantCulture),
-                    boundingBox.Lr.Lat.ToString(CultureInfo.InvariantCulture),
-                    boundingBox.Lr.Lng.ToString(CultureInfo.InvariantCulture),
-                    direction.Route.SessionId
-                );
-
+                var url = getMapUrl(direction);
                 var response = await _client.GetStreamAsync(url);
                 var mapId = Guid.NewGuid().ToString("N");
                 var mapFolder = "./maps";
@@ -68,7 +63,7 @@ namespace Tour_Planner_BL
             return mapPath;
         }
 
-        public async Task<MapQuestDirectionResponse> GetMapQuestDirection(string fromCity, string toCity, string routeType)
+        public virtual async Task<MapQuestDirectionResponse> GetMapQuestDirection(string fromCity, string toCity, string routeType)
         {
             if (
                 string.IsNullOrEmpty(fromCity)
@@ -96,6 +91,19 @@ namespace Tour_Planner_BL
             return result;
         }
 
+        public string getMapUrl(MapQuestDirectionResponse direction) 
+        {
+            var boundingBox = direction.Route.BoundingBox;
+            var url = _baseUrl + string.Format("staticmap/v5/map?key={0}&boundingBox={1},{2},{3},{4}&session={5}",
+                _config.MapQuestKey,
+                boundingBox.Ul.Lat.ToString(CultureInfo.InvariantCulture),
+                boundingBox.Ul.Lng.ToString(CultureInfo.InvariantCulture),
+                boundingBox.Lr.Lat.ToString(CultureInfo.InvariantCulture),
+                boundingBox.Lr.Lng.ToString(CultureInfo.InvariantCulture),
+                direction.Route.SessionId
+            );
+            return url;
+        }
        
     }
 }

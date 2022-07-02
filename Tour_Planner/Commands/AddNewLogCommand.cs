@@ -33,11 +33,14 @@ namespace Tour_Planner.Commands
 
         public override void Execute(object parameter)
         {
-            _newLogData.TotalTime = TimeSpan.Parse(_newLogData.Duration);
-
-            _log = new TourLog(_newLogData.LogDate, _newLogData.Comment, _newLogData.Difficulty, _newLogData.TotalTime, _newLogData.Rating, _newLogData.TourId);
             try
             {
+                TimeSpan duration;
+                TimeSpan.TryParse(_newLogData.Duration, null, out duration);
+                _newLogData.TotalTime = duration;
+
+                _log = new TourLog(_newLogData.LogDate, _newLogData.Comment, _newLogData.Difficulty, _newLogData.TotalTime, _newLogData.Rating, _newLogData.TourId);
+
                 added = _logController.Controller_addTourLog(_log.TourId, _log);
                 if (added)
                 {

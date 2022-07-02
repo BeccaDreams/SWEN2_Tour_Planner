@@ -16,7 +16,16 @@ namespace Tour_Planner.ViewModels
     public class TourLogsViewModel : BaseModel 
     {
         public List<TourLog> _logList;
-        public ObservableCollection<TourLog> DataLogs { get; set; }
+
+        private ObservableCollection<TourLog> _dataLogs;
+        public ObservableCollection<TourLog> DataLogs {
+            get { return _dataLogs; }
+            set 
+            {
+                _dataLogs = value;
+                OnPropertyChanged(nameof(DataLogs));
+            }
+        }
 
         public LogController _logController;
         Window win1, win2;
@@ -29,6 +38,17 @@ namespace Tour_Planner.ViewModels
             {
                 _selectedLog = value;
                 OnPropertyChanged(nameof(SelectedLog));
+            }
+        }
+
+        private int _selectedTourId;
+        public int SelectedTourId
+        {
+            get { return _selectedTourId; }
+            set
+            {
+                _selectedTourId = value;
+                OnPropertyChanged(nameof(SelectedTourId));
             }
         }
 
@@ -50,7 +70,7 @@ namespace Tour_Planner.ViewModels
 
         public ICommand OpenAddLogWindow { get; set; }
         public ICommand OpenEditLogWindow { get; set; }
-        public ICommand DeleteSelectedItem { get; set; }
+        public ICommand DeleteSelectedLog { get; set; }
 
         public TourLogsViewModel()
         {
@@ -91,13 +111,13 @@ namespace Tour_Planner.ViewModels
 
         public void Open_AddLogWindow()
         {
-            this.win1 = new AddLogWindow();
+            this.win1 = new AddLogWindow(SelectedTourId);
             win1.Show();
         }
 
         public void Open_EditLogWindow()
         {
-            this.win2 = new LogEditView();
+            this.win2 = new LogEditView(SelectedLog);
             win2.Show();
         }
 
@@ -114,7 +134,7 @@ namespace Tour_Planner.ViewModels
                 Open_EditLogWindow();
             });
 
-            DeleteSelectedItem = new DeleteLogCommand(this.SelectedLog);
+            DeleteSelectedLog = new DeleteLogCommand(this);
         }
 
 

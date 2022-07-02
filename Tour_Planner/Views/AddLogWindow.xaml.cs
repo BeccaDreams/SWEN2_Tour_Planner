@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shared.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Tour_Planner.ViewModels;
 
 namespace Tour_Planner.Views
 {
@@ -19,9 +21,10 @@ namespace Tour_Planner.Views
     /// </summary>
     public partial class AddLogWindow : Window
     {
-        public AddLogWindow()
+        public AddLogWindow(int tourId)
         {
             InitializeComponent();
+            ((AddLogToTourViewModel)this.DataContext).TourId = tourId;
         }
 
         private void NumericOnly(Object sender, TextCompositionEventArgs e)

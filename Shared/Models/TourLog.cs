@@ -147,7 +147,7 @@ namespace Shared.Models
             LogDate = date;
             Comment = comment;
             Difficulty = difficulty;
-            TimeSpan TotalTime = totalTime;
+            TotalTime = totalTime;
             Rating = rating;
             TourId = tourId;
         }

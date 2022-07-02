@@ -56,7 +56,7 @@ namespace Tour_Planner_DAL
         
         public virtual NpgsqlCommand updateTourLog(TourLog log) 
         {
-            var command = new NpgsqlCommand("UPDATE tour_log SET tour_date = $1, comment = $2, difficulty = $3, total_time = $4, rating = $5", _connection)
+            var command = new NpgsqlCommand("UPDATE tour_log SET tour_date = $1, comment = $2, difficulty = $3, total_time = $4, rating = $5 WHERE id = $6", _connection)
             {
                 Parameters =
                     {
@@ -64,7 +64,8 @@ namespace Tour_Planner_DAL
                         new() { Value = log.Comment },
                         new() { Value = log.Difficulty },
                         new() { Value = log.TotalTime },
-                        new() { Value = log.Rating }
+                        new() { Value = log.Rating },
+                        new() {Value = log.Id }
                     }
             };
             return command;

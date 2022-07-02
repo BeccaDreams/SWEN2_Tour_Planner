@@ -16,14 +16,14 @@ namespace Tour_Planner.Commands
         private ILoggerWrapper _logger;
 
         private readonly AddLogToTourViewModel _newLogData;
-        public TourLog _log;
+        public TourLogsViewModel _viewModel;
         LogController _logController;
         bool deleted;
 
-        public DeleteLogCommand(TourLog _delLog)
+        public DeleteLogCommand(TourLogsViewModel tourLogViewModel)
         {
             _logController = new LogController();
-            _log = _delLog;
+            _viewModel = tourLogViewModel;
             _logger = LoggerFactory.GetLogger("DeleteLogCommand");
         }
 
@@ -31,7 +31,7 @@ namespace Tour_Planner.Commands
         {
            try
             {
-                deleted = _logController.Controller_deleteTourLog(_log);
+                deleted = _logController.Controller_deleteTourLog(_viewModel.SelectedLog);
                 if (deleted)
                 {
                     _logger.Debug("Log was deleted.");

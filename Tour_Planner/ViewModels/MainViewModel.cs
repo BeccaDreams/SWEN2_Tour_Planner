@@ -172,6 +172,7 @@ namespace Tour_Planner.ViewModels
             TourLogs.LoadLogs(TourList.SelectedTour.Id);
             TourLogs.PropertyChanged += DataLogs_PropertyChanged;
             TourLogs.EnableAddWindow();
+            TourLogs.SelectedTourId = TourList.SelectedTour.Id;
                
             AddLogToTourList.TourId = TourList.SelectedTour.Id;
             TourList.LoadTours();

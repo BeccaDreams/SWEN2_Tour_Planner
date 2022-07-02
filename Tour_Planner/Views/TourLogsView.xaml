@@ -25,11 +25,11 @@
             <Label FontWeight="Bold" FontSize="13">Logs:</Label>
             <Button Width="20" Content="+" Command="{Binding OpenAddLogWindow}" IsEnabled="{Binding IsEnabled}"></Button>
             <Button Width="20" Content="-" Command="{Binding DeleteSelectedLog}"></Button>
-            <Button Width="20" Content="[]"></Button>
+            <Button Width="20" Content="[]" Command="{Binding OpenEditLogWindow}"></Button>
         </StackPanel>
 
 
-        <DataGrid Grid.Row="2" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" Width="Auto" ItemsSource="{Binding DataLogs, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelctedLog, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" AlternatingRowBackground="LightGray" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+        <!--<DataGrid Grid.Row="2" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" Width="Auto" ItemsSource="{Binding DataLogs, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelctedLog, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" AlternatingRowBackground="LightGray" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding LogDate}" Header="Date" Width="*"/>
                 <DataGridTextColumn Binding="{Binding Comment}" Header="Comment" Width="*"/>
@@ -37,6 +37,53 @@
                 <DataGridTextColumn Binding="{Binding TotalTime}" Header="Duration" Width="*"/>
                 <DataGridTextColumn Binding="{Binding Rating}" Header="Rating" Width="*"/>
             </DataGrid.Columns>
-        </DataGrid>
+        </DataGrid>-->
+        <ListView Grid.Row="2" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" Width="Auto"  Height="270" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"  
+                  ItemsSource="{Binding DataLogs, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedLog, UpdateSourceTrigger=PropertyChanged}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Date" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding LogDate}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>                    
+                    <GridViewColumn Header="Comment" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Comment}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>                    
+                    <GridViewColumn Header="Difficulty" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Difficulty}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>                    
+                    <GridViewColumn Header="Duration" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding TotalTime}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>                    
+                    <GridViewColumn Header="Rating" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Rating}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </UserControl>

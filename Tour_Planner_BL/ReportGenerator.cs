@@ -20,6 +20,11 @@ namespace Tour_Planner_BL
         public void GenerateTourReport(Tour tour, List<TourLog> logs) 
         {
             var fileName = string.Format("reports/{0} - TourReport.pdf", tour.Name);
+            var folderName = "./reports";
+            if (!Directory.Exists(folderName))
+            {
+                Directory.CreateDirectory(folderName);
+            }
             var writer = new PdfWriter(fileName);
             var pdf = new PdfDocument(writer);
             var document = new Document(pdf);
@@ -197,6 +202,11 @@ namespace Tour_Planner_BL
         public void GenerateSummarizeReport(List<Tour> tours) 
         {
             var fileName = string.Format("reports/Summarize Report.pdf");
+            var folderName = "./reports";
+            if (!Directory.Exists(folderName))
+            {
+                Directory.CreateDirectory(folderName);
+            }
             var writer = new PdfWriter(fileName);
             var pdf = new PdfDocument(writer);
             var document = new Document(pdf);

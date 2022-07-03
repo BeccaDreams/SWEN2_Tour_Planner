@@ -49,7 +49,43 @@ namespace Tour_Planner.ViewModels
             }
         }
 
-    
+        private string _detailTime;
+        public string DetailTime
+        {
+            get { return _detailTime; }
+            set
+            {
+                try
+                {
+                    _detailTime = value;
+                    OnPropertyChanged(nameof(DetailTime));
+                }
+                catch (StackOverflowException e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+        }
+
+        private string _detailDistance;
+        public string DetailDistance
+        {
+            get { return _detailDistance; }
+            set
+            {
+                try
+                {
+                    _detailDistance = value;
+                    OnPropertyChanged(nameof(DetailDistance));
+                }
+                catch (StackOverflowException e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+        }
+
+
         public string folderPath = Directory.GetCurrentDirectory();
 
         private string _routeInformation;

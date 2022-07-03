@@ -27,13 +27,17 @@
             <StackPanel Orientation="Vertical" Grid.Row="1" Grid.RowSpan="2">
             <TabControl>
                 <TabItem FontSize="12" FontWeight="Bold" Header="Route" x:Name="Route">
-                       <Image x:Name="MapImage" Width="200" Height="200" Source="{Binding RouteInformation, UpdateSourceTrigger=PropertyChanged}"/> 
-                    <!--     <Image Width="200" Height="200" Source="/bin/Debug/net6.0-windows/maps/5d3ec3063bf04d678bdc29baa12fae9c.png" /> -->
-                    <!--     <TextBlock Text="{Binding RouteInformation, UpdateSourceTrigger=PropertyChanged}"/>-->
+                    <Image x:Name="MapImage" Width="200" Height="200" Source="{Binding RouteInformation, UpdateSourceTrigger=PropertyChanged}"/>
                 </TabItem>
-                <TabItem FontSize="12" FontWeight="Bold" Header="Description"  x:Name="Description">
+                <TabItem FontSize="12" FontWeight="Bold" Header="Description" x:Name="Description">
                     <TextBlock Height="Auto" Text="{Binding DetailDescription, UpdateSourceTrigger=PropertyChanged}" 
-                               Margin="0,0,0,400"></TextBlock>
+                                 Margin="0,0,0,400"></TextBlock>
+                </TabItem>
+                <TabItem FontSize="12" FontWeight="Bold" Header="Distance" x:Name="Distance">
+                    <TextBlock Height="Auto" Text="{Binding DetailDistance, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+                </TabItem>
+                <TabItem FontSize="12" FontWeight="Bold" Header="Time" x:Name="Time">
+                    <TextBlock Height="Auto" Text="{Binding DetailTime, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
                 </TabItem>
             </TabControl>
             

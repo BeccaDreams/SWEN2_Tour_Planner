@@ -79,8 +79,7 @@ namespace Tour_Planner.ViewModels
                 UpdateList_TourNames();
             });
 
-            SearchBar.SearchCommand = Search_Command; //funktioniert
-           // AddTourToList.SubmitCommand = Add_Tour_Command;
+            SearchBar.SearchCommand = Search_Command; 
             TourList.DeleteTourCommand = Delete_Tour_Command;
 
 
@@ -153,14 +152,7 @@ namespace Tour_Planner.ViewModels
            
         }
 
-        private void SearchText_PrpopertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if(e.PropertyName == "SearchText")
-            {
-                //Update TourNames & Logs
-                SearchBar.SearchCommand.Execute(SearchBar.SearchText);
-            }
-        }
+     
 
         public void showDetails()
         {
@@ -169,6 +161,8 @@ namespace Tour_Planner.ViewModels
             TourDetails.Title = TourList.SelectedTour.Name;
             TourDetails.DetailDescription = TourList.SelectedTour.Description;
             TourDetails.RouteInformation = TourList.SelectedTour.RouteInformation;
+            TourDetails.DetailTime = TourList.SelectedTour.Time.ToString();
+            TourDetails.DetailDistance = TourList.SelectedTour.Distance.ToString();
             TourLogs.LoadLogs(TourList.SelectedTour.Id);
             TourLogs.PropertyChanged += DataLogs_PropertyChanged;
             TourLogs.EnableAddWindow();
@@ -181,15 +175,6 @@ namespace Tour_Planner.ViewModels
 
       
 
-
-
-        public void TourNames_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if(e.PropertyName == "TourNames")
-            {
-                TourList.LoadTours();
-            }
-        }
 
         public void DataLogs_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {

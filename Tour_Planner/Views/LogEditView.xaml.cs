@@ -25,7 +25,7 @@ namespace Tour_Planner.Views
         {
             InitializeComponent();
             ((EditLogViewModel)this.DataContext).Id = log.Id;
-            ((EditLogViewModel)this.DataContext).LogDate = log.LogDate;
+            ((EditLogViewModel)this.DataContext).LogDate = log.LogDate.ToDateTime(TimeOnly.Parse("10:00 PM"));
             ((EditLogViewModel)this.DataContext).Comment = log.Comment;
             ((EditLogViewModel)this.DataContext).Rating = log.Rating;
             ((EditLogViewModel)this.DataContext).Difficulty = log.Difficulty;

@@ -38,8 +38,9 @@ namespace Tour_Planner.Commands
                 TimeSpan duration;
                 TimeSpan.TryParse(_newLogData.Duration, null, out duration);
                 _newLogData.TotalTime = duration;
+                var logDate = DateOnly.FromDateTime(_newLogData.LogDate);
 
-                _log = new TourLog(_newLogData.LogDate, _newLogData.Comment, _newLogData.Difficulty, _newLogData.TotalTime, _newLogData.Rating, _newLogData.TourId);
+                _log = new TourLog(logDate, _newLogData.Comment, _newLogData.Difficulty, _newLogData.TotalTime, _newLogData.Rating, _newLogData.TourId);
 
                 added = _logController.Controller_addTourLog(_log.TourId, _log);
                 if (added)

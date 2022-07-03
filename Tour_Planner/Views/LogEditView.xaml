@@ -73,7 +73,7 @@
                         Height="30"
                         Margin="0,4,6,6">
                     <!--<TextBox x:Name="AddLog_Date" FontSize="15" Text="{Binding LogDate, UpdateSourceTrigger=PropertyChanged, StringFormat=dd-MM-yyyy}"></TextBox>-->
-                    <DatePicker x:Name="AddLog_Date" Text="{Binding LogDate, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
+                    <DatePicker x:Name="AddLog_Date" SelectedDate="{Binding LogDate, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
 
                 </Border>
                 <Border BorderBrush="LightGray"

@@ -18,7 +18,7 @@ namespace Tour_Planner.ViewModels
 
 
         private int? _id;
-        private DateOnly _logDate = new DateOnly(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+        private DateTime _logDate = DateTime.Now;
         private string _comment;
         private int _difficulty;
         private string _duration;
@@ -44,7 +44,7 @@ namespace Tour_Planner.ViewModels
             }
         }
 
-        public DateOnly LogDate
+        public DateTime LogDate
         {
             get { return _logDate; }
             set

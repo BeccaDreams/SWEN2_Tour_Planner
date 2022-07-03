@@ -13,7 +13,7 @@ namespace Tour_Planner.ViewModels
     {
 
         private int? _id;
-        private DateOnly _logDate;
+        private DateTime _logDate;
         private string _comment;
         private int _difficulty;
         private TimeSpan _totalTime;
@@ -38,7 +38,7 @@ namespace Tour_Planner.ViewModels
             }
         }
 
-        public DateOnly LogDate
+        public DateTime LogDate
         {
             get { return _logDate; }
             set

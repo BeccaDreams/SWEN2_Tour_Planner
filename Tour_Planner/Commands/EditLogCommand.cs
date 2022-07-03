@@ -31,7 +31,7 @@ namespace Tour_Planner.Commands
             _log = new TourLog
             {
                 Id = _logChanges.Id,
-                LogDate = _logChanges.LogDate,
+                LogDate = DateOnly.FromDateTime(_logChanges.LogDate),
                 Comment = _logChanges.Comment,
                 Difficulty = _logChanges.Difficulty,
                 TotalTime = _logChanges.TotalTime,

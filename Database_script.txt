@@ -1,0 +1,55 @@
+Database script:
+
+
+CREATE DATABASE postgres
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'C'
+    LC_CTYPE = 'C'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+COMMENT ON DATABASE postgres
+    IS 'default administrative connection database';
+
+CREATE TABLE IF NOT EXISTS public.tour
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    name character varying COLLATE pg_catalog."default",
+    description text COLLATE pg_catalog."default",
+    from_city character varying COLLATE pg_catalog."default",
+    to_city character varying COLLATE pg_catalog."default",
+    transport_type character varying COLLATE pg_catalog."default",
+    distance numeric,
+    planned_time time without time zone,
+    route_information character varying COLLATE pg_catalog."default",
+    CONSTRAINT tour_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.tour
+    OWNER to postgres;
+
+CREATE TABLE IF NOT EXISTS public.tour_log
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    tour_date date,
+    comment text COLLATE pg_catalog."default",
+    difficulty integer,
+    total_time time without time zone,
+    rating integer,
+    tour_id integer NOT NULL,
+    CONSTRAINT tour_log_pkey PRIMARY KEY (id),
+    CONSTRAINT tour_log_fkey FOREIGN KEY (tour_id)
+        REFERENCES public.tour (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.tour_log
+    OWNER to postgres;

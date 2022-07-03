@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -179,6 +180,15 @@ namespace Tour_Planner.ViewModels
             return long.TryParse(UserInput, out num);
         }
 
+        public bool ValidateTime(string time)
+        {
+            DateTime ignored;
+            return DateTime.TryParseExact(time, "HH:mm:ss",
+                                                CultureInfo.InvariantCulture,
+                                                DateTimeStyles.None,
+                                                out ignored);
+        } 
+
         public string this[string input]
         {
 
@@ -190,6 +200,14 @@ namespace Tour_Planner.ViewModels
                     case "Comment":
                         if (typeCheckLong(Comment) == true)
                             result = "Comment must consist of letters";
+                        if (string.IsNullOrWhiteSpace(Comment))
+                            result = "Comment cannot be empty";
+                        break;
+
+
+                    case "Duration":
+                        if (ValidateTime(Duration) == false)
+                            result = "Please enter a valid duration in the form HH:mm:ss";
                         break;
                 }
 

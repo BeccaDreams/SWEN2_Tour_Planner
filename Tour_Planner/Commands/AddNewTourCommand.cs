@@ -65,10 +65,10 @@ namespace Tour_Planner.Commands
         }
 
 
-        //Wenn Name, From und To vorhanden sind, dann wird der Button aktiv
+        //enable submit button only after all tour data are provided
         private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if ((e.PropertyName == nameof(AddTourToListViewModel.Name)) || (e.PropertyName == nameof(AddTourToListViewModel.From)) || (e.PropertyName == nameof(AddTourToListViewModel.To)))
+            if ((e.PropertyName == nameof(AddTourToListViewModel.Name)) || (e.PropertyName == nameof(AddTourToListViewModel.From)) || (e.PropertyName == nameof(AddTourToListViewModel.To)) || (e.PropertyName == nameof(AddTourToListViewModel.TransportType)) || (e.PropertyName == nameof(AddTourToListViewModel.Description)))
             {
                 OnCanExecutedChanged();
             }
@@ -76,7 +76,7 @@ namespace Tour_Planner.Commands
 
         public override bool CanExecute(object parameter)
         {
-            return !string.IsNullOrEmpty(_newTourData.Name) && !string.IsNullOrEmpty(_newTourData.From) && !string.IsNullOrEmpty(_newTourData.To) && base.CanExecute(parameter);
+            return !string.IsNullOrEmpty(_newTourData.Name) && !string.IsNullOrEmpty(_newTourData.From) && !string.IsNullOrEmpty(_newTourData.To) && !string.IsNullOrEmpty(_newTourData.TransportType) && !string.IsNullOrEmpty(_newTourData.Description) && base.CanExecute(parameter);
         }
     }
 }

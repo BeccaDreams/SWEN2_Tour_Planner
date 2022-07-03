@@ -17,6 +17,9 @@ namespace Tour_Planner.ViewModels
         public string Error { get { return null; } }
         public Dictionary<string, string> ErrorCollection { get; private set; } = new Dictionary<string, string>();
 
+        public delegate void DataChangedEventHandler(object sender, EventArgs e);
+
+        public event DataChangedEventHandler DataChanged;
 
         private int? _id;
         private DateTime _logDate = DateTime.Now;
@@ -171,6 +174,11 @@ namespace Tour_Planner.ViewModels
             SubmitLogCommand = new AddNewLogCommand(this);
 
 
+        }
+
+        public void FireDataChanged()
+        {
+            DataChanged?.Invoke(this, new EventArgs());
         }
 
         // log data Validation

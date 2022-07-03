@@ -45,6 +45,7 @@ namespace Tour_Planner.Commands
                 added = _logController.Controller_addTourLog(_log.TourId, _log);
                 if (added)
                 {
+                    _newLogData.FireDataChanged();
                     _logger.Debug("Added new log.");
                 }
                 else

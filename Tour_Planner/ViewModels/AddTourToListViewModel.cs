@@ -24,7 +24,9 @@ namespace Tour_Planner.ViewModels
         public Tour _tour;
         TourController _tourController;
 
+        public delegate void DataChangedEventHandler(object sender, EventArgs e);
 
+        public event DataChangedEventHandler DataChanged;
 
         private string _name;
         public string Name
@@ -123,8 +125,11 @@ namespace Tour_Planner.ViewModels
             _tourController = new TourController();
             _logger = LoggerFactory.GetLogger("AddNewTourCommand");
              SubmitCommand = new AddNewTourCommand(this); //soll noch ausgebessert werden
+        }
 
-
+        public void FireDataChanged()
+        {
+            DataChanged?.Invoke(this, new EventArgs());
         }
 
         static bool typeCheckLong(string UserInput)

@@ -38,7 +38,7 @@ namespace Tour_Planner.Commands
             try
             {
                 _tourController.Controller_addTour(_tour, false);
-
+                _newTourData.FireDataChanged();
             }
             catch (Exception ex)
             {

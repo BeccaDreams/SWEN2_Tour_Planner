@@ -23,13 +23,6 @@ namespace Tour_Planner.Views
         public TourListView()
         {
             InitializeComponent();
-        }
-
-        private void AddTourWin(object sender, RoutedEventArgs e)
-        {
-            AddTourWindow win2 = new AddTourWindow();
-            win2.Show();
-        }
-        
+        }        
     }
 }

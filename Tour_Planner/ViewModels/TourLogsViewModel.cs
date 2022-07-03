@@ -83,7 +83,21 @@ namespace Tour_Planner.ViewModels
 
 
 
+        public void List_DataChanged(object sender, EventArgs e)
+        {
+            Task.Delay(3000).ContinueWith(t =>
+            {
+                Application.Current.Dispatcher.Invoke(new Action(() => { DataLogs.Clear(); }));
 
+                _logList = _logController.Controller_getTourLogsByTourId(SelectedTourId);
+                DataLogs = new ObservableCollection<TourLog>(_logList);
+                /*foreach (Tour tour in _tourList)
+                {
+                    Application.Current.Dispatcher.Invoke(new Action(() => { TourNames.Add(tour); }));
+                };*/
+
+            });
+        }
 
         public void LoadLogs(int id)
         {
@@ -111,7 +125,7 @@ namespace Tour_Planner.ViewModels
 
         public void Open_AddLogWindow()
         {
-            this.win1 = new AddLogWindow(SelectedTourId);
+            this.win1 = new AddLogWindow(this);
             win1.Show();
         }
 

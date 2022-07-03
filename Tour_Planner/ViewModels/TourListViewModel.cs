@@ -99,6 +99,21 @@ namespace Tour_Planner.ViewModels
             }
         }
 
+        public void List_DataChanged(object sender, EventArgs e)
+        {
+            Task.Delay(3000).ContinueWith(t => 
+            {
+                Application.Current.Dispatcher.Invoke(new Action(() => { TourNames.Clear(); }));
+
+                _tourList = _tourController.Controller_getTours();
+                foreach (Tour tour in _tourList)
+                {
+                    Application.Current.Dispatcher.Invoke(new Action(() => { TourNames.Add(tour); }));
+                };
+
+            });
+        }
+
         public void SetCommands()
         {
             OpenAddTourWindow = new RelayCommand((_) =>
@@ -173,7 +188,7 @@ namespace Tour_Planner.ViewModels
 
         public void Open_AddTourWindow()
         {
-            this.win1 = new AddTourWindow();
+            this.win1 = new AddTourWindow(this);
             win1.Show();
         }
 

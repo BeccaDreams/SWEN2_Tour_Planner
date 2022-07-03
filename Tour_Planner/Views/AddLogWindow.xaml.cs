@@ -21,10 +21,11 @@ namespace Tour_Planner.Views
     /// </summary>
     public partial class AddLogWindow : Window
     {
-        public AddLogWindow(int tourId)
+        public AddLogWindow(TourLogsViewModel viewModel)
         {
             InitializeComponent();
-            ((AddLogToTourViewModel)this.DataContext).TourId = tourId;
+            ((AddLogToTourViewModel)this.DataContext).TourId = viewModel.SelectedTourId;
+            ((AddLogToTourViewModel)this.DataContext).DataChanged += viewModel.List_DataChanged;
         }
 
         private void NumericOnly(Object sender, TextCompositionEventArgs e)
